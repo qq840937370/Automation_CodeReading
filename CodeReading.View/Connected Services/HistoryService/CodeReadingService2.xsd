@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CodeReading.Entity" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CodeReading.Entity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:62645/CodeReadingService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="LoginInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KojoCd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KojoName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiscField" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Parameters" nillable="true" type="q1:ArrayOfKeyValueOfstringstring" />
+      <xs:element minOccurs="0" name="SoshikiCd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SoshikiName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserCd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoginInfo" nillable="true" type="tns:LoginInfo" />
+  <xs:complexType name="InitializeResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaxRowsCount" type="xs:int" />
+      <xs:element minOccurs="0" name="SysDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InitializeResult" nillable="true" type="tns:InitializeResult" />
+  <xs:complexType name="SearchConditions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DtpFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DtpTo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HospitalizationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KojoCd" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchConditions" nillable="true" type="tns:SearchConditions" />
+  <xs:complexType name="SearchResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorInfo" nillable="true" type="tns:ErrorInfo" />
+      <xs:element minOccurs="0" name="SearchData" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="CodeReadingDataSet.SearchListDataTable" Namespace="http://schemas.datacontract.org/2004/07/CodeReading.Entity" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </xs:sequence>
+          <xs:attribute fixed="http://tempuri.org/CodeReadingDataSet.xsd" name="namespace" />
+          <xs:attribute fixed="SearchListDataTable" name="tableTypeName" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Suceeded" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchResult" nillable="true" type="tns:SearchResult" />
+  <xs:complexType name="ErrorInfo">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DetailErrors" nillable="true" type="q2:ArrayOfKeyValueOfstringArrayOfDetailErrorInfo74oZS3Om" />
+      <xs:element minOccurs="0" name="ErrorId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorText" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ItemErrors" nillable="true" type="q3:ArrayOfKeyValueOfstringstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ErrorInfo" nillable="true" type="tns:ErrorInfo" />
+  <xs:complexType name="ArrayOfDetailErrorInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DetailErrorInfo" nillable="true" type="tns:DetailErrorInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDetailErrorInfo" nillable="true" type="tns:ArrayOfDetailErrorInfo" />
+  <xs:complexType name="DetailErrorInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Row" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DetailErrorInfo" nillable="true" type="tns:DetailErrorInfo" />
+  <xs:element name="CodeReadingDataSet.SearchListDataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="CodeReadingDataSet.SearchListDataTable" Namespace="http://schemas.datacontract.org/2004/07/CodeReading.Entity" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/CodeReadingDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="SearchListDataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
