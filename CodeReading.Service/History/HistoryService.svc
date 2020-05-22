@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="CodeReading.Service.History.HistoryService" CodeBehind="HistoryService.svc.cs" %>

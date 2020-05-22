@@ -1,5 +1,6 @@
 ﻿using CodeReading.Entity;
-using CodeReading.View.HistoryService;
+using CodeReading.Entity.History;
+using CodeReading.View.HistoryServiceReference;
 using System;
 using System.Windows.Forms;
 
@@ -23,7 +24,7 @@ namespace CodeReading.View
         /// <summary>
         /// 数据列表显示用 数据表
         /// </summary>
-        private CodeReadingDataSet.SearchListDataTable dtDetail = new CodeReadingDataSet.SearchListDataTable();
+        private HistoryDataSet.SearchListDataTable dtDetail = new HistoryDataSet.SearchListDataTable();
 
         /// <summary>
         /// 検索結果最大表示件数
@@ -64,7 +65,7 @@ namespace CodeReading.View
             searchConditions = new SearchConditions();
 
             // 数据取得
-            var client = new CodeReadingServiceClient();
+            var client = new HistoryServiceClient();
             LoginInfo loginInfo=new LoginInfo();
             var result = client.Initialize(loginInfo);
             // 
@@ -99,7 +100,7 @@ namespace CodeReading.View
                 SetSerarchConditions();
 
                 // 获取数据
-                var client = new CodeReadingServiceClient();
+                var client = new HistoryServiceClient();
                 var result = client.Search(searchConditions);
 
                 // 検索結果件数判定
@@ -153,7 +154,7 @@ namespace CodeReading.View
         /// </summary>
         private void ClearGrid()
         {
-            detailBindingSource.DataSource = new CodeReadingDataSet.SearchListDataTable();
+            detailBindingSource.DataSource = new HistoryDataSet.SearchListDataTable();
             dgv_Historys.DataSource=detailBindingSource;
             detailBindingSource.ResetBindings(true);
         }

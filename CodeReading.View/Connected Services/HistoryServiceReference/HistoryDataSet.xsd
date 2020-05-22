@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/HistoryDataSet.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/HistoryDataSet.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/HistoryDataSet.xsd" id="HistoryDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="zh-Hans" name="HistoryDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element msdata:Locale="zh-Hans" name="SearchList">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ScanDate" type="xs:string" />
+              <xs:element minOccurs="0" name="HospitalNo" type="xs:string" />
+              <xs:element minOccurs="0" name="TagCode" type="xs:string" />
+              <xs:element minOccurs="0" name="Signed" type="xs:double" />
+              <xs:element minOccurs="0" name="Pass" type="xs:double" />
+              <xs:element minOccurs="0" name="FileName" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

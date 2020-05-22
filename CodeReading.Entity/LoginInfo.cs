@@ -17,11 +17,27 @@ using System.Runtime.Serialization;
 namespace CodeReading.Entity
 {
     /// <summary>
+    /// Login用户状态分类
+    /// </summary>
+    [DataContract]
+    public enum LoginState
+    {
+        [DataMember]
+        登录,
+        [DataMember]
+        未登录
+    }
+    /// <summary>
     /// Login用户简介信息
     /// </summary>
     [DataContract]
     public class LoginInfo
     {
+        /// <summary>
+        /// Login用户登陆状态
+        /// </summary>
+        [DataMember]
+        public static LoginState state = LoginState.未登录;
         /// <summary>
         /// 系统名
         /// </summary>

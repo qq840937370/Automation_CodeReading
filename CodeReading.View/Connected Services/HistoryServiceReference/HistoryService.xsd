@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CodeReading.Entity" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CodeReading.Entity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:62645/History/HistoryService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="LoginInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KojoCd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KojoName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiscField" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Parameters" nillable="true" type="q1:ArrayOfKeyValueOfstringstring" />
+      <xs:element minOccurs="0" name="SoshikiCd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SoshikiName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserCd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoginInfo" nillable="true" type="tns:LoginInfo" />
+  <xs:element name="HistoryDataSet.SearchListDataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="HistoryDataSet.SearchListDataTable" Namespace="http://schemas.datacontract.org/2004/07/CodeReading.Entity" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+      <xs:attribute fixed="http://tempuri.org/HistoryDataSet.xsd" name="namespace" />
+      <xs:attribute fixed="SearchListDataTable" name="tableTypeName" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

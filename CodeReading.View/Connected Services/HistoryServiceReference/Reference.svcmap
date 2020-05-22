@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="717072a1-723c-4915-bb74-3e6abcc2730d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:62645/History/HistoryService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="HistoryService.xsd" MetadataType="Schema" ID="a0f95ff2-a7d1-4e9e-adca-3234ea79264b" SourceId="1" SourceUrl="http://localhost:62645/History/HistoryService.svc?xsd=xsd2" />
+    <MetadataFile FileName="HistoryService1.xsd" MetadataType="Schema" ID="31a38ccb-653c-435e-b21d-e3ab265b4677" SourceId="1" SourceUrl="http://localhost:62645/History/HistoryService.svc?xsd=xsd3" />
+    <MetadataFile FileName="HistoryService.wsdl" MetadataType="Wsdl" ID="d094b6f2-c633-433c-868b-3d5dd6d7a782" SourceId="1" SourceUrl="http://localhost:62645/History/HistoryService.svc?wsdl" />
+    <MetadataFile FileName="HistoryService.disco" MetadataType="Disco" ID="6e71cbd6-f901-4cab-8d80-7a0d3aa144dc" SourceId="1" SourceUrl="http://localhost:62645/History/HistoryService.svc?disco" />
+    <MetadataFile FileName="HistoryService2.xsd" MetadataType="Schema" ID="a07c170e-93bb-4e33-8cf1-e2a126d00e1b" SourceId="1" SourceUrl="http://localhost:62645/History/HistoryService.svc?xsd=xsd4" />
+    <MetadataFile FileName="HistoryService3.xsd" MetadataType="Schema" ID="9518170f-8301-480b-84a5-0f59b71b5d13" SourceId="1" SourceUrl="http://localhost:62645/History/HistoryService.svc?xsd=xsd5" />
+    <MetadataFile FileName="HistoryDataSet.xsd" MetadataType="Schema" ID="6b1a043b-f444-48c6-b4c5-e8defa2f8415" SourceId="1" SourceUrl="http://localhost:62645/History/HistoryService.svc?xsd=xsd6" />
+    <MetadataFile FileName="HistoryService4.xsd" MetadataType="Schema" ID="fd84c491-2120-431b-a45d-44fcc2949da0" SourceId="1" SourceUrl="http://localhost:62645/History/HistoryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="HistoryService5.xsd" MetadataType="Schema" ID="903e6960-0bff-42be-86c0-033540ff1cdf" SourceId="1" SourceUrl="http://localhost:62645/History/HistoryService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

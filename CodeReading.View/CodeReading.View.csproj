@@ -16,11 +16,12 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,6 +40,7 @@
       <HintPath>..\packages\HDevEngineDotNet.19.11.0.1\lib\net35\hdevenginedotnet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -53,11 +55,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\HistoryService\Reference.cs">
+    <Compile Include="BLL\HalconHelper\HalconHelpers.cs" />
+    <Compile Include="BLL\HDevelopExport\dev_update_off.cs" />
+    <Compile Include="BLL\HDevelopExport\Image_Cali_Map.cs" />
+    <Compile Include="BLL\HDevelopExport\image_class_mia.cs" />
+    <Compile Include="BLL\HDevelopExport\Image_Display_Datacode.cs" />
+    <Compile Include="BLL\HDevelopExport\Image_Get_Bar.cs" />
+    <Compile Include="BLL\HDevelopExport\image_prog_1SHIL.cs" />
+    <Compile Include="BLL\HDevelopExport\image_prog_2HNCL.cs" />
+    <Compile Include="BLL\HDevelopExport\image_prog_3CWDL.cs" />
+    <Compile Include="BLL\HDevelopExport\Ocr_Split.cs" />
+    <Compile Include="BLL\HDevelopExport\Region_Judge_Sign.cs" />
+    <Compile Include="BLL\HDevelopExport\Region_Ocr_Num_Svm.cs" />
+    <Compile Include="BLL\HDevelopExport\Set_Display_Font.cs" />
+    <Compile Include="BLL\LoginInfoBLL.cs" />
+    <Compile Include="BLL\MainFormBLL.cs" />
+    <Compile Include="BLL\SaveImage\HObjectBitmap.cs" />
+    <Compile Include="BLL\SaveImage\ImgHelper.cs" />
+    <Compile Include="Connected Services\HistoryServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="DAL\LoginInfoDAL.cs" />
+    <Compile Include="DAL\MainFormDAL.cs" />
+    <Compile Include="DAL\SqlHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -73,7 +95,9 @@
     <Compile Include="UIScenario2\UI-History_Scenario2.designer.cs">
       <DependentUpon>UI-History_Scenario2.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIScenario2\UI-Login_Scenario2.cs" />
+    <Compile Include="UIScenario2\UI-Login_Scenario2.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UIScenario2\UI-Login_Scenario2.designer.cs">
       <DependentUpon>UI-Login_Scenario2.cs</DependentUpon>
     </Compile>
@@ -114,21 +138,29 @@
     <EmbeddedResource Include="UIScenario2\UI-Registered_Scenario2.resx">
       <DependentUpon>UI-Registered_Scenario2.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Connected Services\HistoryService\CodeReadingDataSet.xsd" />
-    <None Include="Connected Services\HistoryService\CodeReadingService.wsdl" />
-    <None Include="Connected Services\HistoryService\CodeReadingService.xsd">
+    <None Include="Connected Services\HistoryServiceReference\HistoryDataSet.xsd" />
+    <None Include="Connected Services\HistoryServiceReference\HistoryService.wsdl" />
+    <None Include="Connected Services\HistoryServiceReference\HistoryService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\HistoryService\CodeReadingService1.xsd">
+    <None Include="Connected Services\HistoryServiceReference\HistoryService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\HistoryService\CodeReadingService2.xsd">
+    <None Include="Connected Services\HistoryServiceReference\HistoryService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\HistoryService\CodeReadingService3.xsd">
+    <None Include="Connected Services\HistoryServiceReference\HistoryService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HistoryServiceReference\HistoryService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HistoryServiceReference\HistoryService5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CodeReading.Entity.History.InitializeResult.datasource" />
+    <None Include="Properties\DataSources\CodeReading.Entity.History.SearchResult.datasource" />
     <None Include="Properties\DataSources\CodeReading.Entity.InitializeResult.datasource" />
     <None Include="Properties\DataSources\CodeReading.Entity.SearchResult.datasource" />
     <None Include="Properties\Settings.settings">
@@ -147,10 +179,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\HistoryService\CodeReadingService.disco" />
-    <None Include="Connected Services\HistoryService\configuration91.svcinfo" />
-    <None Include="Connected Services\HistoryService\configuration.svcinfo" />
-    <None Include="Connected Services\HistoryService\Reference.svcmap">
+    <None Include="Connected Services\HistoryServiceReference\HistoryService.disco" />
+    <None Include="Connected Services\HistoryServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\HistoryServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\HistoryServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -175,10 +207,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\HistoryService\" />
+    <WCFMetadataStorage Include="Connected Services\HistoryServiceReference\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BLL\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
