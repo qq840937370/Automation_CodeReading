@@ -14,6 +14,7 @@ namespace CodeReading.View
     public partial class UI_MainForm_Scenario2 : Form
     {
         #region 全局变量
+
         // 已扫描文件个数
         int ImgNumber = 0;
         // 实时影像Thread
