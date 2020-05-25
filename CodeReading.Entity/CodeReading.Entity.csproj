@@ -51,6 +51,9 @@
     <Compile Include="Comm\Emodel.cs" />
     <Compile Include="Comm\ErrorInfo.cs" />
     <Compile Include="MainFormDataSet.Dataset.Designer.cs" />
+    <Compile Include="MainForm\1CWDL.cs" />
+    <Compile Include="MainForm\1HNCL.cs" />
+    <Compile Include="MainForm\1SHIL.cs" />
     <Compile Include="MainForm\DataCWDL.cs" />
     <Compile Include="MainForm\DataHNCL.cs" />
     <Compile Include="MainForm\DataSHIL.cs" />

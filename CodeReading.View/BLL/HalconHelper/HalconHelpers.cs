@@ -10,6 +10,14 @@ namespace CodeReading.View.BLL.HalconHelper
 {
     public class HalconHelpers
     {
+        UsedInfo usedInfoPub = new UsedInfo();
+        #region 全局变量
+        public string usedInfoDbId="";
+        public string usedInfoOtherID = "";
+        public string usedInfoSign = "";
+        public string usedInfoTagCode = "";
+        public HObject usedInfoHImg = null;
+        #endregion
         // 相机句柄
         HTuple hv_AcqHandle = null;
         HDevelopExport hDevelopExport = new HDevelopExport();
@@ -18,22 +26,20 @@ namespace CodeReading.View.BLL.HalconHelper
         /// </summary>
         /// <param name="rtaHalconWin"> halcon控件-实时影像</param>
         /// <param name="icsHalconWin"> halcon控件-处理结果</param>
-        /// <param name="usedInfo"> 返回的信息类 </param>
-        private void AutomaticMapRecognitionMethod(HTuple rtaHalconWin, HTuple icsHalconWin, out UsedInfo usedInfo)
+        /// <param name="usedInfo"> 返回的信息类-UsedInfo </param>
+        public void AutomaticMapRecognitionMethod(HTuple rtaHalconWin, HTuple icsHalconWin, out UsedInfo usedInfo1)
         {
+            //Init
+
+            HTuple hv_DecodedDataStrings = new HTuple(), hv_Exception = new HTuple();
+            HTuple hv_WindowHandle = new HTuple(), hv_AcqHandle = new HTuple();
+            hv_WindowHandle = icsHalconWin;
             // 返回值初始化
-            #region
+            #region 相机
             // 释放相机句柄
             HOperatorSet.CloseAllFramegrabbers();
-            // 连接相机
-            HOperatorSet.OpenFramegrabber("GigEVision2", 0, 0, 0, 0, 0, 0, "progressive",
-        -1, "default", -1, "false", "default", "c42f90f2b7fa_Hikvision_MVCE12010GM",
-        0, -1, out hv_AcqHandle);
             HObject ho_Image = null;
             HOperatorSet.GenEmptyObj(out ho_Image);
-
-            ho_Image.Dispose();
-            HOperatorSet.GrabImage(out ho_Image, hv_AcqHandle);
             #endregion
             //***
             //** DISPLAY
@@ -52,9 +58,12 @@ namespace CodeReading.View.BLL.HalconHelper
             while ((int)(1) != 0)
             {
                 ho_Image.Dispose();
-                HOperatorSet.GrabImage(out ho_Image, hv_AcqHandle);
-                //read_image (Image, 'C:/Users/zhang-sh/source/repos/qq840937370/Automation_CodeReading/file/1SHIL.bmp')
 
+                HOperatorSet.GrabImage(out ho_Image, hv_AcqHandle);
+
+                //HOperatorSet.DispObj(ho_Image, rtaHalconWin);
+                //HOperatorSet.DispObj(ho_Image, hv_WindowHandle);
+                //read_image (Image, 'C:/Users/zhang-sh/source/repos/qq840937370/Automation_CodeReading/file/1SHIL.bmp')
                 try
                 {
                     {
@@ -68,7 +77,7 @@ namespace CodeReading.View.BLL.HalconHelper
                     //***
                     //** Class
                     hv_DecodedDataStrings.Dispose();
-                    hDevelopExport.image_class_mia(ho_Image,  hv_WindowHandle, out hv_DecodedDataStrings);
+                    hDevelopExport.image_class_mia(ho_Image, hv_WindowHandle, out hv_DecodedDataStrings);
 
 
                     //UsedInfo usedInfo  = new    UsedInfo();
@@ -77,20 +86,33 @@ namespace CodeReading.View.BLL.HalconHelper
                     //** 1SHIL
                     if ((int)(new HTuple(hv_DecodedDataStrings.TupleEqual("1SHIL"))) != 0)
                     {
-                        hDevelopExport.image_prog_1SHIL(ho_Image, hv_WindowHandle, out UsedInfo usedInfo1);
-
-                        //** 2HNCL
+                        hDevelopExport.image_prog_1SHIL(ho_Image, rtaHalconWin, hv_WindowHandle, out UsedInfo usedInfo);
+                        usedInfoDbId = usedInfo.DbId;
+                        usedInfoOtherID = usedInfo.OtherID;
+                        usedInfoSign = usedInfo.Sign;
+                        usedInfoTagCode = usedInfo.TagCode;
+                        usedInfoHImg = usedInfo.HImg;
                     }
+                    //** 2HNCL
                     else if ((int)(new HTuple(hv_DecodedDataStrings.TupleEqual(
                         "2HNCL"))) != 0)
                     {
-                        hDevelopExport.image_prog_2HNCL(ho_Image, hv_WindowHandle, out UsedInfo usedInfo1);
-                        //** 3CWDL
+                        hDevelopExport.image_prog_2HNCL(ho_Image, rtaHalconWin, hv_WindowHandle, out UsedInfo usedInfo);
+                        usedInfoDbId = usedInfo.DbId;
+                        usedInfoOtherID = usedInfo.OtherID;
+                        usedInfoSign = usedInfo.Sign;
+                        usedInfoTagCode = usedInfo.TagCode;
+                        usedInfoHImg = usedInfo.HImg;
                     }
+                    //** 3CWDL
                     else
                     {
-                        hDevelopExport.image_prog_3CWDL(ho_Image, hv_WindowHandle, out UsedInfo usedInfo, out UsedInfo usedInfo);
-
+                        hDevelopExport.image_prog_3CWDL(ho_Image, rtaHalconWin, hv_WindowHandle, out UsedInfo usedInfo);
+                        usedInfoDbId = usedInfo.DbId;
+                        usedInfoOtherID = usedInfo.OtherID;
+                        usedInfoSign = usedInfo.Sign;
+                        usedInfoTagCode = usedInfo.TagCode;
+                        usedInfoHImg = usedInfo.HImg;
                     }
 
                     //stop ()

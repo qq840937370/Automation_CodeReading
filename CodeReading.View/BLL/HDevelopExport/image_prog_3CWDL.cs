@@ -16,7 +16,7 @@ using HalconDotNet;
 
 public partial class HDevelopExport
 {
-  public void image_prog_3CWDL (HObject ho_Image, HTuple hv_WindowHandle, out UsedInfo usedInfo)
+  public void image_prog_3CWDL (HObject ho_Image, HTuple rtaHalconWin, HTuple hv_ExpDefaultWinHandle, out UsedInfo usedInfo)
     {
 
 
@@ -100,7 +100,8 @@ public partial class HDevelopExport
     ho_ImageOut.Dispose();
     ho_ImageOut = ExpTmpOutVar_0;
     }
-    HOperatorSet.DispObj(ho_ImageOut, hv_ExpDefaultWinHandle);
+        HOperatorSet.DispObj(ho_ImageOut, rtaHalconWin);
+        HOperatorSet.DispObj(ho_ImageOut, hv_ExpDefaultWinHandle);
     //** RECOGNITION
     //* BARCODE
     ho_SymbolRegions.Dispose();hv_DecodedDataStrings.Dispose();hv_someitem.Dispose();
@@ -146,7 +147,7 @@ public partial class HDevelopExport
     hv_HeadPhi = new HTuple(hv_SignAngle);
     ho_EDGE.Dispose();hv_sign.Dispose();
     region_judge_sign(ho_ImageOut, out ho_EDGE, hv_HeadSignScale, hv_HeadSignRow, 
-        hv_HeadSignCol, hv_HeadPhi, hv_WindowHandle, out hv_sign);
+        hv_HeadSignCol, hv_HeadPhi, hv_ExpDefaultWinHandle, out hv_sign);
     //** DISPLAY
     //* DISPLAY BARCODE
     set_display_font(hv_ExpDefaultWinHandle, 14, "mono", "true", "false");

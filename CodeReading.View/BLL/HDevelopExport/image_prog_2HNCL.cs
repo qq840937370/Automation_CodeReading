@@ -16,12 +16,8 @@ using HalconDotNet;
 
 public partial class HDevelopExport
 {
-  public void image_prog_2HNCL (HObject ho_Image, HTuple hv_WindowHandle, out UsedInfo usedInfo)
+  public void image_prog_2HNCL (HObject ho_Image, HTuple rtaHalconWin, HTuple hv_ExpDefaultWinHandle, out UsedInfo usedInfo)
     {
-
-
-
-
     // Local iconic variables 
 
     HObject ho_ImageOut=null, ho_SymbolXLDs, ho_SymbolRegions;
@@ -58,23 +54,24 @@ public partial class HDevelopExport
     hv_BarCodeHandle.Dispose();
     HOperatorSet.CreateBarCodeModel(new HTuple(), new HTuple(), out hv_BarCodeHandle);
     HOperatorSet.SetBarCodeParam(hv_BarCodeHandle, "quiet_zone", "true");
-    //* INIT LOC
-    //* Info:
-    //read_shape_model ('C:/Users/zhang-sh/source/repos/qq840937370/Automation_CodeReading/file/InvV1CaliInfo.shm', InfoModel)
-    //get_shape_model_contours (InfoModelContours, InfoModel, 1)
-    //* Sign
-    //read_shape_model ('C:/Users/zhang-sh/source/repos/qq840937370/Automation_CodeReading/file/InvV1CaliSign.shm', SignModel)
-    //get_shape_model_contours (SignModelContours, SignModel, 1)
-    //** PRE
-    //find_shape_model (ImageOut, SignModel, rad(0), rad(360), 0.3, 1, 0.5, 'least_squares', [7,1], 0.6, InfoRow, InfoColumn, InfoAngle, InfoScore)
-    //rotate_image (ImageOut, ImageOut, deg(-InfoAngle), 'constant')
-    HOperatorSet.DispObj(ho_ImageOut, hv_ExpDefaultWinHandle);
+        //* INIT LOC
+        //* Info:
+        //read_shape_model ('C:/Users/zhang-sh/source/repos/qq840937370/Automation_CodeReading/file/InvV1CaliInfo.shm', InfoModel)
+        //get_shape_model_contours (InfoModelContours, InfoModel, 1)
+        //* Sign
+        //read_shape_model ('C:/Users/zhang-sh/source/repos/qq840937370/Automation_CodeReading/file/InvV1CaliSign.shm', SignModel)
+        //get_shape_model_contours (SignModelContours, SignModel, 1)
+        //** PRE
+        //find_shape_model (ImageOut, SignModel, rad(0), rad(360), 0.3, 1, 0.5, 'least_squares', [7,1], 0.6, InfoRow, InfoColumn, InfoAngle, InfoScore)
+        //rotate_image (ImageOut, ImageOut, deg(-InfoAngle), 'constant')
+        HOperatorSet.DispObj(ho_ImageOut, rtaHalconWin);
+        HOperatorSet.DispObj(ho_ImageOut, hv_ExpDefaultWinHandle);
     //** RECOGNITION
     //* DataCode
     ho_SymbolXLDs.Dispose();hv_ResultHandles.Dispose();hv_DecodedDataStrings.Dispose();
     HOperatorSet.FindDataCode2d(ho_ImageOut, out ho_SymbolXLDs, hv_DataCodeHandle, 
         "stop_after_result_num", 3, out hv_ResultHandles, out hv_DecodedDataStrings);
-    image_display_datacode(ho_SymbolXLDs, hv_ResultHandles, hv_WindowHandle, hv_DecodedDataStrings, 
+    image_display_datacode(ho_SymbolXLDs, hv_ResultHandles, hv_ExpDefaultWinHandle, hv_DecodedDataStrings, 
         hv_DataCodeHandle);
     //* BARCODE
     ho_SymbolRegions.Dispose();hv_DecodedDataStrings.Dispose();hv_someitem.Dispose();

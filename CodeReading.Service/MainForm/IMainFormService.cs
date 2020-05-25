@@ -28,9 +28,25 @@ namespace CodeReading.Service.MainForm
         /// <summary>
         /// 查SHIL数据
         /// </summary>
-        /// <param name="usedInfo"></param>
-        /// <returns></returns>
+        /// <param name="usedInfo">查询条件</param>
+        /// <returns>查询结果</returns>
         [OperationContract]
         DataSHIL dataSHIL(UsedInfo usedInfo);
+
+        /// <summary>
+        /// 查HNCL数据
+        /// </summary>
+        /// <param name="usedInfo">查询条件</param>
+        /// <returns>查询结果</returns>
+        [OperationContract]
+        DataHNCL dataHNCL(UsedInfo usedInfo);
+
+        /// <summary>
+        /// 查CWDL数据
+        /// </summary>
+        /// <param name="usedInfo">查询条件</param>
+        /// <returns>查询结果</returns>
+        [OperationContract]
+        DataCWDL dataCWDL(UsedInfo usedInfo);
     }
 }

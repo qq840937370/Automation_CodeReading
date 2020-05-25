@@ -17,7 +17,7 @@ public partial class HDevelopExport
 {
   // Chapter: Graphics / Text
   // Short Description: Set font independent of OS 
-  public void set_display_font (HTuple hv_WindowHandle, HTuple hv_Size, HTuple hv_Font, 
+  public void set_display_font (HTuple hv_ExpDefaultWinHandle, HTuple hv_Size, HTuple hv_Font, 
       HTuple hv_Bold, HTuple hv_Slant)
   {
 

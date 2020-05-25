@@ -16,7 +16,7 @@ using HalconDotNet;
 public partial class HDevelopExport
 {
   public void image_display_datacode (HObject ho_SymbolXLDs, HTuple hv_ResultHandles, 
-      HTuple hv_WindowHandle, HTuple hv_DecodedDataStrings, HTuple hv_DataCodeHandle)
+      HTuple hv_ExpDefaultWinHandle, HTuple hv_DecodedDataStrings, HTuple hv_DataCodeHandle)
   {
 
 

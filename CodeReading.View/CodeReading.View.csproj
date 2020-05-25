@@ -13,7 +13,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
@@ -33,11 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="halcondotnet, Version=19.11.0.0, Culture=neutral, PublicKeyToken=4973bed59ddbf2b8, processorArchitecture=MSIL">
-      <HintPath>..\packages\HalconDotNet.19.11.0\lib\net35\halcondotnet.dll</HintPath>
+    <Reference Include="halcondotnet, Version=18.11.1.1, Culture=neutral, PublicKeyToken=4973bed59ddbf2b8, processorArchitecture=MSIL">
+      <HintPath>..\packages\HalconDotNet.18.11.1.1\lib\net35\halcondotnet.dll</HintPath>
     </Reference>
-    <Reference Include="hdevenginedotnet, Version=19.11.0.0, Culture=neutral, PublicKeyToken=4973bed59ddbf2b8, processorArchitecture=MSIL">
-      <HintPath>..\packages\HDevEngineDotNet.19.11.0.1\lib\net35\hdevenginedotnet.dll</HintPath>
+    <Reference Include="hdevenginedotnet, Version=18.5.0.0, Culture=neutral, PublicKeyToken=4973bed59ddbf2b8, processorArchitecture=MSIL">
+      <HintPath>..\packages\HDevEngineDotNet.18.5.0\lib\net35\hdevenginedotnet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -162,6 +162,9 @@
     <None Include="Properties\DataSources\CodeReading.Entity.History.InitializeResult.datasource" />
     <None Include="Properties\DataSources\CodeReading.Entity.History.SearchResult.datasource" />
     <None Include="Properties\DataSources\CodeReading.Entity.InitializeResult.datasource" />
+    <None Include="Properties\DataSources\CodeReading.Entity.MainForm.DataCWDL.datasource" />
+    <None Include="Properties\DataSources\CodeReading.Entity.MainForm.DataHNCL.datasource" />
+    <None Include="Properties\DataSources\CodeReading.Entity.MainForm.DataSHIL.datasource" />
     <None Include="Properties\DataSources\CodeReading.Entity.SearchResult.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

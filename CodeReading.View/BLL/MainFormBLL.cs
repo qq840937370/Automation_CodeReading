@@ -2,14 +2,18 @@
 
 using System;
 using CodeReading.Entity;
+using CodeReading.Entity.MainForm;
 using CodeReading.View.DAL;
+using CodeReading.View.SaveImage;
 
 namespace CodeReading.View
 {
     public class MainFormBLL
     {
+        // MainFormDAL
         MainFormDAL mainFormDAL = new MainFormDAL();
-
+        // ImgHelper
+        ImgHelper imgHelper = new ImgHelper();
         /// <summary>
         /// 自动捕捉bll
         /// </summary>
@@ -33,14 +37,16 @@ namespace CodeReading.View
         /// 抓取图片保存数据bll
         /// </summary>
         /// <returns></returns>
-        public int CaptureImgbll()
+        public void CaptureImgbll(UsedInfo usedInfomain)
         {
-            try
-            {
-                SaveData.state = SaveDataState.saveDataTrue;
-                return 1;
-            }
-            catch { return 0; }
+            //SaveData.state = SaveDataState.saveDataTrue;
+
+            // 保存图片
+            imgHelper.SaveImg(usedInfomain.ScanDate, usedInfomain.HImg);
+
+            // 保存数据
+            mainFormDAL.SaveTemp(usedInfomain);
+            //SaveData.state = SaveDataState.saveDataFalse;
         }
 
     }

@@ -23,13 +23,13 @@ namespace CodeReading.Entity.MainForm
     public class UsedInfo
     {
         /// <summary>
-        /// DbId1
+        /// 表类别
         /// </summary>
         [DataMember]
         public string DbId { get; set; }
 
         /// <summary>
-        /// 其他ID1
+        /// 模拟主键
         /// </summary>
         [DataMember]
         public string OtherID { get; set; }

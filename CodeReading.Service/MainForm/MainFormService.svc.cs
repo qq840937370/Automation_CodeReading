@@ -92,7 +92,111 @@ namespace CodeReading.Service.MainForm
 
                     var dt = new MainFormDataSet.SHILDataTable();
                     reader.Fill(dt);
-                    result.sHILDataTable = dt;
+                    result.DataTable = dt;
+                    return result;
+                }
+            }
+        }
+        /// <summary>
+        /// 查HNCL数据
+        /// </summary>
+        /// <param name="usedInfo"></param>
+        /// <returns>查询结果</returns>
+        public DataHNCL dataHNCL(UsedInfo usedInfo)
+        {
+            using (var conn = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand())
+            {
+                cmd.Connection = conn;
+
+                // SQL参数生成
+                StringBuilder sql = new StringBuilder();
+                // SELECT ScanDate,HospitalNo,TagCode,Signed,Pass,FileName FROM dbo.Used
+                sql.AppendLine(" SELECT ");
+                sql.AppendLine("    HospitalizationNumber");         // 住院号
+                sql.AppendLine("    ,PatientName");                  // 患者姓名
+                sql.AppendLine("    ,PatientSex");                   // 性别
+                sql.AppendLine("    ,PatientAge");                   // 年龄
+                sql.AppendLine("    ,PatientDepartment");            // 患者科室
+                sql.AppendLine("    ,OperationOrderNo");             // 手术医嘱号
+                sql.AppendLine("    ,OperationDate");                // 手术日期
+                sql.AppendLine("    ,OperationRoom");                // 手术室
+                sql.AppendLine("    ,Bed");                          // 床位
+                sql.AppendLine("    ,OperationName");                // 手术名称
+                sql.AppendLine("    ,Doctor");                       // 医生
+                sql.AppendLine("    ,TagCodeNumbers");               // 标签数
+                sql.AppendLine("    ,TagCode");                      // 条形码
+                sql.AppendLine("    ,Remarks");                      // 备注
+                sql.AppendLine("  FROM   ");
+                sql.AppendLine("      dbo.FormDataone ");            // 跟台人体植入物使用清单表
+                sql.AppendLine("  Where   ");
+                sql.AppendLine("      HospitalizationNumber = @hospitalizationNumber ");  // Used表
+                cmd.Parameters.Add("@hospitalizationNumber", usedInfo.OtherID);
+
+                // 数据取得
+                cmd.CommandText = sql.ToString();
+                using (SqlDataAdapter reader = new SqlDataAdapter(cmd))
+                {
+                    var result = new DataHNCL();
+                    result.Suceeded = true;
+                    var errorInfo = new ErrorInfo();
+                    result.ErrorInfo = errorInfo;
+
+                    var dt = new MainFormDataSet.HNCLDataTable();
+                    reader.Fill(dt);
+                    result.DataTable = dt;
+                    return result;
+                }
+            }
+        }
+        /// <summary>
+        /// 查CWDL数据
+        /// </summary>
+        /// <param name="usedInfo"></param>
+        /// <returns>查询结果</returns>
+        public DataCWDL dataCWDL(UsedInfo usedInfo)
+        {
+            using (var conn = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand())
+            {
+                cmd.Connection = conn;
+
+                // SQL参数生成
+                StringBuilder sql = new StringBuilder();
+                // SELECT ScanDate,HospitalNo,TagCode,Signed,Pass,FileName FROM dbo.Used
+                sql.AppendLine(" SELECT ");
+                sql.AppendLine("    HospitalizationNumber");         // 住院号
+                sql.AppendLine("    ,PatientName");                  // 患者姓名
+                sql.AppendLine("    ,PatientSex");                   // 性别
+                sql.AppendLine("    ,PatientAge");                   // 年龄
+                sql.AppendLine("    ,PatientDepartment");            // 患者科室
+                sql.AppendLine("    ,OperationOrderNo");             // 手术医嘱号
+                sql.AppendLine("    ,OperationDate");                // 手术日期
+                sql.AppendLine("    ,OperationRoom");                // 手术室
+                sql.AppendLine("    ,Bed");                          // 床位
+                sql.AppendLine("    ,OperationName");                // 手术名称
+                sql.AppendLine("    ,Doctor");                       // 医生
+                sql.AppendLine("    ,TagCodeNumbers");               // 标签数
+                sql.AppendLine("    ,TagCode");                      // 条形码
+                sql.AppendLine("    ,Remarks");                      // 备注
+                sql.AppendLine("  FROM   ");
+                sql.AppendLine("      dbo.FormDataone ");            // 跟台人体植入物使用清单表
+                sql.AppendLine("  Where   ");
+                sql.AppendLine("      HospitalizationNumber = @hospitalizationNumber ");  // Used表
+                cmd.Parameters.Add("@hospitalizationNumber", usedInfo.OtherID);
+
+                // 数据取得
+                cmd.CommandText = sql.ToString();
+                using (SqlDataAdapter reader = new SqlDataAdapter(cmd))
+                {
+                    var result = new DataCWDL();
+                    result.Suceeded = true;
+                    var errorInfo = new ErrorInfo();
+                    result.ErrorInfo = errorInfo;
+
+                    var dt = new MainFormDataSet.CWDLDataTable();
+                    reader.Fill(dt);
+                    result.DataTable = dt;
                     return result;
                 }
             }

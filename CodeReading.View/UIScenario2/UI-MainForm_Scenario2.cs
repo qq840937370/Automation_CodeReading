@@ -1,5 +1,8 @@
 ﻿using CodeReading.Entity;
 using CodeReading.Entity.MainForm;
+using CodeReading.View.BLL.HalconHelper;
+using CodeReading.View.DAL;
+//using CodeReading.View.MainFormServiceReference;
 using HalconDotNet;
 using System;
 using System.Drawing;
@@ -11,9 +14,12 @@ namespace CodeReading.View
     public partial class UI_MainForm_Scenario2 : Form
     {
         #region 全局变量
+        // 已扫描文件个数
+        int ImgNumber = 0;
         // 实时影像Thread
         Thread openThread = null;
-
+        // 数据处理Thread
+        Thread dataProcessingThread = null;
         // 相机参数Thread
         Thread camerarfsThread;
 
@@ -26,16 +32,33 @@ namespace CodeReading.View
 
         // 图像宽高变量,平均值，方差
         HTuple hv_Mean = null, hv_Deviation = null;
-
-        // rad值
-        string KindOfPicture = null;
+        //rdo
+        string KindOfPicture = "";
         #endregion
 
         #region 实例化对象
         // 实例化MainFormBLL对象
         MainFormBLL mainFormBLL = new MainFormBLL();
-        // 实例化CaptureImg对象
-        //CaptureImg capimg = new CaptureImg();
+        // 全局UsedInfo数据
+        UsedInfo usedInfodata = new UsedInfo();
+        // 识别
+        HalconHelpers halconHelpers = new HalconHelpers();
+
+        /// <summary>
+        /// 当前扫描数据区域显示用 SHIL数据表
+        /// </summary>
+        private MainFormDataSet.SHILDataTable CurrentDataSHIL = new MainFormDataSet.SHILDataTable();
+
+        /// <summary>
+        /// 当前扫描数据区域显示用 CWDL数据表
+        /// </summary>
+        private MainFormDataSet.CWDLDataTable CurrentDataCWDL = new MainFormDataSet.CWDLDataTable();
+
+        /// <summary>
+        /// 当前扫描数据区域显示用 HNCL数据表
+        /// </summary>
+        private MainFormDataSet.HNCLDataTable CurrentDataHNCL = new MainFormDataSet.HNCLDataTable();
+
         #endregion
 
         /// <summary>
@@ -224,31 +247,15 @@ namespace CodeReading.View
         /// </summary>
         private void tsmi_OpenCamera_Click(object sender, EventArgs e)
         {
-            ////释放相机句柄
-            //HOperatorSet.CloseAllFramegrabbers();
-            //try
-            //{
-            //    if (hv_AcqHandle != null) { return; }
-            //    //连接相机
-            //    HOperatorSet.OpenFramegrabber("GigEVision2", 0, 0, 0, 0, 0, 0, "progressive",
-            //-1, "default", -1, "false", "default", "c42f90f2b7fa_Hikvision_MVCE12010GM",
-            //0, -1, out hv_AcqHandle);
-            //    tssl_CameraStatus.Text = "扫描相机连接成功";
-
-            //}
-            //catch (HOperatorException)
-            //{
-            //    MessageBox.Show("相机连接失败！");
-            //    tssl_CameraStatus.Text = "扫描相机未连接";
-            //}
-
-            //if (hv_AcqHandle == null)
-            //{
-            //    return;
-            //}
-            // 实时影像Thread
-            openThread = new Thread(OpenThread);
+            Control.CheckForIllegalCrossThreadCalls = false;
+            // 相机线程
+            openThread = new Thread( new ThreadStart(OpenThread));
             openThread.Start();
+            //Thread.Sleep(5000);
+            //DataProcessing();
+            // 数据处理
+            dataProcessingThread = new Thread(new ThreadStart(DataProcessing));
+            dataProcessingThread.Start();
         }
         /// <summary>
         /// 实时影像Thread
@@ -260,16 +267,16 @@ namespace CodeReading.View
                 // 识图
                 if (AutoT.state == AutoTState.AT)
                 {
-                    // 自动识图方法-返回
-                    AutomaticMapRecognitionMethod(rtaHalconWin, icsHalconWin, out UsedInfo usedInfo);
 
-                    // 数据处理(查数据 比对数据 保存数据)
-                    DataProcessing();
+                    // 自动识图方法-返回
+                    halconHelpers.AutomaticMapRecognitionMethod(rtaHalconWin, icsHalconWin,out UsedInfo usedInfo);
+                    //AutomaticMapRecognitionMethod(rtaHalconWin, icsHalconWin, out UsedInfo usedInfo);
+
                 }
             }
-            catch (Exception)
+            catch (HalconException halExp)
             {
-                MessageBox.Show("图像处理信息获取失败！");
+                MessageBox.Show("图像处理信息获取失败！" + halExp.GetErrorCode() +halExp.GetErrorMessage());
                 tssl_CameraStatus.Text = "扫描信息异常";
             }
         }
@@ -304,34 +311,34 @@ namespace CodeReading.View
             result.HImg = ho_Image;
             usedInfo = result;
         }
-        // 数据处理(查数据 比对数据 保存数据)
-        public int DataProcessing()
+
+        /// <summary>
+        /// 数据处理(查数据 比对数据 保存数据)
+        /// </summary>
+        public void DataProcessing()
         {
-            // 查数据
-            SelectData();
-
-            // 比对数据
-            if (DataCheck() == 1)
+            Thread.Sleep(5000);
+            while (1 == 1)
             {
-                try
+                // 识图
+                if (AutoT.state == AutoTState.AT)
                 {
-                    // 保存数据
+                    // 全局usedInfodata赋值
+                    usedInfodata.DbId = halconHelpers.usedInfoDbId;         // 表类别
+                    usedInfodata.OtherID = halconHelpers.usedInfoOtherID;   // 模拟主键
+                    usedInfodata.Sign = halconHelpers.usedInfoSign;         // 签字
+                    usedInfodata.TagCode = halconHelpers.usedInfoTagCode;   // 条形码
+                    usedInfodata.HImg = halconHelpers.usedInfoHImg;         // HObject图片
+                                                                            // 查数据
+                    SelectData();
 
-                    // 返回1-保存成功
-                    return 1;
+                    // 比对数据
+                    DataCheck();
+                    Thread.Sleep(3000);
                 }
-                catch
-                {
-                    // 返回2-比对通过但保存失败
-                    return 2;
-                }
-            }
-            else
-            {
-                // 返回0-比对通过不通过（返回错误数据）
-                return 0;
             }
         }
+        MainFormDAL mainFormDAL = new MainFormDAL();
         /// <summary>
         /// 查数据
         /// </summary>
@@ -339,32 +346,122 @@ namespace CodeReading.View
         private void SelectData()
         {
             // 获取数据
-            var client = new HistoryServiceClient();
-            // 
-            if ()
+            //var client = new MainFormServiceClient();
+            // 如果是1SHIL
+            if (usedInfodata.DbId== "1SHIL")
             {
-                var result = client.Search(searchConditions);
+                var result = new DataSHIL();
+                //result = client.dataSHIL(usedInfodata);
+                result = mainFormDAL.dataSHIL(usedInfodata);
+                // 検索結果件数判定
+                if (result.DataTable.Rows.Count == 0)
+                {
+                    //MessageBox.Show(" 数据表里没有该条数据 或 表污损严重！", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    // 把扫描到的数据绘制到"当前扫描数据区域"并表底颜色标红
+                }
+                else
+                {
+                    // 绘制到"当前扫描数据区域"
+                    CurrentDataSHIL = result.DataTable;
+                    //bds_CumulativeData.DataSource = CurrentDataSHIL;
+                    //dgv_CumulativeData.DataSource = bds_CumulativeData;
+                }
             }
-            // 
-
-            // 検索結果件数判定
-            if (result.SearchData.Rows.Count == 0)
+            // 如果是2HNCL
+            else if (usedInfodata.DbId == "2HNCL")
             {
-                MessageBox.Show(" 未检索到任何数据！", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-
-                // 隐藏检索结果数目
-                lbl_ResultsCount.Text = "";
-                return;
+                var result = new DataHNCL();
+                //result = client.dataHNCL(usedInfodata);
+            }
+            // 如果是3CWDL
+            else if (usedInfodata.DbId == "3CWDL")
+            {
+                var result = new DataCWDL();
+                //result = client.dataCWDL(usedInfodata);
             }
         }
 
         /// <summary>
         /// 比对数据
         /// </summary>
-        /// <returns></returns>
-        private int DataCheck()
+        private void DataCheck()
         {
-            return 1;
+            //对比结果
+            int i = 1;
+            // 比对结果
+            if (i == 1)
+            {
+                //DataGridView1.RowsDefaultCellStyle.BackColor = Color.Yellow;         // 所有
+                //DataGridView1.Columns[0].DefaultCellStyle.BackColor = Color.Aqua;    // 列
+                //DataGridView1.Rows[0].DefaultCellStyle.BackColor = Color.LightGray;  // 行
+                //DataGridView1[0, 0].Style.BackColor = Color.Pink;                    // 某个单元格
+                //try
+                //{
+                // 赋值
+                usedInfodata.Pass = "1";
+                string ScanDate = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                usedInfodata.ScanDate = ScanDate;                     // 日期
+                usedInfodata.FileName = ScanDate + ".bmp";            // 图片名
+                                                                      // 保存数据
+                mainFormBLL.CaptureImgbll(usedInfodata);
+                #region 显示数据
+                // 显示相机获取的数据-绿色
+                dgv_CurrentData.Rows.Clear();
+                DataGridViewRow Row = new DataGridViewRow();
+                int RowCurindex = dgv_CurrentData.Rows.Add(Row);
+                dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
+                dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
+                dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
+                dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
+                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = usedInfodata.Pass;
+                dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
+                dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.GreenYellow;       // 整行绿
+                // 添加到记录栏-绿色
+                DataGridViewRow CumRow = new DataGridViewRow();
+                dgv_CumulativeData.Rows.Add(CumRow);
+                int RowCumindex = dgv_CumulativeData.Rows.Count - 1;
+                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyScanDate"].Value = usedInfodata.ScanDate;
+                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyDbId"].Value = usedInfodata.DbId;
+                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyOtherID"].Value = usedInfodata.OtherID;
+                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyTagCode"].Value = usedInfodata.TagCode;
+                dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = usedInfodata.Sign;
+                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyPass"].Value = usedInfodata.Pass;
+                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyFileName"].Value = usedInfodata.FileName;
+                #endregion
+
+                // 已扫描文件个数
+                ImgNumber = ImgNumber + 1;  //已扫描文件：0个
+
+                tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
+            }
+            else if (i != 1)
+            {
+                // 赋值
+                usedInfodata.Pass = "0";
+                string ScanDate = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                usedInfodata.ScanDate = ScanDate;                     // 日期
+                usedInfodata.FileName = ScanDate + ".bmp";            // 图片名
+
+                // 显示相机获取的数据-红色
+                dgv_CurrentData.Rows.Clear();
+                DataGridViewRow Row = new DataGridViewRow();
+                int RowCurindex = dgv_CurrentData.Rows.Add(Row);
+                dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
+                dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
+                dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
+                dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
+                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = usedInfodata.Pass;
+                dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
+                dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;       // 整行红
+                // 已扫描文件个数
+                ImgNumber = ImgNumber + 1;  //已扫描文件：0个
+
+                tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
+                // 休眠
+                dataProcessingThread.Suspend();
+            }
         }
         #endregion
 
@@ -397,6 +494,7 @@ namespace CodeReading.View
         #endregion
 
         #region 手动选择pnl_radpnl区域
+
         /// <summary>
         /// 植入物使用清单选中
         /// </summary>
@@ -410,6 +508,7 @@ namespace CodeReading.View
                 KindOfPicture = "1SHIL";
             }
         }
+
         /// <summary>
         /// 高净值耗材使用清单
         /// </summary>
@@ -439,7 +538,6 @@ namespace CodeReading.View
         }
         #endregion
 
-
         /// <summary>
         /// 抓取图片保存数据
         /// </summary>
@@ -447,17 +545,18 @@ namespace CodeReading.View
         /// <param name="e"></param>
         private void tsmi_CaptureImg_Click(object sender, EventArgs e)
         {
-            if (mainFormBLL.CaptureImgbll() > 0)
-            {
+            //if (mainFormBLL.CaptureImgbll() > 0)
+            //{
 
-                //弹框2秒后自动消失
+            //    //弹框2秒后自动消失
 
-                //DataGridView.HitTestInfo
-            }
-            else
-            {
-                MessageBox.Show("图片保存失败！", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //    //DataGridView.HitTestInfo
+            //}
+            //else
+            //{
+            //    MessageBox.Show("图片保存失败！", "注意", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            mainFormBLL.CaptureImgbll(usedInfodata);
         }
     }
 }

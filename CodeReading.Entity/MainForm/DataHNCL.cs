@@ -38,58 +38,6 @@ namespace CodeReading.Entity.MainForm
         /// 获取或设置检索的数据
         /// </summary>
         [DataMember]
-        public MainFormDataSet.HNCLDataTable hNCLDataTable = new MainFormDataSet.HNCLDataTable();
-
-        /// <summary>
-        /// 住院号
-        /// </summary>
-        [DataMember]
-        public string HospitalizationNumber { get; set; }
-
-        /// <summary>
-        /// 床位
-        /// </summary>
-        [DataMember]
-        public string Bed { get; set; }
-
-        /// <summary>
-        /// 患者姓名
-        /// </summary>
-        [DataMember]
-        public string PatientName { get; set; }
-
-        /// <summary>
-        /// 年龄
-        /// </summary>
-        [DataMember]
-        public string PatientAge { get; set; }
-
-        /// <summary>
-        /// 性别
-        /// </summary>
-        [DataMember]
-        public string PatientSex { get; set; }
-
-        /// <summary>
-        /// OR
-        /// </summary>
-        [DataMember]
-        public string ORName { get; set; }
-
-        /// <summary>
-        /// 住院科室
-        /// </summary>
-        [DataMember]
-        public string PatientDepartment { get; set; }
-
-        /// <summary>
-        /// 条形码
-        /// </summary>
-        public string TagCode { get; set; }
-
-        /// <summary>
-        /// 备注
-        /// </summary>
-        public string Remarks { get; set; }
+        public MainFormDataSet.HNCLDataTable DataTable = new MainFormDataSet.HNCLDataTable();
     }
 }

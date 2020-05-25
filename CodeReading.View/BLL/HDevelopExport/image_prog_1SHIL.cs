@@ -16,7 +16,7 @@ using HalconDotNet;
 
 public partial class HDevelopExport
 {
-  public void image_prog_1SHIL (HObject ho_Image, HTuple hv_WindowHandle, out UsedInfo usedInfo)
+  public void image_prog_1SHIL (HObject ho_Image, HTuple rtaHalconWin, HTuple hv_ExpDefaultWinHandle, out UsedInfo usedInfo)
   {
     // Stack for temporary objects 
     HObject[] OTemp = new HObject[20];
@@ -72,7 +72,7 @@ public partial class HDevelopExport
 
     //* INIT BARCODE
     hv_BarCodeHandle.Dispose();
-    HOperatorSet.CreateBarCodeModel(new HTuple(), new HTuple(), ref hv_BarCodeHandle);
+    HOperatorSet.CreateBarCodeModel(new HTuple(), new HTuple(), out hv_BarCodeHandle);
     HOperatorSet.SetBarCodeParam(hv_BarCodeHandle, "quiet_zone", "true");
     //* INIT LOC
     //* Info:
@@ -103,7 +103,8 @@ public partial class HDevelopExport
     ho_ImageOut.Dispose();
     ho_ImageOut = ExpTmpOutVar_0;
     }
-    HOperatorSet.DispObj(ho_ImageOut, hv_ExpDefaultWinHandle);
+        HOperatorSet.DispObj(ho_ImageOut, rtaHalconWin);
+        HOperatorSet.DispObj(ho_ImageOut, hv_ExpDefaultWinHandle);
     //** RECOGNITION
     //* BARCODE
     ho_SymbolRegions.Dispose();hv_DecodedDataStrings.Dispose();hv_someitem.Dispose();
@@ -155,7 +156,7 @@ public partial class HDevelopExport
     hv_HeadPhi = new HTuple(hv_SignAngle);
     ho_EDGE.Dispose();hv_sign.Dispose();
     region_judge_sign(ho_ImageOut, out ho_EDGE, hv_HeadSignScale, hv_HeadSignRow, 
-        hv_HeadSignCol, hv_HeadPhi, hv_WindowHandle, out hv_sign);
+        hv_HeadSignCol, hv_HeadPhi, hv_ExpDefaultWinHandle, out hv_sign);
     //** DISPLAY
     //* DISPLAY BARCODE
     set_display_font(hv_ExpDefaultWinHandle, 14, "mono", "true", "false");
@@ -239,7 +240,15 @@ public partial class HDevelopExport
             //result.OtherID = "6527815";
             result.OtherID = hv_Ocr_Split;
             result.Sign = "1";
-            result.Sign = hv_sign;
+            //System.Diagnostics.Debug.Print("1");
+            if (hv_sign[0] * hv_sign[1] * hv_sign[2] * hv_sign[3] == 1)
+            {
+                result.Sign = "1";
+            }
+            else
+            {
+                result.Sign = "0";
+            }
             //result.TagCode = "110112572371,110112572370,110112572373,110112572375,110112572374,110112572368,110112572369,110112572367,110112572372,";
             result.TagCode = hv_DecodedDataStrings;
             result.HImg = miaResult;

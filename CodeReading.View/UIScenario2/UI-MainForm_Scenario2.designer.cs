@@ -74,13 +74,27 @@
             this.tslbl_Time = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgv_CurrentData = new System.Windows.Forms.DataGridView();
+            this.ScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.rad_MT = new System.Windows.Forms.RadioButton();
             this.rad_AT = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgv_Showdata = new System.Windows.Forms.DataGridView();
+            this.dgv_CumulativeData = new System.Windows.Forms.DataGridView();
+            this.hisyScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyDbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyOtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyTagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisySign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl_radpnl = new System.Windows.Forms.Panel();
             this.rad_HNCL = new System.Windows.Forms.RadioButton();
             this.rad_CWDL = new System.Windows.Forms.RadioButton();
@@ -92,20 +106,22 @@
             this.tsmi_CaptureImg = new System.Windows.Forms.ToolStripMenuItem();
             this.grp1 = new System.Windows.Forms.GroupBox();
             this.hWinctl_RTA = new HalconDotNet.HWindowControl();
+            this.bds_CumulativeData = new System.Windows.Forms.BindingSource(this.components);
             this.panelMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_CurrentData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Showdata)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_CumulativeData)).BeginInit();
             this.pnl_radpnl.SuspendLayout();
             this.grp2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.grp1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bds_CumulativeData)).BeginInit();
             this.SuspendLayout();
             // 
             // openProjectFileDialog
@@ -414,14 +430,14 @@
             this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Navy;
             this.toolStripStatusLabel1.Margin = new System.Windows.Forms.Padding(40, 3, 0, 2);
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(95, 17);
-            this.toolStripStatusLabel1.Text = "识别到是{0}文件";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(92, 17);
+            this.toolStripStatusLabel1.Text = "识别到是{ }文件";
             // 
             // tsErrMessage
             // 
             this.tsErrMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
             this.tsErrMessage.Name = "tsErrMessage";
-            this.tsErrMessage.Size = new System.Drawing.Size(1399, 17);
+            this.tsErrMessage.Size = new System.Drawing.Size(1402, 17);
             this.tsErrMessage.Spring = true;
             // 
             // tslbl_Time
@@ -448,7 +464,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.Controls.Add(this.dgv_CurrentData);
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(12, 873);
             this.groupBox2.Name = "groupBox2";
@@ -457,14 +473,69 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "当前扫描数据";
             // 
-            // dataGridView2
+            // dgv_CurrentData
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(7, 20);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(1883, 135);
-            this.dataGridView2.TabIndex = 18;
+            this.dgv_CurrentData.AllowUserToAddRows = false;
+            this.dgv_CurrentData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_CurrentData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ScanDate,
+            this.DbId,
+            this.OtherID,
+            this.TagCode,
+            this.Sign,
+            this.Pass,
+            this.FileName});
+            this.dgv_CurrentData.Location = new System.Drawing.Point(7, 20);
+            this.dgv_CurrentData.Name = "dgv_CurrentData";
+            this.dgv_CurrentData.RowTemplate.Height = 23;
+            this.dgv_CurrentData.Size = new System.Drawing.Size(1883, 135);
+            this.dgv_CurrentData.TabIndex = 18;
+            // 
+            // ScanDate
+            // 
+            this.ScanDate.HeaderText = "扫描日期";
+            this.ScanDate.Name = "ScanDate";
+            this.ScanDate.ReadOnly = true;
+            this.ScanDate.Width = 105;
+            // 
+            // DbId
+            // 
+            this.DbId.HeaderText = "录取表单类别";
+            this.DbId.Name = "DbId";
+            this.DbId.ReadOnly = true;
+            this.DbId.Width = 150;
+            // 
+            // OtherID
+            // 
+            this.OtherID.HeaderText = "住院号（模拟主键）";
+            this.OtherID.Name = "OtherID";
+            this.OtherID.ReadOnly = true;
+            this.OtherID.Width = 185;
+            // 
+            // TagCode
+            // 
+            this.TagCode.HeaderText = "条形码";
+            this.TagCode.Name = "TagCode";
+            this.TagCode.Width = 900;
+            // 
+            // Sign
+            // 
+            this.Sign.HeaderText = "签字";
+            this.Sign.Name = "Sign";
+            this.Sign.ReadOnly = true;
+            // 
+            // Pass
+            // 
+            this.Pass.HeaderText = "是否通过";
+            this.Pass.Name = "Pass";
+            // 
+            // FileName
+            // 
+            this.FileName.FillWeight = 150F;
+            this.FileName.HeaderText = "图片名";
+            this.FileName.Name = "FileName";
+            this.FileName.ReadOnly = true;
+            this.FileName.Width = 300;
             // 
             // dataGridView1
             // 
@@ -483,6 +554,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(177, 25);
             this.panel2.TabIndex = 18;
+            this.panel2.Visible = false;
             // 
             // rad_MT
             // 
@@ -510,7 +582,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgv_Showdata);
+            this.groupBox1.Controls.Add(this.dgv_CumulativeData);
             this.groupBox1.Location = new System.Drawing.Point(1292, 34);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(616, 836);
@@ -518,14 +590,67 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "扫描数据统计";
             // 
-            // dgv_Showdata
+            // dgv_CumulativeData
             // 
-            this.dgv_Showdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Showdata.Location = new System.Drawing.Point(7, 17);
-            this.dgv_Showdata.Name = "dgv_Showdata";
-            this.dgv_Showdata.RowTemplate.Height = 23;
-            this.dgv_Showdata.Size = new System.Drawing.Size(600, 810);
-            this.dgv_Showdata.TabIndex = 17;
+            this.dgv_CumulativeData.AllowUserToAddRows = false;
+            this.dgv_CumulativeData.AllowUserToDeleteRows = false;
+            this.dgv_CumulativeData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_CumulativeData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.hisyScanDate,
+            this.hisyDbId,
+            this.hisyOtherID,
+            this.hisyTagCode,
+            this.hisySign,
+            this.hisyPass,
+            this.hisyFileName});
+            this.dgv_CumulativeData.Location = new System.Drawing.Point(7, 17);
+            this.dgv_CumulativeData.Name = "dgv_CumulativeData";
+            this.dgv_CumulativeData.ReadOnly = true;
+            this.dgv_CumulativeData.RowTemplate.Height = 23;
+            this.dgv_CumulativeData.Size = new System.Drawing.Size(600, 810);
+            this.dgv_CumulativeData.TabIndex = 17;
+            // 
+            // hisyScanDate
+            // 
+            this.hisyScanDate.HeaderText = "扫描日期";
+            this.hisyScanDate.Name = "hisyScanDate";
+            this.hisyScanDate.ReadOnly = true;
+            // 
+            // hisyDbId
+            // 
+            this.hisyDbId.HeaderText = "录取表单类别";
+            this.hisyDbId.Name = "hisyDbId";
+            this.hisyDbId.ReadOnly = true;
+            // 
+            // hisyOtherID
+            // 
+            this.hisyOtherID.HeaderText = "住院号（模拟主键）";
+            this.hisyOtherID.Name = "hisyOtherID";
+            this.hisyOtherID.ReadOnly = true;
+            // 
+            // hisyTagCode
+            // 
+            this.hisyTagCode.HeaderText = "条形码";
+            this.hisyTagCode.Name = "hisyTagCode";
+            this.hisyTagCode.ReadOnly = true;
+            // 
+            // hisySign
+            // 
+            this.hisySign.HeaderText = "签字";
+            this.hisySign.Name = "hisySign";
+            this.hisySign.ReadOnly = true;
+            // 
+            // hisyPass
+            // 
+            this.hisyPass.HeaderText = "是否通过";
+            this.hisyPass.Name = "hisyPass";
+            this.hisyPass.ReadOnly = true;
+            // 
+            // hisyFileName
+            // 
+            this.hisyFileName.HeaderText = "图片名";
+            this.hisyFileName.Name = "hisyFileName";
+            this.hisyFileName.ReadOnly = true;
             // 
             // pnl_radpnl
             // 
@@ -678,18 +803,19 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_CurrentData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Showdata)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_CumulativeData)).EndInit();
             this.pnl_radpnl.ResumeLayout(false);
             this.pnl_radpnl.PerformLayout();
             this.grp2.ResumeLayout(false);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.grp1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bds_CumulativeData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -751,13 +877,28 @@
         private System.Windows.Forms.RadioButton rad_CWDL;
         private System.Windows.Forms.RadioButton rad_SHIL;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgv_Showdata;
+        private System.Windows.Forms.DataGridView dgv_CumulativeData;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RadioButton rad_AT;
         private System.Windows.Forms.RadioButton rad_MT;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.BindingSource bds_CumulativeData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ScanDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DbId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OtherID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TagCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sign;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyScanDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyDbId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyOtherID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyTagCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisySign;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyPass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyFileName;
+        public System.Windows.Forms.DataGridView dgv_CurrentData;
     }
 }
