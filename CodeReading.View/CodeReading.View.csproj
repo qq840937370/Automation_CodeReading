@@ -77,6 +77,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="DAL\HistoryDAL.cs" />
     <Compile Include="DAL\LoginInfoDAL.cs" />
     <Compile Include="DAL\MainFormDAL.cs" />
     <Compile Include="DAL\SqlHelper.cs" />

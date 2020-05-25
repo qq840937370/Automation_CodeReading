@@ -19,9 +19,6 @@ public partial class HDevelopExport
   public void image_prog_3CWDL (HObject ho_Image, HTuple rtaHalconWin, HTuple hv_ExpDefaultWinHandle, out UsedInfo usedInfo)
     {
 
-
-
-
     // Stack for temporary objects 
     HObject[] OTemp = new HObject[20];
 
@@ -215,9 +212,17 @@ public partial class HDevelopExport
             var result = new UsedInfo();
             result.DbId = "3CWDL";
             //result.OtherID = "6527815";
-            //result.OtherID = hv_Ocr_Split;
+            result.OtherID = hv_DecodedDataStrings;
             //result.Sign = "1";
-            result.Sign = hv_sign;
+            //result.Sign = hv_sign;
+            if (hv_sign[0] * hv_sign[1] * hv_sign[2] * hv_sign[3] == 1)
+            {
+                result.Sign = "1";
+            }
+            else
+            {
+                result.Sign = "0";
+            }
             //result.TagCode = "110112572371,110112572370,110112572373,110112572375,110112572374,110112572368,110112572369,110112572367,110112572372,";
             result.TagCode = hv_DecodedDataStrings;
             result.HImg = miaResult;

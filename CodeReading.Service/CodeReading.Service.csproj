@@ -81,6 +81,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MainFormDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="MainForm\MainFormDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainFormDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MainForm\MainFormService.svc.cs">
       <DependentUpon>MainFormService.svc</DependentUpon>
     </Compile>
@@ -108,7 +113,7 @@
     <None Include="MainForm\MainFormDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>MainFormDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>MainFormDataSet1.Designer.cs</LastGenOutput>
     </None>
     <Content Include="MainForm\MainFormDataSet.xss">
       <DependentUpon>MainFormDataSet.xsd</DependentUpon>

@@ -148,8 +148,17 @@ public partial class HDevelopExport
             var result = new UsedInfo();
             result.DbId = "2HNCL";
             ////result.OtherID = "6527815";
+            result.OtherID = "888888";
             //result.OtherID = hv_Ocr_Split;
             result.Sign = "1";
+            //if (hv_sign[0] * hv_sign[1] * hv_sign[2] * hv_sign[3] == 1)
+            //{
+            //    result.Sign = "1";
+            //}
+            //else
+            //{
+            //    result.Sign = "0";
+            //}
             //result.Sign = hv_sign;
             //result.TagCode = "110112572371,110112572370,110112572373,110112572375,110112572374,110112572368,110112572369,110112572367,110112572372,";
             result.TagCode = hv_DecodedDataStrings;

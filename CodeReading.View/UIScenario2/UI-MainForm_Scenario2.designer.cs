@@ -75,13 +75,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_CurrentData = new System.Windows.Forms.DataGridView();
-            this.ScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sign = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.rad_MT = new System.Windows.Forms.RadioButton();
@@ -107,6 +100,13 @@
             this.grp1 = new System.Windows.Forms.GroupBox();
             this.hWinctl_RTA = new HalconDotNet.HWindowControl();
             this.bds_CumulativeData = new System.Windows.Forms.BindingSource(this.components);
+            this.ScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -188,33 +188,33 @@
             // tsmi_OpenCamera1
             // 
             this.tsmi_OpenCamera1.Name = "tsmi_OpenCamera1";
-            this.tsmi_OpenCamera1.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_OpenCamera1.Size = new System.Drawing.Size(124, 22);
             this.tsmi_OpenCamera1.Text = "打开相机";
             this.tsmi_OpenCamera1.Click += new System.EventHandler(this.tsmi_OpenCamera_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(121, 6);
             // 
             // tsmi_Auto
             // 
             this.tsmi_Auto.Checked = true;
             this.tsmi_Auto.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmi_Auto.Name = "tsmi_Auto";
-            this.tsmi_Auto.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_Auto.Size = new System.Drawing.Size(124, 22);
             this.tsmi_Auto.Text = "自动捕捉";
             this.tsmi_Auto.Click += new System.EventHandler(this.tsmi_Auto_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(121, 6);
             // 
             // 清除异常ToolStripMenuItem
             // 
             this.清除异常ToolStripMenuItem.Name = "清除异常ToolStripMenuItem";
-            this.清除异常ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.清除异常ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.清除异常ToolStripMenuItem.Text = "清除异常";
             // 
             // 系统ToolStripMenuItem
@@ -491,52 +491,6 @@
             this.dgv_CurrentData.Size = new System.Drawing.Size(1883, 135);
             this.dgv_CurrentData.TabIndex = 18;
             // 
-            // ScanDate
-            // 
-            this.ScanDate.HeaderText = "扫描日期";
-            this.ScanDate.Name = "ScanDate";
-            this.ScanDate.ReadOnly = true;
-            this.ScanDate.Width = 105;
-            // 
-            // DbId
-            // 
-            this.DbId.HeaderText = "录取表单类别";
-            this.DbId.Name = "DbId";
-            this.DbId.ReadOnly = true;
-            this.DbId.Width = 150;
-            // 
-            // OtherID
-            // 
-            this.OtherID.HeaderText = "住院号（模拟主键）";
-            this.OtherID.Name = "OtherID";
-            this.OtherID.ReadOnly = true;
-            this.OtherID.Width = 185;
-            // 
-            // TagCode
-            // 
-            this.TagCode.HeaderText = "条形码";
-            this.TagCode.Name = "TagCode";
-            this.TagCode.Width = 900;
-            // 
-            // Sign
-            // 
-            this.Sign.HeaderText = "签字";
-            this.Sign.Name = "Sign";
-            this.Sign.ReadOnly = true;
-            // 
-            // Pass
-            // 
-            this.Pass.HeaderText = "是否通过";
-            this.Pass.Name = "Pass";
-            // 
-            // FileName
-            // 
-            this.FileName.FillWeight = 150F;
-            this.FileName.HeaderText = "图片名";
-            this.FileName.Name = "FileName";
-            this.FileName.ReadOnly = true;
-            this.FileName.Width = 300;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -779,6 +733,52 @@
             this.hWinctl_RTA.TabIndex = 0;
             this.hWinctl_RTA.WindowSize = new System.Drawing.Size(620, 810);
             // 
+            // ScanDate
+            // 
+            this.ScanDate.HeaderText = "扫描日期";
+            this.ScanDate.Name = "ScanDate";
+            this.ScanDate.ReadOnly = true;
+            this.ScanDate.Width = 150;
+            // 
+            // DbId
+            // 
+            this.DbId.HeaderText = "录取表单类别";
+            this.DbId.Name = "DbId";
+            this.DbId.ReadOnly = true;
+            this.DbId.Width = 150;
+            // 
+            // OtherID
+            // 
+            this.OtherID.HeaderText = "住院号（模拟主键）";
+            this.OtherID.Name = "OtherID";
+            this.OtherID.ReadOnly = true;
+            this.OtherID.Width = 185;
+            // 
+            // TagCode
+            // 
+            this.TagCode.HeaderText = "条形码";
+            this.TagCode.Name = "TagCode";
+            this.TagCode.Width = 900;
+            // 
+            // Sign
+            // 
+            this.Sign.HeaderText = "签字";
+            this.Sign.Name = "Sign";
+            this.Sign.ReadOnly = true;
+            // 
+            // Pass
+            // 
+            this.Pass.HeaderText = "是否通过";
+            this.Pass.Name = "Pass";
+            // 
+            // FileName
+            // 
+            this.FileName.FillWeight = 150F;
+            this.FileName.HeaderText = "图片名";
+            this.FileName.Name = "FileName";
+            this.FileName.ReadOnly = true;
+            this.FileName.Width = 255;
+            // 
             // UI_MainForm_Scenario2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -885,13 +885,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource bds_CumulativeData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ScanDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DbId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OtherID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TagCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sign;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn hisyScanDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn hisyDbId;
         private System.Windows.Forms.DataGridViewTextBoxColumn hisyOtherID;
@@ -900,5 +893,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn hisyPass;
         private System.Windows.Forms.DataGridViewTextBoxColumn hisyFileName;
         public System.Windows.Forms.DataGridView dgv_CurrentData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ScanDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DbId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OtherID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TagCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sign;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
     }
 }

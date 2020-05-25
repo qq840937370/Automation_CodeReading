@@ -379,7 +379,7 @@ namespace CodeReading.Entity {
             
             private global::System.Data.DataColumn columnManufacturer;
             
-            private global::System.Data.DataColumn columnCompany;
+            private global::System.Data.DataColumn columnUnit;
             
             private global::System.Data.DataColumn columnBatchNumbe;
             
@@ -396,8 +396,6 @@ namespace CodeReading.Entity {
             private global::System.Data.DataColumn columnTotalAmount;
             
             private global::System.Data.DataColumn columnTagCode;
-            
-            private global::System.Data.DataColumn columnTagCodeNumbers;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -538,9 +536,9 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn CompanyColumn {
+            public global::System.Data.DataColumn UnitColumn {
                 get {
-                    return this.columnCompany;
+                    return this.columnUnit;
                 }
             }
             
@@ -610,14 +608,6 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn TagCodeNumbersColumn {
-                get {
-                    return this.columnTagCodeNumbers;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -667,7 +657,7 @@ namespace CodeReading.Entity {
                         string CommodityName, 
                         string SpecificationType, 
                         string Manufacturer, 
-                        string Company, 
+                        string Unit, 
                         string BatchNumbe, 
                         string PeriodOfValidity, 
                         string UnitPrice, 
@@ -675,8 +665,7 @@ namespace CodeReading.Entity {
                         string AmountOfMoney, 
                         string TotalOfThisPage, 
                         string TotalAmount, 
-                        string TagCode, 
-                        string TagCodeNumbers) {
+                        string TagCode) {
                 CWDLRow rowCWDLRow = ((CWDLRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ReceivingDepartment,
@@ -692,7 +681,7 @@ namespace CodeReading.Entity {
                         CommodityName,
                         SpecificationType,
                         Manufacturer,
-                        Company,
+                        Unit,
                         BatchNumbe,
                         PeriodOfValidity,
                         UnitPrice,
@@ -700,8 +689,7 @@ namespace CodeReading.Entity {
                         AmountOfMoney,
                         TotalOfThisPage,
                         TotalAmount,
-                        TagCode,
-                        TagCodeNumbers};
+                        TagCode};
                 rowCWDLRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCWDLRow);
                 return rowCWDLRow;
@@ -737,7 +725,7 @@ namespace CodeReading.Entity {
                 this.columnCommodityName = base.Columns["CommodityName"];
                 this.columnSpecificationType = base.Columns["SpecificationType"];
                 this.columnManufacturer = base.Columns["Manufacturer"];
-                this.columnCompany = base.Columns["Company"];
+                this.columnUnit = base.Columns["Unit"];
                 this.columnBatchNumbe = base.Columns["BatchNumbe"];
                 this.columnPeriodOfValidity = base.Columns["PeriodOfValidity"];
                 this.columnUnitPrice = base.Columns["UnitPrice"];
@@ -746,7 +734,6 @@ namespace CodeReading.Entity {
                 this.columnTotalOfThisPage = base.Columns["TotalOfThisPage"];
                 this.columnTotalAmount = base.Columns["TotalAmount"];
                 this.columnTagCode = base.Columns["TagCode"];
-                this.columnTagCodeNumbers = base.Columns["TagCodeNumbers"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -778,8 +765,8 @@ namespace CodeReading.Entity {
                 base.Columns.Add(this.columnSpecificationType);
                 this.columnManufacturer = new global::System.Data.DataColumn("Manufacturer", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnManufacturer);
-                this.columnCompany = new global::System.Data.DataColumn("Company", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCompany);
+                this.columnUnit = new global::System.Data.DataColumn("Unit", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnit);
                 this.columnBatchNumbe = new global::System.Data.DataColumn("BatchNumbe", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBatchNumbe);
                 this.columnPeriodOfValidity = new global::System.Data.DataColumn("PeriodOfValidity", typeof(string), null, global::System.Data.MappingType.Element);
@@ -796,8 +783,6 @@ namespace CodeReading.Entity {
                 base.Columns.Add(this.columnTotalAmount);
                 this.columnTagCode = new global::System.Data.DataColumn("TagCode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTagCode);
-                this.columnTagCodeNumbers = new global::System.Data.DataColumn("TagCodeNumbers", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTagCodeNumbers);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1936,17 +1921,17 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Company {
+            public string Unit {
                 get {
                     try {
-                        return ((string)(this[this.tableCWDL.CompanyColumn]));
+                        return ((string)(this[this.tableCWDL.UnitColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“CWDL”中列“Company”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“CWDL”中列“Unit”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableCWDL.CompanyColumn] = value;
+                    this[this.tableCWDL.UnitColumn] = value;
                 }
             }
             
@@ -2075,22 +2060,6 @@ namespace CodeReading.Entity {
                 }
                 set {
                     this[this.tableCWDL.TagCodeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string TagCodeNumbers {
-                get {
-                    try {
-                        return ((string)(this[this.tableCWDL.TagCodeNumbersColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“CWDL”中列“TagCodeNumbers”的值为 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableCWDL.TagCodeNumbersColumn] = value;
                 }
             }
             
@@ -2252,14 +2221,14 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsCompanyNull() {
-                return this.IsNull(this.tableCWDL.CompanyColumn);
+            public bool IsUnitNull() {
+                return this.IsNull(this.tableCWDL.UnitColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetCompanyNull() {
-                this[this.tableCWDL.CompanyColumn] = global::System.Convert.DBNull;
+            public void SetUnitNull() {
+                this[this.tableCWDL.UnitColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2356,18 +2325,6 @@ namespace CodeReading.Entity {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetTagCodeNull() {
                 this[this.tableCWDL.TagCodeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsTagCodeNumbersNull() {
-                return this.IsNull(this.tableCWDL.TagCodeNumbersColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetTagCodeNumbersNull() {
-                this[this.tableCWDL.TagCodeNumbersColumn] = global::System.Convert.DBNull;
             }
         }
         

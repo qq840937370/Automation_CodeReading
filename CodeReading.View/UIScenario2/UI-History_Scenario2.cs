@@ -1,5 +1,6 @@
 ﻿using CodeReading.Entity;
 using CodeReading.Entity.History;
+using CodeReading.View.DAL;
 using CodeReading.View.HistoryServiceReference;
 using System;
 using System.Windows.Forms;
@@ -100,9 +101,10 @@ namespace CodeReading.View
                 SetSerarchConditions();
 
                 // 获取数据
-                var client = new HistoryServiceClient();
-                var result = client.Search(searchConditions);
-
+                //var client = new HistoryServiceClient();
+                //var result = client.Search(searchConditions);
+                HistoryDAL historyDAL = new HistoryDAL();
+                var result = historyDAL.Search(searchConditions); 
                 // 検索結果件数判定
                 if (result.SearchData.Rows.Count == 0)
                 {
