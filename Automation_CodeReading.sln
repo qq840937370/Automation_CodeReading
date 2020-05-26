@@ -12,6 +12,38 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeReading.Entity", "CodeR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeReading.Service", "CodeReading.Service\CodeReading.Service.csproj", "{8554EC17-1F31-4E14-96EB-014B8E1A87F2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{F71F15F9-DBC8-4F60-81DB-45CADFD544C1}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\Device.html = Docs\Device.html
+		Docs\Device.jpeg = Docs\Device.jpeg
+		Docs\Device.md = Docs\Device.md
+		Docs\Device.pdf = Docs\Device.pdf
+		Docs\Device.png = Docs\Device.png
+		Docs\Device_tmp.html = Docs\Device_tmp.html
+		Docs\GUI1.png = Docs\GUI1.png
+		Docs\Plan.docx = Docs\Plan.docx
+		Docs\Plan.html = Docs\Plan.html
+		Docs\Plan.jpeg = Docs\Plan.jpeg
+		Docs\Plan.md = Docs\Plan.md
+		Docs\Plan.pdf = Docs\Plan.pdf
+		Docs\Plan.png = Docs\Plan.png
+		Docs\PlanA.mmap = Docs\PlanA.mmap
+		Docs\PlanA.png = Docs\PlanA.png
+		Docs\PlanB.mmap = Docs\PlanB.mmap
+		Docs\PlanB.png = Docs\PlanB.png
+		Docs\Prog.md = Docs\Prog.md
+		Docs\Prog.mmap = Docs\Prog.mmap
+		Docs\ScanRaw.jpg = Docs\ScanRaw.jpg
+		Docs\信息自动化解决方案.pptx = Docs\信息自动化解决方案.pptx
+		Docs\工业相机读码方案.pptx = Docs\工业相机读码方案.pptx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{14C294F7-68F3-4114-A6BE-2F46AC77DAD7}"
+	ProjectSection(SolutionItems) = preProject
+		DB\DB设计.xlsx = DB\DB设计.xlsx
+		DB\sql_sqlserver.sql = DB\sql_sqlserver.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,7 +123,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E8DCFD6B-D0DE-4DBD-B032-D23CB70F6CFC}
 		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {E8DCFD6B-D0DE-4DBD-B032-D23CB70F6CFC}
 	EndGlobalSection
 EndGlobal

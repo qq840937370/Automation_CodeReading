@@ -15,7 +15,7 @@ namespace CodeReading.View.DAL
         /// </summary>
         string Datatimenow;
 
-        // 接口调用
+        // 保存数据
         //public UsedInfo SaveTemp(UsedInfo usedInfo)
         public void SaveTemp(UsedInfo usedInfo)
         {
@@ -60,8 +60,7 @@ namespace CodeReading.View.DAL
                                 };
             return SqlHelper.ExecuteNonQuery(sql, ps);
         }
-        #region
-        // 数据取得
+        #region 数据取得
         private static string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStrings"].ConnectionString;
         /// <summary>
         /// 查SHIL数据
@@ -222,6 +221,37 @@ namespace CodeReading.View.DAL
                     return result;
                 }
             }
+        }
+        #endregion
+
+        #region 查重
+        /// <summary>
+        /// 查询数据库是否登过这条数据
+        /// </summary>
+        /// <returns>登过返回1</returns>
+        internal int DataRepeatCheck(string usedInfodataOtherID)
+        {
+            // 登过判断结果
+            int DataRepeatCheckResult = 0;
+
+            using (var conn = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand())
+            {
+                cmd.Connection = conn;
+
+                // SQL参数生成
+                string DataRepeatChecksql = "SELECT * FROM dbo.Used Where OtherID = @OtherID";
+                SqlParameter[] ps = {
+                                new SqlParameter("@OtherID",usedInfodataOtherID),
+                                };
+                // 查询结果大于等于1
+                if(SqlHelper.ExecuteNonQuery(DataRepeatChecksql, ps)>=1)
+                {
+                    // 登录过时，判断结果=1
+                    DataRepeatCheckResult = 1;
+                }
+            }
+            return DataRepeatCheckResult;
         }
         #endregion
     }

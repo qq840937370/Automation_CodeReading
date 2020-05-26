@@ -75,13 +75,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_CurrentData = new System.Windows.Forms.DataGridView();
-            this.ScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sign = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.rad_MT = new System.Windows.Forms.RadioButton();
@@ -107,6 +100,13 @@
             this.hisySign = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hisyPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hisyFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -487,55 +487,10 @@
             this.FileName});
             this.dgv_CurrentData.Location = new System.Drawing.Point(7, 20);
             this.dgv_CurrentData.Name = "dgv_CurrentData";
+            this.dgv_CurrentData.RowHeadersVisible = false;
             this.dgv_CurrentData.RowTemplate.Height = 23;
             this.dgv_CurrentData.Size = new System.Drawing.Size(1883, 135);
             this.dgv_CurrentData.TabIndex = 18;
-            // 
-            // ScanDate
-            // 
-            this.ScanDate.HeaderText = "扫描日期";
-            this.ScanDate.Name = "ScanDate";
-            this.ScanDate.ReadOnly = true;
-            this.ScanDate.Width = 150;
-            // 
-            // DbId
-            // 
-            this.DbId.HeaderText = "录取表单类别";
-            this.DbId.Name = "DbId";
-            this.DbId.ReadOnly = true;
-            this.DbId.Width = 150;
-            // 
-            // OtherID
-            // 
-            this.OtherID.HeaderText = "住院号（模拟主键）";
-            this.OtherID.Name = "OtherID";
-            this.OtherID.ReadOnly = true;
-            this.OtherID.Width = 185;
-            // 
-            // TagCode
-            // 
-            this.TagCode.HeaderText = "条形码";
-            this.TagCode.Name = "TagCode";
-            this.TagCode.Width = 900;
-            // 
-            // Sign
-            // 
-            this.Sign.HeaderText = "签字";
-            this.Sign.Name = "Sign";
-            this.Sign.ReadOnly = true;
-            // 
-            // Pass
-            // 
-            this.Pass.HeaderText = "是否通过";
-            this.Pass.Name = "Pass";
-            // 
-            // FileName
-            // 
-            this.FileName.FillWeight = 150F;
-            this.FileName.HeaderText = "图片名";
-            this.FileName.Name = "FileName";
-            this.FileName.ReadOnly = true;
-            this.FileName.Width = 255;
             // 
             // dataGridView1
             // 
@@ -606,6 +561,7 @@
             this.dgv_CumulativeData.Location = new System.Drawing.Point(7, 17);
             this.dgv_CumulativeData.Name = "dgv_CumulativeData";
             this.dgv_CumulativeData.ReadOnly = true;
+            this.dgv_CumulativeData.RowHeadersVisible = false;
             this.dgv_CumulativeData.RowTemplate.Height = 23;
             this.dgv_CumulativeData.Size = new System.Drawing.Size(600, 810);
             this.dgv_CumulativeData.TabIndex = 17;
@@ -782,6 +738,52 @@
             this.hisyFileName.Name = "hisyFileName";
             this.hisyFileName.ReadOnly = true;
             // 
+            // ScanDate
+            // 
+            this.ScanDate.HeaderText = "扫描日期";
+            this.ScanDate.Name = "ScanDate";
+            this.ScanDate.ReadOnly = true;
+            this.ScanDate.Width = 150;
+            // 
+            // DbId
+            // 
+            this.DbId.HeaderText = "录取表单类别";
+            this.DbId.Name = "DbId";
+            this.DbId.ReadOnly = true;
+            this.DbId.Width = 150;
+            // 
+            // OtherID
+            // 
+            this.OtherID.HeaderText = "住院号（模拟主键）";
+            this.OtherID.Name = "OtherID";
+            this.OtherID.ReadOnly = true;
+            this.OtherID.Width = 185;
+            // 
+            // TagCode
+            // 
+            this.TagCode.HeaderText = "条形码";
+            this.TagCode.Name = "TagCode";
+            this.TagCode.Width = 900;
+            // 
+            // Sign
+            // 
+            this.Sign.HeaderText = "签字";
+            this.Sign.Name = "Sign";
+            this.Sign.ReadOnly = true;
+            // 
+            // Pass
+            // 
+            this.Pass.HeaderText = "是否通过";
+            this.Pass.Name = "Pass";
+            // 
+            // FileName
+            // 
+            this.FileName.FillWeight = 150F;
+            this.FileName.HeaderText = "图片名";
+            this.FileName.Name = "FileName";
+            this.FileName.ReadOnly = true;
+            this.FileName.Width = 295;
+            // 
             // UI_MainForm_Scenario2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -889,13 +891,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource bds_CumulativeData;
         public System.Windows.Forms.DataGridView dgv_CurrentData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ScanDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DbId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OtherID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TagCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sign;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn hisyScanDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn hisyDbId;
         private System.Windows.Forms.DataGridViewTextBoxColumn hisyOtherID;
@@ -903,5 +898,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn hisySign;
         private System.Windows.Forms.DataGridViewTextBoxColumn hisyPass;
         private System.Windows.Forms.DataGridViewTextBoxColumn hisyFileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ScanDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DbId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OtherID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TagCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sign;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
     }
 }

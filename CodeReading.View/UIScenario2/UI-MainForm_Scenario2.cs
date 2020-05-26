@@ -240,7 +240,6 @@ namespace CodeReading.View
                 // 自动识图
                 if (AutoT.state == AutoTState.AT)
                 {
-
                     // 全局usedInfodata赋值
                     usedInfodata.DbId = halconHelpers.usedInfoDbId;             // 表类别
                     usedInfodata.OtherID = halconHelpers.usedInfoOtherID;       // 模拟主键
@@ -249,92 +248,21 @@ namespace CodeReading.View
                     usedInfodata.HImg = halconHelpers.usedInfoHImg;             // HObject图片
                     usedInfodata.TagCodeNum= halconHelpers.usedInfoTagCodeNum;  // 条形码数
                     string ScanDate = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-                    usedInfodata.ScanDate = ScanDate;                     // 日期
-                    usedInfodata.FileName = ScanDate + ".bmp";            // 图片名
+                    usedInfodata.ScanDate = ScanDate;                           // 日期
+                    usedInfodata.FileName = ScanDate + ".bmp";                  // 图片名
                     // 全局变量判断变量DbIdstr赋值
                     DbIdstr = usedInfodata.DbId;
 
-                    // 如果是1SHIL
-                    if (DbIdstr == "1SHIL")
+                    // 重复扫描检查
+                    if (RepeatCheck()== 0)
                     {
-                        // 数据查询结果为0
-                        if (SelectData() == 0) // 未检索到数据
+                        // 如果是1SHIL
+                        if (DbIdstr == "1SHIL")
                         {
-                            usedInfodata.Pass = "0";
-                            // 显示相机获取的数据-红色
-                            dgv_CurrentData.Rows.Clear();
-                            DataGridViewRow Row = new DataGridViewRow();
-                            int RowCurindex = dgv_CurrentData.Rows.Add(Row);
-                            dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
-                            dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
-                            dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
-                            DataGridViewRow Rowshow = new DataGridViewRow();
-                            int RowCurindexshow = dgv_CurrentData.Rows.Add(Rowshow);
-                            dgv_CurrentData.Rows[RowCurindexshow].Cells["ScanDate"].Value = "未查询到此表单数据！";
-                            dgv_CurrentData.Rows[RowCurindexshow].Cells["TagCode"].Value = "此表单数据在数据库里不存在！";
-                            dgv_CurrentData.Rows[RowCurindexshow].DefaultCellStyle.ForeColor = Color.Red;  // 行
-                            // 已扫描文件个数
-                            ImgNumber = ImgNumber + 1;  //已扫描文件：0个
-                            tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
-                        }
-                        else  // 检索到数据
-                        {
-                            // 比对数据通过
-                            if (DataCheck() == 1)
+                            // 数据查询结果为0
+                            if (SelectData() == 0) // 未检索到数据
                             {
-                                ///DataGridView1.RowsDefaultCellStyle.BackColor = Color.Yellow;         // 所有
-                                ///DataGridView1.Columns[0].DefaultCellStyle.BackColor = Color.Aqua;    // 列
-                                ///DataGridView1.Rows[0].DefaultCellStyle.BackColor = Color.LightGray;  // 行
-                                ///DataGridView1[0, 0].Style.BackColor = Color.Pink;                    // 某个单元格
-
-                                // 赋值
-                                usedInfodata.Pass = "1";
-
-                                // 保存数据
-                                mainFormBLL.CaptureImgbll(usedInfodata);
-                                #region 显示数据
-                                // 显示相机获取的数据-绿色
-                                dgv_CurrentData.Rows.Clear();
-                                DataGridViewRow Row = new DataGridViewRow();
-                                int RowCurindex = dgv_CurrentData.Rows.Add(Row);
-                                dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "通过";
-                                dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
-                                dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.GreenYellow;       // 整行绿
-                                                                                                                        // 添加到记录栏-绿色
-                                DataGridViewRow CumRow = new DataGridViewRow();
-                                dgv_CumulativeData.Rows.Add(CumRow);
-                                int RowCumindex = dgv_CumulativeData.Rows.Count - 1;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyScanDate"].Value = usedInfodata.ScanDate;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyDbId"].Value = usedInfodata.DbId;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyOtherID"].Value = usedInfodata.OtherID;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyTagCode"].Value = usedInfodata.TagCode;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = usedInfodata.Sign;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyPass"].Value = "通过";
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyFileName"].Value = usedInfodata.FileName;
-                                #endregion
-
-                                // 已扫描文件个数
-                                ImgNumber = ImgNumber + 1;  //已扫描文件：0个
-
-                                tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
-                            }
-
-                            // 比对数据不通过
-                            else if (DataCheck() == 0)
-                            {
-                                // 赋值
                                 usedInfodata.Pass = "0";
-
                                 // 显示相机获取的数据-红色
                                 dgv_CurrentData.Rows.Clear();
                                 DataGridViewRow Row = new DataGridViewRow();
@@ -346,102 +274,109 @@ namespace CodeReading.View
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
-                                // 条形码不正确时标红
-                                //if (usedInfodata.TagCode != CurrentDataSHIL.Rows[0]["TagCode"].ToString())
-                                //{
-                                //    dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Style.BackColor = Color.Red;    // 条形码的单元格标红
-                                //}
-                                // 未签字时标红
-                                if (usedInfodata.Sign == "0")
-                                {
-                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Style.BackColor = Color.Red;    // 签字的单元格标红
-                                }
-                                // 已扫描文件个数
-                                ImgNumber = ImgNumber + 1;  //已扫描文件：ImgNumber个
-
-                                tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
-                                // 休眠
-                                //dataProcessingThread.Suspend();
-                            }
-                        }
-                    }
-
-                    // 如果是2HNCL
-                    else if (DbIdstr == "2HNCL")
-                    {
-                        // 数据查询结果为0
-                        if (SelectData() == 0) // 未检索到数据
-                        {
-                            usedInfodata.Pass = "0";
-                            // 显示相机获取的数据-红色
-                            dgv_CurrentData.Rows.Clear();
-                            DataGridViewRow Row = new DataGridViewRow();
-                            int RowCurindex = dgv_CurrentData.Rows.Add(Row);
-                            dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
-                            dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
-                            dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
-                            DataGridViewRow Rowshow = new DataGridViewRow();
-                            int RowCurindexshow = dgv_CurrentData.Rows.Add(Rowshow);
-                            dgv_CurrentData.Rows[RowCurindexshow].Cells["ScanDate"].Value = "未查询到此表单数据！";
-                            dgv_CurrentData.Rows[RowCurindexshow].Cells["TagCode"].Value = "此表单数据在数据库里不存在！";
-                            dgv_CurrentData.Rows[RowCurindexshow].DefaultCellStyle.ForeColor = Color.Red;  // 行
-                            // 已扫描文件个数
-                            ImgNumber = ImgNumber + 1;  //已扫描文件：0个
-                            tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
-                        }
-                        else  // 查询到数据
-                        {
-                            // 比对数据通过
-                            if (DataCheck() == 1)
-                            {
-                                // 赋值
-                                usedInfodata.Pass = "1";
-
-                                // 保存数据
-                                mainFormBLL.CaptureImgbll(usedInfodata);
-                                #region 显示数据
-                                // 显示相机获取的数据-绿色
-                                dgv_CurrentData.Rows.Clear();
-                                DataGridViewRow Row = new DataGridViewRow();
-                                int RowCurindex = dgv_CurrentData.Rows.Add(Row);
-                                dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "通过";
-                                dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
-                                dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.GreenYellow;       // 整行绿
-
-                                // 添加到记录栏-绿色
-                                DataGridViewRow CumRow = new DataGridViewRow();
-                                dgv_CumulativeData.Rows.Add(CumRow);
-                                int RowCumindex = dgv_CumulativeData.Rows.Count - 1;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyScanDate"].Value = usedInfodata.ScanDate;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyDbId"].Value = usedInfodata.DbId;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyOtherID"].Value = usedInfodata.OtherID;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyTagCode"].Value = usedInfodata.TagCode;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = usedInfodata.Sign;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyPass"].Value = "通过";
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyFileName"].Value = usedInfodata.FileName;
-                                #endregion
-
-                                // 已扫描文件个数
+                                dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
+                                DataGridViewRow Rowshow = new DataGridViewRow();
+                                int RowCurindexshow = dgv_CurrentData.Rows.Add(Rowshow);
+                                dgv_CurrentData.Rows[RowCurindexshow].Cells["ScanDate"].Value = "未查询到此表单数据！";
+                                dgv_CurrentData.Rows[RowCurindexshow].Cells["TagCode"].Value = "此表单数据在数据库里不存在！";
+                                dgv_CurrentData.Rows[RowCurindexshow].DefaultCellStyle.ForeColor = Color.Red;  // 行
+                                                                                                               // 已扫描文件个数
                                 ImgNumber = ImgNumber + 1;  //已扫描文件：0个
-
                                 tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
                             }
-                            // 比对数据不通过
-                            else if (DataCheck() == 0)
+                            else  // 检索到数据
                             {
-                                // 赋值
-                                usedInfodata.Pass = "0";
+                                // 比对数据是否通过
+                                int DataCheckint = DataCheck();
+                                // 比对数据通过
+                                if (DataCheckint == 1)
+                                {
+                                    ///DataGridView1.RowsDefaultCellStyle.BackColor = Color.Yellow;         // 所有
+                                    ///DataGridView1.Columns[0].DefaultCellStyle.BackColor = Color.Aqua;    // 列
+                                    ///DataGridView1.Rows[0].DefaultCellStyle.BackColor = Color.LightGray;  // 行
+                                    ///DataGridView1[0, 0].Style.BackColor = Color.Pink;                    // 某个单元格
 
+                                    // 赋值
+                                    usedInfodata.Pass = "1";
+
+                                    // 保存数据
+                                    mainFormBLL.CaptureImgbll(usedInfodata);
+                                    #region 显示数据
+                                    // 显示相机获取的数据-绿色
+                                    dgv_CurrentData.Rows.Clear();
+                                    DataGridViewRow Row = new DataGridViewRow();
+                                    int RowCurindex = dgv_CurrentData.Rows.Add(Row);
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "通过";
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
+                                    dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.GreenYellow;       // 整行绿
+                                                                                                                            // 添加到记录栏-绿色
+                                    DataGridViewRow CumRow = new DataGridViewRow();
+                                    dgv_CumulativeData.Rows.Add(CumRow);
+                                    int RowCumindex = dgv_CumulativeData.Rows.Count - 1;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyScanDate"].Value = usedInfodata.ScanDate;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyDbId"].Value = usedInfodata.DbId;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyOtherID"].Value = usedInfodata.OtherID;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyTagCode"].Value = usedInfodata.TagCode;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = usedInfodata.Sign;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyPass"].Value = "通过";
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyFileName"].Value = usedInfodata.FileName;
+                                    #endregion
+
+                                    // 已扫描文件个数
+                                    ImgNumber = ImgNumber + 1;  //已扫描文件：0个
+
+                                    tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
+                                }
+
+                                // 比对数据不通过
+                                else if (DataCheckint == 0)
+                                {
+                                    // 赋值
+                                    usedInfodata.Pass = "0";
+
+                                    // 显示相机获取的数据-红色
+                                    dgv_CurrentData.Rows.Clear();
+                                    DataGridViewRow Row = new DataGridViewRow();
+                                    int RowCurindex = dgv_CurrentData.Rows.Add(Row);
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
+                                    // 条形码不正确时标红
+                                    //if (usedInfodata.TagCode != CurrentDataSHIL.Rows[0]["TagCode"].ToString())
+                                    //{
+                                    //    dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Style.BackColor = Color.Red;    // 条形码的单元格标红
+                                    //}
+                                    // 未签字时标红
+                                    if (usedInfodata.Sign == "0")
+                                    {
+                                        dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Style.BackColor = Color.Red;    // 签字的单元格标红
+                                    }
+                                    // 已扫描文件个数
+                                    ImgNumber = ImgNumber + 1;  //已扫描文件：ImgNumber个
+
+                                    tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
+                                    // 休眠
+                                    //dataProcessingThread.Suspend();
+                                }
+                            }
+                        }
+
+                        // 如果是2HNCL
+                        else if (DbIdstr == "2HNCL")
+                        {
+                            // 数据查询结果为0
+                            if (SelectData() == 0) // 未检索到数据
+                            {
+                                usedInfodata.Pass = "0";
                                 // 显示相机获取的数据-红色
                                 dgv_CurrentData.Rows.Clear();
                                 DataGridViewRow Row = new DataGridViewRow();
@@ -453,140 +388,264 @@ namespace CodeReading.View
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
-                                // 条形码不正确时标红
-                                //if (usedInfodata.TagCode != CurrentDataSHIL.Rows[0]["TagCode"].ToString())
-                                //{
-                                //    dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Style.BackColor = Color.Red;    // 条形码的单元格标红
-                                //}
-                                // 未签字时标红
-                                if (usedInfodata.Sign == "0")
-                                {
-                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Style.BackColor = Color.Red;    // 签字的单元格标红
-                                }
-                                // 已扫描文件个数
-                                ImgNumber = ImgNumber + 1;  //已扫描文件：ImgNumber个
-
+                                dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
+                                DataGridViewRow Rowshow = new DataGridViewRow();
+                                int RowCurindexshow = dgv_CurrentData.Rows.Add(Rowshow);
+                                dgv_CurrentData.Rows[RowCurindexshow].Cells["ScanDate"].Value = "未查询到此表单数据！";
+                                dgv_CurrentData.Rows[RowCurindexshow].Cells["TagCode"].Value = "此表单数据在数据库里不存在！";
+                                dgv_CurrentData.Rows[RowCurindexshow].DefaultCellStyle.ForeColor = Color.Red;  // 行
+                                                                                                               // 已扫描文件个数
+                                ImgNumber = ImgNumber + 1;  //已扫描文件：0个
                                 tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
-                                // 休眠
-                                //dataProcessingThread.Suspend();
+                            }
+                            else  // 查询到数据
+                            {
+                                // 比对数据是否通过
+                                int DataCheckint = DataCheck();
+                                // 比对数据通过
+                                if (DataCheckint == 1)
+                                {
+                                    // 赋值
+                                    usedInfodata.Pass = "1";
+
+                                    // 保存数据
+                                    mainFormBLL.CaptureImgbll(usedInfodata);
+                                    #region 显示数据
+                                    // 显示相机获取的数据-绿色
+                                    dgv_CurrentData.Rows.Clear();
+                                    DataGridViewRow Row = new DataGridViewRow();
+                                    int RowCurindex = dgv_CurrentData.Rows.Add(Row);
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "通过";
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
+                                    dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.GreenYellow;       // 整行绿
+
+                                    // 添加到记录栏-绿色
+                                    DataGridViewRow CumRow = new DataGridViewRow();
+                                    dgv_CumulativeData.Rows.Add(CumRow);
+                                    int RowCumindex = dgv_CumulativeData.Rows.Count - 1;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyScanDate"].Value = usedInfodata.ScanDate;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyDbId"].Value = usedInfodata.DbId;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyOtherID"].Value = usedInfodata.OtherID;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyTagCode"].Value = usedInfodata.TagCode;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = usedInfodata.Sign;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyPass"].Value = "通过";
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyFileName"].Value = usedInfodata.FileName;
+                                    #endregion
+
+                                    // 已扫描文件个数
+                                    ImgNumber = ImgNumber + 1;  //已扫描文件：0个
+
+                                    tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
+                                }
+                                // 比对数据不通过
+                                else if (DataCheckint == 0)
+                                {
+                                    // 赋值
+                                    usedInfodata.Pass = "0";
+
+                                    // 显示相机获取的数据-红色
+                                    dgv_CurrentData.Rows.Clear();
+                                    DataGridViewRow Row = new DataGridViewRow();
+                                    int RowCurindex = dgv_CurrentData.Rows.Add(Row);
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
+                                    // 条形码不正确时标红
+                                    //if (usedInfodata.TagCode != CurrentDataSHIL.Rows[0]["TagCode"].ToString())
+                                    //{
+                                    //    dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Style.BackColor = Color.Red;    // 条形码的单元格标红
+                                    //}
+                                    // 未签字时标红
+                                    if (usedInfodata.Sign == "0")
+                                    {
+                                        dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Style.BackColor = Color.Red;    // 签字的单元格标红
+                                    }
+                                    // 已扫描文件个数
+                                    ImgNumber = ImgNumber + 1;  //已扫描文件：ImgNumber个
+
+                                    tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
+                                    // 休眠
+                                    //dataProcessingThread.Suspend();
+                                }
                             }
                         }
-                    }
 
-                    // 如果是3CWDL
-                    else if (DbIdstr == "3CWDL")
-                    {
-                        // 数据查询结果为0
-                        if (SelectData() == 0) // 未检索到数据
+                        // 如果是3CWDL
+                        else if (DbIdstr == "3CWDL")
                         {
-                            usedInfodata.Pass = "0";
-                            // 显示相机获取的数据-红色
-                            dgv_CurrentData.Rows.Clear();
-                            DataGridViewRow Row = new DataGridViewRow();
-                            int RowCurindex = dgv_CurrentData.Rows.Add(Row);
-                            dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
-                            dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
-                            dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
-                            dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
-                            DataGridViewRow Rowshow = new DataGridViewRow();
-                            int RowCurindexshow = dgv_CurrentData.Rows.Add(Rowshow);
-                            dgv_CurrentData.Rows[RowCurindexshow].Cells["ScanDate"].Value = "未查询到此表单数据！";
-                            dgv_CurrentData.Rows[RowCurindexshow].Cells["TagCode"].Value = "此表单数据在数据库里不存在！";
-                            dgv_CurrentData.Rows[RowCurindexshow].DefaultCellStyle.ForeColor = Color.Red;  // 行
-                            // 已扫描文件个数
-                            ImgNumber = ImgNumber + 1;  //已扫描文件：0个
-                            tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
+                            // 数据查询结果为0
+                            if (SelectData() == 0) // 未检索到数据
+                            {
+                                usedInfodata.Pass = "0";
+                                // 显示相机获取的数据-红色
+                                dgv_CurrentData.Rows.Clear();
+                                DataGridViewRow Row = new DataGridViewRow();
+                                int RowCurindex = dgv_CurrentData.Rows.Add(Row);
+                                dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
+                                dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
+                                dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
+                                dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
+                                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
+                                dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
+                                dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
+                                DataGridViewRow Rowshow = new DataGridViewRow();
+                                int RowCurindexshow = dgv_CurrentData.Rows.Add(Rowshow);
+                                dgv_CurrentData.Rows[RowCurindexshow].Cells["ScanDate"].Value = "未查询到此表单数据！";
+                                dgv_CurrentData.Rows[RowCurindexshow].Cells["TagCode"].Value = "此表单数据在数据库里不存在！";
+                                dgv_CurrentData.Rows[RowCurindexshow].DefaultCellStyle.ForeColor = Color.Red;  // 行
+                                                                                                               // 已扫描文件个数
+                                ImgNumber = ImgNumber + 1;  //已扫描文件：0个
+                                tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
+                            }
+                            else
+                            {
+                                // 比对数据是否通过
+                                int DataCheckint = DataCheck();
+                                // 比对数据通过
+                                if (DataCheckint == 1)
+                                {
+                                    // 赋值
+                                    usedInfodata.Pass = "1";
+
+                                    // 保存数据
+                                    mainFormBLL.CaptureImgbll(usedInfodata);
+                                    #region 显示数据
+                                    // 显示相机获取的数据-绿色
+                                    dgv_CurrentData.Rows.Clear();
+                                    DataGridViewRow Row = new DataGridViewRow();
+                                    int RowCurindex = dgv_CurrentData.Rows.Add(Row);
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "通过";
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
+                                    dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.GreenYellow;       // 整行绿
+
+                                    // 添加到记录栏-绿色
+                                    DataGridViewRow CumRow = new DataGridViewRow();
+                                    dgv_CumulativeData.Rows.Add(CumRow);
+                                    int RowCumindex = dgv_CumulativeData.Rows.Count - 1;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyScanDate"].Value = usedInfodata.ScanDate;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyDbId"].Value = usedInfodata.DbId;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyOtherID"].Value = usedInfodata.OtherID;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyTagCode"].Value = usedInfodata.TagCode;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = usedInfodata.Sign;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyPass"].Value = "通过";
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisyFileName"].Value = usedInfodata.FileName;
+                                    #endregion
+
+                                    // 已扫描文件个数
+                                    ImgNumber = ImgNumber + 1;  //已扫描文件：0个
+
+                                    tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
+                                }
+                                // 比对数据不通过
+                                else if (DataCheckint == 0)
+                                {
+                                    // 赋值
+                                    usedInfodata.Pass = "0";
+
+                                    // 显示相机获取的数据-红色
+                                    dgv_CurrentData.Rows.Clear();
+                                    DataGridViewRow Row = new DataGridViewRow();
+                                    int RowCurindex = dgv_CurrentData.Rows.Add(Row);
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
+                                    // 条形码不正确时标红
+                                    //if (usedInfodata.TagCode != CurrentDataSHIL.Rows[0]["TagCode"].ToString())
+                                    //{
+                                    //    dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Style.BackColor = Color.Red;    // 条形码的单元格标红
+                                    //}
+                                    // 未签字时标红
+                                    if (usedInfodata.Sign == "0")
+                                    {
+                                        dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Style.BackColor = Color.Red;    // 签字的单元格标红
+                                    }
+                                    // 已扫描文件个数
+                                    ImgNumber = ImgNumber + 1;  //已扫描文件：ImgNumber个
+
+                                    tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
+                                    // 休眠
+                                    //dataProcessingThread.Suspend();
+                                }
+                            }
                         }
                         else
                         {
-                            // 比对数据通过
-                            if (DataCheck() == 1)
-                            {
-                                // 赋值
-                                usedInfodata.Pass = "1";
-
-                                // 保存数据
-                                mainFormBLL.CaptureImgbll(usedInfodata);
-                                #region 显示数据
-                                // 显示相机获取的数据-绿色
-                                dgv_CurrentData.Rows.Clear();
-                                DataGridViewRow Row = new DataGridViewRow();
-                                int RowCurindex = dgv_CurrentData.Rows.Add(Row);
-                                dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "通过";
-                                dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
-                                dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.GreenYellow;       // 整行绿
-
-                                // 添加到记录栏-绿色
-                                DataGridViewRow CumRow = new DataGridViewRow();
-                                dgv_CumulativeData.Rows.Add(CumRow);
-                                int RowCumindex = dgv_CumulativeData.Rows.Count - 1;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyScanDate"].Value = usedInfodata.ScanDate;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyDbId"].Value = usedInfodata.DbId;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyOtherID"].Value = usedInfodata.OtherID;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyTagCode"].Value = usedInfodata.TagCode;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = usedInfodata.Sign;
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyPass"].Value = "通过";
-                                dgv_CumulativeData.Rows[RowCumindex].Cells["hisyFileName"].Value = usedInfodata.FileName;
-                                #endregion
-
-                                // 已扫描文件个数
-                                ImgNumber = ImgNumber + 1;  //已扫描文件：0个
-
-                                tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
-                            }
-                            // 比对数据不通过
-                            else if (DataCheck() == 0)
-                            {
-                                // 赋值
-                                usedInfodata.Pass = "0";
-
-                                // 显示相机获取的数据-红色
-                                dgv_CurrentData.Rows.Clear();
-                                DataGridViewRow Row = new DataGridViewRow();
-                                int RowCurindex = dgv_CurrentData.Rows.Add(Row);
-                                dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
-                                dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
-                                // 条形码不正确时标红
-                                //if (usedInfodata.TagCode != CurrentDataSHIL.Rows[0]["TagCode"].ToString())
-                                //{
-                                //    dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Style.BackColor = Color.Red;    // 条形码的单元格标红
-                                //}
-                                // 未签字时标红
-                                if (usedInfodata.Sign == "0")
-                                {
-                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Style.BackColor = Color.Red;    // 签字的单元格标红
-                                }
-                                // 已扫描文件个数
-                                ImgNumber = ImgNumber + 1;  //已扫描文件：ImgNumber个
-
-                                tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
-                                // 休眠
-                                //dataProcessingThread.Suspend();
-                            }
+                            //清除表单
+                            dgv_CurrentData.Rows.Clear();
                         }
-                    }
-                    else
-                    {
-                        //清除表单
-                        dgv_CurrentData.Rows.Clear();
                     }
                     Thread.Sleep(2500);
                 }
             }
+        }
+
+        /// <summary>
+        /// 重复扫描检查
+        /// </summary>
+        /// <returns>“重复”返回1</returns>
+        private int RepeatCheck()
+        {
+            // 假设不存在
+            int CheckResult = 0;
+            #region 扫描数据统计表查重
+            // 遍历扫描数据统计表的"虚拟主键" if= 扫描到的数据的"虚拟主键"
+            int RowsCounts = dgv_CumulativeData.Rows.Count;
+            // 扫描到的数据值
+            string usedInfodataOtherID = usedInfodata.OtherID;
+            if (RowsCounts>0)
+            {
+                for (int RowsCount = 0; RowsCount < RowsCounts; RowsCount++)
+                {
+                    string hisyOtherIDstr = dgv_CumulativeData.Rows[RowsCount].Cells["hisyOtherID"].Value.ToString();
+
+                    // 未通过
+                    if (hisyOtherIDstr == usedInfodataOtherID)
+                    {
+                        // 存在，停止后续处理
+                        CheckResult = 1;
+                        break;
+                    }
+                }
+            }
+            #endregion
+            #region 数据库查重
+            if (CheckResult==0) {
+                // 数据库是否登过这条数据
+                int DataRepeatCheckint = mainFormDAL.DataRepeatCheck(usedInfodataOtherID);
+                // 数据库登过这条数据
+                if (DataRepeatCheckint == 1)
+                {
+                    //存在
+                    CheckResult = 1;
+                }
+                // 数据库未登过这条数据
+                if (DataRepeatCheckint == 0)
+                {
+                    //不存在
+                    CheckResult = 0;
+                }
+            }
+            #endregion
+            return CheckResult;
         }
 
         /// <summary>
