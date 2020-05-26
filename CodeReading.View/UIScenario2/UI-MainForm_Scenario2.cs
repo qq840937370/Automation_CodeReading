@@ -238,12 +238,12 @@ namespace CodeReading.View
                 if (AutoT.state == AutoTState.AT)
                 {
                     // 全局usedInfodata赋值
-                    usedInfodata.DbId = halconHelpers.usedInfoDbId;         // 表类别
-                    usedInfodata.OtherID = halconHelpers.usedInfoOtherID;   // 模拟主键
-                    usedInfodata.Sign = halconHelpers.usedInfoSign;         // 签字
-                    usedInfodata.TagCode = halconHelpers.usedInfoTagCode;   // 条形码
-                    usedInfodata.HImg = halconHelpers.usedInfoHImg;         // HObject图片
-
+                    usedInfodata.DbId = halconHelpers.usedInfoDbId;             // 表类别
+                    usedInfodata.OtherID = halconHelpers.usedInfoOtherID;       // 模拟主键
+                    usedInfodata.Sign = halconHelpers.usedInfoSign;             // 签字
+                    usedInfodata.TagCode = halconHelpers.usedInfoTagCode;       // 条形码
+                    usedInfodata.HImg = halconHelpers.usedInfoHImg;             // HObject图片
+                    usedInfodata.TagCodeNum= halconHelpers.usedInfoTagCodeNum;  // 条形码数
                     // 全局变量判断变量DbIdstr赋值
                     DbIdstr = usedInfodata.DbId;
                     // 如果是1SHIL

@@ -210,11 +210,11 @@ public partial class HDevelopExport
         {
             HOperatorSet.DumpWindowImage(out HObject miaResult, hv_ExpDefaultWinHandle);
             var result = new UsedInfo();
+            // 表单类型
             result.DbId = "3CWDL";
-            //result.OtherID = "6527815";
+            // 模拟主键
             result.OtherID = hv_DecodedDataStrings;
-            //result.Sign = "1";
-            //result.Sign = hv_sign;
+            // 签字
             if (hv_sign[0] * hv_sign[1] * hv_sign[2] * hv_sign[3] == 1)
             {
                 result.Sign = "1";
@@ -223,8 +223,16 @@ public partial class HDevelopExport
             {
                 result.Sign = "0";
             }
-            //result.TagCode = "110112572371,110112572370,110112572373,110112572375,110112572374,110112572368,110112572369,110112572367,110112572372,";
-            result.TagCode = hv_DecodedDataStrings;
+            // 条形码
+            int TagCodeNum = 0;
+            result.TagCode = "";
+            for (; TagCodeNum < hv_DecodedDataStrings.Length; TagCodeNum++)
+            {
+                result.TagCode += hv_DecodedDataStrings[TagCodeNum].S + ",";
+            }
+            // 条形码数
+            result.TagCodeNum = TagCodeNum.ToString();
+            // 图片
             result.HImg = miaResult;
             usedInfo = result;
         }

@@ -17,6 +17,7 @@ namespace CodeReading.View.BLL.HalconHelper
         public string usedInfoSign = "";
         public string usedInfoTagCode = "";
         public HObject usedInfoHImg = null;
+        public string usedInfoTagCodeNum = "";
         #endregion
         // 相机句柄
         HTuple hv_AcqHandle = null;
@@ -30,7 +31,6 @@ namespace CodeReading.View.BLL.HalconHelper
         public void AutomaticMapRecognitionMethod(HTuple rtaHalconWin, HTuple icsHalconWin, out UsedInfo usedInfo1)
         {
             //Init
-
             HTuple hv_DecodedDataStrings = new HTuple(), hv_Exception = new HTuple();
             HTuple hv_WindowHandle = new HTuple(), hv_AcqHandle = new HTuple();
             hv_WindowHandle = icsHalconWin;
@@ -61,8 +61,6 @@ namespace CodeReading.View.BLL.HalconHelper
 
                 HOperatorSet.GrabImage(out ho_Image, hv_AcqHandle);
 
-                //HOperatorSet.DispObj(ho_Image, rtaHalconWin);
-                //HOperatorSet.DispObj(ho_Image, hv_WindowHandle);
                 //read_image (Image, 'C:/Users/zhang-sh/source/repos/qq840937370/Automation_CodeReading/file/1SHIL.bmp')
                 try
                 {
@@ -78,7 +76,7 @@ namespace CodeReading.View.BLL.HalconHelper
                     //** Class
                     hv_DecodedDataStrings.Dispose();
                     hDevelopExport.image_class_mia(ho_Image, hv_WindowHandle, out hv_DecodedDataStrings);
-
+                    System.Diagnostics.Debug.WriteLine(hv_DecodedDataStrings.ToString());
 
                     //UsedInfo usedInfo  = new    UsedInfo();
 
@@ -92,10 +90,10 @@ namespace CodeReading.View.BLL.HalconHelper
                         usedInfoSign = usedInfo.Sign;
                         usedInfoTagCode = usedInfo.TagCode;
                         usedInfoHImg = usedInfo.HImg;
+                        usedInfoTagCodeNum= usedInfo.TagCodeNum;
                     }
                     //** 2HNCL
-                    else if ((int)(new HTuple(hv_DecodedDataStrings.TupleEqual(
-                        "2HNCL"))) != 0)
+                    else if ((int)(new HTuple(hv_DecodedDataStrings.TupleEqual("2HNCL"))) != 0)
                     {
                         hDevelopExport.image_prog_2HNCL(ho_Image, rtaHalconWin, hv_WindowHandle, out UsedInfo usedInfo);
                         usedInfoDbId = usedInfo.DbId;
@@ -103,9 +101,11 @@ namespace CodeReading.View.BLL.HalconHelper
                         usedInfoSign = usedInfo.Sign;
                         usedInfoTagCode = usedInfo.TagCode;
                         usedInfoHImg = usedInfo.HImg;
+                        usedInfoTagCodeNum = usedInfo.TagCodeNum;
                     }
                     //** 3CWDL
-                    else
+                    
+                    else if ((int)(new HTuple(hv_DecodedDataStrings.TupleEqual("3CWDL"))) != 0)
                     {
                         hDevelopExport.image_prog_3CWDL(ho_Image, rtaHalconWin, hv_WindowHandle, out UsedInfo usedInfo);
                         usedInfoDbId = usedInfo.DbId;
@@ -113,6 +113,12 @@ namespace CodeReading.View.BLL.HalconHelper
                         usedInfoSign = usedInfo.Sign;
                         usedInfoTagCode = usedInfo.TagCode;
                         usedInfoHImg = usedInfo.HImg;
+                        usedInfoTagCodeNum = usedInfo.TagCodeNum;
+                    }
+                    //** 未识别出
+                    else
+                    {
+                        hDevelopExport.image_prog_Null(ho_Image, rtaHalconWin, hv_WindowHandle);
                     }
 
                     //stop ()

@@ -61,6 +61,7 @@
     <Compile Include="BLL\HDevelopExport\image_class_mia.cs" />
     <Compile Include="BLL\HDevelopExport\Image_Display_Datacode.cs" />
     <Compile Include="BLL\HDevelopExport\Image_Get_Bar.cs" />
+    <Compile Include="BLL\HDevelopExport\image_prog_Null.cs" />
     <Compile Include="BLL\HDevelopExport\image_prog_1SHIL.cs" />
     <Compile Include="BLL\HDevelopExport\image_prog_2HNCL.cs" />
     <Compile Include="BLL\HDevelopExport\image_prog_3CWDL.cs" />

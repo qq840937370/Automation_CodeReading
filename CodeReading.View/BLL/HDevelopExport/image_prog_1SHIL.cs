@@ -95,14 +95,17 @@ public partial class HDevelopExport
         , (new HTuple(360)).TupleRad(), 0.3, 1, 0.5, "least_squares", (new HTuple(7)).TupleConcat(
         1), 0.6, out hv_InfoRow, out hv_InfoColumn, out hv_InfoAngle, out hv_InfoScore);
     }
+   
     using (HDevDisposeHelper dh = new HDevDisposeHelper())
     {
     HObject ExpTmpOutVar_0;
     HOperatorSet.RotateImage(ho_ImageOut, out ExpTmpOutVar_0, ((-hv_InfoAngle)).TupleDeg()
         , "constant");
-    ho_ImageOut.Dispose();
+            //System.Diagnostics.Debug.WriteLine(((-hv_InfoAngle)).TupleDeg().ToString());
+            ho_ImageOut.Dispose();
     ho_ImageOut = ExpTmpOutVar_0;
     }
+        
         HOperatorSet.DispObj(ho_ImageOut, rtaHalconWin);
         HOperatorSet.DispObj(ho_ImageOut, hv_ExpDefaultWinHandle);
     //** RECOGNITION
@@ -236,11 +239,11 @@ public partial class HDevelopExport
         {
             HOperatorSet.DumpWindowImage(out HObject miaResult, hv_ExpDefaultWinHandle);
             var result = new UsedInfo();
+            // 表单类型
             result.DbId = "1SHIL";
-            //result.OtherID = "6527815";
+            // 模拟主键
             result.OtherID = hv_Ocr_Split;
-            result.Sign = "1";
-            //System.Diagnostics.Debug.Print("1");
+            // 签字
             if (hv_sign[0] * hv_sign[1] * hv_sign[2] * hv_sign[3] == 1)
             {
                 result.Sign = "1";
@@ -249,12 +252,19 @@ public partial class HDevelopExport
             {
                 result.Sign = "0";
             }
-            //result.TagCode = "110112572371,110112572370,110112572373,110112572375,110112572374,110112572368,110112572369,110112572367,110112572372,";
-            result.TagCode = hv_DecodedDataStrings;
+            int TagCodeNum = 0;
+            // 条形码
+            result.TagCode = "";
+            for (; TagCodeNum < hv_DecodedDataStrings.Length; TagCodeNum++)
+            {
+                result.TagCode += hv_DecodedDataStrings[TagCodeNum].S + ",";
+            }
+            // 条形码数
+            result.TagCodeNum = TagCodeNum.ToString();
+            // 图片
             result.HImg = miaResult;
             usedInfo = result;
         }
-
 
         ho_ImageOut.Dispose();
     ho_InfoModelContours.Dispose();
