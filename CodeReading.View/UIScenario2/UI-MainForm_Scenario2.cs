@@ -253,8 +253,10 @@ namespace CodeReading.View
                     // 全局变量判断变量DbIdstr赋值
                     DbIdstr = usedInfodata.DbId;
 
-                    // 重复扫描检查
-                    if (RepeatCheck()== 0)
+                    // 重复扫描检查（0：不重复；1：“重复”但需要提示已扫描过；2：“重复”停止后续处理）
+                    int repeatCheckint = RepeatCheck();
+                    // 0：不重复
+                    if (repeatCheckint == 0)
                     {
                         // 如果是1SHIL
                         if (DbIdstr == "1SHIL")
@@ -593,6 +595,31 @@ namespace CodeReading.View
                             dgv_CurrentData.Rows.Clear();
                         }
                     }
+                    // 1：“重复”但需要提示已扫描过
+                    else if (repeatCheckint == 1)
+                    {
+                        usedInfodata.Pass = "0";
+                        // 显示相机获取的数据-红色
+                        dgv_CurrentData.Rows.Clear();
+                        DataGridViewRow Row = new DataGridViewRow();
+                        int RowCurindex = dgv_CurrentData.Rows.Add(Row);
+                        dgv_CurrentData.Rows[RowCurindex].Cells["ScanDate"].Value = usedInfodata.ScanDate;
+                        dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
+                        dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
+                        dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
+                        dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                        dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
+                        dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
+                        dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
+                        DataGridViewRow Rowshow = new DataGridViewRow();
+                        int RowCurindexshow = dgv_CurrentData.Rows.Add(Rowshow);
+                        dgv_CurrentData.Rows[RowCurindexshow].Cells["ScanDate"].Value = "查询到此表单数据！";
+                        dgv_CurrentData.Rows[RowCurindexshow].Cells["TagCode"].Value = "此表单数据在数据库已存在，请不要重复输入！";
+                        dgv_CurrentData.Rows[RowCurindexshow].DefaultCellStyle.ForeColor = Color.Yellow;  // 行
+                        // 已扫描文件个数
+                        ImgNumber = ImgNumber + 1;  //已扫描文件：0个
+                        tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
+                    }
                     Thread.Sleep(2500);
                 }
             }
@@ -601,7 +628,7 @@ namespace CodeReading.View
         /// <summary>
         /// 重复扫描检查
         /// </summary>
-        /// <returns>“重复”返回1</returns>
+        /// <returns>0：不重复；1：“重复”但需要提示已扫描过；2：“重复”停止后续处理</returns>
         private int RepeatCheck()
         {
             // 假设不存在
@@ -613,16 +640,27 @@ namespace CodeReading.View
             string usedInfodataOtherID = usedInfodata.OtherID;
             if (RowsCounts>0)
             {
-                for (int RowsCount = 0; RowsCount < RowsCounts; RowsCount++)
+                //除了最后一行以外的值
+                for (int RowsCount = 0; RowsCount < RowsCounts-1; RowsCount++)
                 {
                     string hisyOtherIDstr = dgv_CumulativeData.Rows[RowsCount].Cells["hisyOtherID"].Value.ToString();
 
                     // 未通过
                     if (hisyOtherIDstr == usedInfodataOtherID)
                     {
-                        // 存在，停止后续处理
+                        // 存在，停止后续处理并提示该表单刚扫描过
                         CheckResult = 1;
                         break;
+                    }
+                }
+                // 最后一行
+                if(CheckResult == 0)
+                {
+                    string hisyOtherIDstr = dgv_CumulativeData.Rows[RowsCounts].Cells["hisyOtherID"].Value.ToString();
+                    if (hisyOtherIDstr == usedInfodataOtherID)
+                    {
+                        // 存在，但是上张扫描的一个；停止后续处理
+                        CheckResult = 2;
                     }
                 }
             }
@@ -634,7 +672,7 @@ namespace CodeReading.View
                 // 数据库登过这条数据
                 if (DataRepeatCheckint == 1)
                 {
-                    //存在
+                    //存在，停止后续处理并提示该表单刚扫描过
                     CheckResult = 1;
                 }
                 // 数据库未登过这条数据
