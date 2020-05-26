@@ -206,7 +206,6 @@ public partial class HDevelopExport
         //dump_window_image (ImageResult, WindowHandle)
 
         //stop ()
-
         {
             HOperatorSet.DumpWindowImage(out HObject miaResult, hv_ExpDefaultWinHandle);
             var result = new UsedInfo();
