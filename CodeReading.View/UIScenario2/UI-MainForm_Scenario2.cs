@@ -235,6 +235,7 @@ namespace CodeReading.View
                 // 识图
                 if (AutoT.state == AutoTState.AT)
                 {
+
                     // 全局usedInfodata赋值
                     usedInfodata.DbId = halconHelpers.usedInfoDbId;             // 表类别
                     usedInfodata.OtherID = halconHelpers.usedInfoOtherID;       // 模拟主键
