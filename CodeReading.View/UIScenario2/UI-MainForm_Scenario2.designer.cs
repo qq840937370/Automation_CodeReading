@@ -75,19 +75,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_CurrentData = new System.Windows.Forms.DataGridView();
+            this.ScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.rad_MT = new System.Windows.Forms.RadioButton();
             this.rad_AT = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_CumulativeData = new System.Windows.Forms.DataGridView();
-            this.hisyScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyDbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyOtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyTagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisySign = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl_radpnl = new System.Windows.Forms.Panel();
             this.rad_HNCL = new System.Windows.Forms.RadioButton();
             this.rad_CWDL = new System.Windows.Forms.RadioButton();
@@ -100,13 +100,13 @@
             this.grp1 = new System.Windows.Forms.GroupBox();
             this.hWinctl_RTA = new HalconDotNet.HWindowControl();
             this.bds_CumulativeData = new System.Windows.Forms.BindingSource(this.components);
-            this.ScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sign = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyDbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyOtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyTagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisySign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -491,6 +491,52 @@
             this.dgv_CurrentData.Size = new System.Drawing.Size(1883, 135);
             this.dgv_CurrentData.TabIndex = 18;
             // 
+            // ScanDate
+            // 
+            this.ScanDate.HeaderText = "扫描日期";
+            this.ScanDate.Name = "ScanDate";
+            this.ScanDate.ReadOnly = true;
+            this.ScanDate.Width = 150;
+            // 
+            // DbId
+            // 
+            this.DbId.HeaderText = "录取表单类别";
+            this.DbId.Name = "DbId";
+            this.DbId.ReadOnly = true;
+            this.DbId.Width = 150;
+            // 
+            // OtherID
+            // 
+            this.OtherID.HeaderText = "住院号（模拟主键）";
+            this.OtherID.Name = "OtherID";
+            this.OtherID.ReadOnly = true;
+            this.OtherID.Width = 185;
+            // 
+            // TagCode
+            // 
+            this.TagCode.HeaderText = "条形码";
+            this.TagCode.Name = "TagCode";
+            this.TagCode.Width = 900;
+            // 
+            // Sign
+            // 
+            this.Sign.HeaderText = "签字";
+            this.Sign.Name = "Sign";
+            this.Sign.ReadOnly = true;
+            // 
+            // Pass
+            // 
+            this.Pass.HeaderText = "是否通过";
+            this.Pass.Name = "Pass";
+            // 
+            // FileName
+            // 
+            this.FileName.FillWeight = 150F;
+            this.FileName.HeaderText = "图片名";
+            this.FileName.Name = "FileName";
+            this.FileName.ReadOnly = true;
+            this.FileName.Width = 255;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -563,48 +609,6 @@
             this.dgv_CumulativeData.RowTemplate.Height = 23;
             this.dgv_CumulativeData.Size = new System.Drawing.Size(600, 810);
             this.dgv_CumulativeData.TabIndex = 17;
-            // 
-            // hisyScanDate
-            // 
-            this.hisyScanDate.HeaderText = "扫描日期";
-            this.hisyScanDate.Name = "hisyScanDate";
-            this.hisyScanDate.ReadOnly = true;
-            // 
-            // hisyDbId
-            // 
-            this.hisyDbId.HeaderText = "录取表单类别";
-            this.hisyDbId.Name = "hisyDbId";
-            this.hisyDbId.ReadOnly = true;
-            // 
-            // hisyOtherID
-            // 
-            this.hisyOtherID.HeaderText = "住院号（模拟主键）";
-            this.hisyOtherID.Name = "hisyOtherID";
-            this.hisyOtherID.ReadOnly = true;
-            // 
-            // hisyTagCode
-            // 
-            this.hisyTagCode.HeaderText = "条形码";
-            this.hisyTagCode.Name = "hisyTagCode";
-            this.hisyTagCode.ReadOnly = true;
-            // 
-            // hisySign
-            // 
-            this.hisySign.HeaderText = "签字";
-            this.hisySign.Name = "hisySign";
-            this.hisySign.ReadOnly = true;
-            // 
-            // hisyPass
-            // 
-            this.hisyPass.HeaderText = "是否通过";
-            this.hisyPass.Name = "hisyPass";
-            this.hisyPass.ReadOnly = true;
-            // 
-            // hisyFileName
-            // 
-            this.hisyFileName.HeaderText = "图片名";
-            this.hisyFileName.Name = "hisyFileName";
-            this.hisyFileName.ReadOnly = true;
             // 
             // pnl_radpnl
             // 
@@ -733,51 +737,50 @@
             this.hWinctl_RTA.TabIndex = 0;
             this.hWinctl_RTA.WindowSize = new System.Drawing.Size(620, 810);
             // 
-            // ScanDate
+            // hisyScanDate
             // 
-            this.ScanDate.HeaderText = "扫描日期";
-            this.ScanDate.Name = "ScanDate";
-            this.ScanDate.ReadOnly = true;
-            this.ScanDate.Width = 150;
+            this.hisyScanDate.HeaderText = "扫描日期";
+            this.hisyScanDate.Name = "hisyScanDate";
+            this.hisyScanDate.ReadOnly = true;
+            this.hisyScanDate.Width = 150;
             // 
-            // DbId
+            // hisyDbId
             // 
-            this.DbId.HeaderText = "录取表单类别";
-            this.DbId.Name = "DbId";
-            this.DbId.ReadOnly = true;
-            this.DbId.Width = 150;
+            this.hisyDbId.HeaderText = "录取表单类别";
+            this.hisyDbId.Name = "hisyDbId";
+            this.hisyDbId.ReadOnly = true;
             // 
-            // OtherID
+            // hisyOtherID
             // 
-            this.OtherID.HeaderText = "住院号（模拟主键）";
-            this.OtherID.Name = "OtherID";
-            this.OtherID.ReadOnly = true;
-            this.OtherID.Width = 185;
+            this.hisyOtherID.HeaderText = "住院号（模拟主键）";
+            this.hisyOtherID.Name = "hisyOtherID";
+            this.hisyOtherID.ReadOnly = true;
             // 
-            // TagCode
+            // hisyTagCode
             // 
-            this.TagCode.HeaderText = "条形码";
-            this.TagCode.Name = "TagCode";
-            this.TagCode.Width = 900;
+            this.hisyTagCode.HeaderText = "条形码";
+            this.hisyTagCode.Name = "hisyTagCode";
+            this.hisyTagCode.ReadOnly = true;
             // 
-            // Sign
+            // hisySign
             // 
-            this.Sign.HeaderText = "签字";
-            this.Sign.Name = "Sign";
-            this.Sign.ReadOnly = true;
+            this.hisySign.HeaderText = "签字";
+            this.hisySign.Name = "hisySign";
+            this.hisySign.ReadOnly = true;
+            this.hisySign.Width = 30;
             // 
-            // Pass
+            // hisyPass
             // 
-            this.Pass.HeaderText = "是否通过";
-            this.Pass.Name = "Pass";
+            this.hisyPass.HeaderText = "是否通过";
+            this.hisyPass.Name = "hisyPass";
+            this.hisyPass.ReadOnly = true;
+            this.hisyPass.Width = 60;
             // 
-            // FileName
+            // hisyFileName
             // 
-            this.FileName.FillWeight = 150F;
-            this.FileName.HeaderText = "图片名";
-            this.FileName.Name = "FileName";
-            this.FileName.ReadOnly = true;
-            this.FileName.Width = 255;
+            this.hisyFileName.HeaderText = "图片名";
+            this.hisyFileName.Name = "hisyFileName";
+            this.hisyFileName.ReadOnly = true;
             // 
             // UI_MainForm_Scenario2
             // 
@@ -885,13 +888,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource bds_CumulativeData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisyScanDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisyDbId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisyOtherID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisyTagCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisySign;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisyPass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisyFileName;
         public System.Windows.Forms.DataGridView dgv_CurrentData;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScanDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DbId;
@@ -900,5 +896,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Sign;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyScanDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyDbId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyOtherID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyTagCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisySign;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyPass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyFileName;
     }
 }

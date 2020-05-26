@@ -111,7 +111,11 @@ namespace CodeReading.View
             // 释放相机句柄
             HOperatorSet.CloseAllFramegrabbers();
             Application.Exit();                   // 退出应用
+            // 有时终止进程会异常
+            try { 
             System.Environment.Exit(1);           // 终止此应用进程
+            }
+            catch { }
         }
 
         #region 实时显示内容
@@ -219,7 +223,8 @@ namespace CodeReading.View
             }
             catch (HalconException halExp)
             {
-                MessageBox.Show("图像处理信息获取失败！" + halExp.GetErrorCode() +halExp.GetErrorMessage());
+                //MessageBox.Show("图像处理信息获取失败！" + halExp.GetErrorCode() +halExp.GetErrorMessage());
+                MessageBox.Show("相机未连接或已打开！错误代码："+ halExp.GetErrorCode());
                 tssl_CameraStatus.Text = "扫描信息异常";
             }
         }
@@ -232,7 +237,7 @@ namespace CodeReading.View
             Thread.Sleep(5000);
             while (1 == 1)
             {
-                // 识图
+                // 自动识图
                 if (AutoT.state == AutoTState.AT)
                 {
 
@@ -252,7 +257,7 @@ namespace CodeReading.View
                     // 如果是1SHIL
                     if (DbIdstr == "1SHIL")
                     {
-                        // 查数据
+                        // 数据查询结果为0
                         if (SelectData() == 0) // 未检索到数据
                         {
                             usedInfodata.Pass = "0";
@@ -364,7 +369,7 @@ namespace CodeReading.View
                     // 如果是2HNCL
                     else if (DbIdstr == "2HNCL")
                     {
-                        // 查数据
+                        // 数据查询结果为0
                         if (SelectData() == 0) // 未检索到数据
                         {
                             usedInfodata.Pass = "0";
@@ -471,7 +476,7 @@ namespace CodeReading.View
                     // 如果是3CWDL
                     else if (DbIdstr == "3CWDL")
                     {
-                        // 查数据
+                        // 数据查询结果为0
                         if (SelectData() == 0) // 未检索到数据
                         {
                             usedInfodata.Pass = "0";
