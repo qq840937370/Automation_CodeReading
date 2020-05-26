@@ -224,11 +224,12 @@ public partial class HDevelopExport
             }
             // 条形码
             int TagCodeNum = 0;
-            result.TagCode = "";
-            for (; TagCodeNum < hv_DecodedDataStrings.Length; TagCodeNum++)
-            {
-                result.TagCode += hv_DecodedDataStrings[TagCodeNum].S + ",";
-            }
+            //result.TagCode = "";
+            //for (; TagCodeNum < hv_DecodedDataStrings.Length; TagCodeNum++)
+            //{
+            //    result.TagCode += hv_DecodedDataStrings[TagCodeNum].S + ",";
+            //}
+            result.TagCode = hv_DecodedDataStrings[TagCodeNum].S;
             // 条形码数
             result.TagCodeNum = TagCodeNum.ToString();
             // 图片

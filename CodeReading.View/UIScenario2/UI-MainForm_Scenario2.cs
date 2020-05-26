@@ -105,9 +105,9 @@ namespace CodeReading.View
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
             // 终止数据处理Thread
-            dataProcessingThread.Abort();
+            //dataProcessingThread.Abort();
             // 终止实时影像Thread
-            openThread.Abort();
+            //openThread.Abort();
             // 释放相机句柄
             HOperatorSet.CloseAllFramegrabbers();
             Application.Exit();                   // 退出应用
@@ -601,7 +601,6 @@ namespace CodeReading.View
                 // 検索結果件数判定
                 if (result.DataTable.Rows.Count == 0)
                 {
-                    //MessageBox.Show(" 数据表里没有该条数据 或 表污损严重！", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     // 把扫描到的数据绘制到"当前扫描数据区域"并表底颜色标红
                     return 0;
                 }
@@ -622,7 +621,6 @@ namespace CodeReading.View
                 // 検索結果件数判定
                 if (result.DataTable.Rows.Count == 0)
                 {
-                    //MessageBox.Show(" 数据表里没有该条数据 或 表污损严重！", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     // 把扫描到的数据绘制到"当前扫描数据区域"并表底颜色标红
                     return 0;
                 }
@@ -641,7 +639,6 @@ namespace CodeReading.View
                 // 検索結果件数判定
                 if (result.DataTable.Rows.Count == 0)
                 {
-                    //MessageBox.Show(" 数据表里没有该条数据 或 表污损严重！", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     // 把扫描到的数据绘制到"当前扫描数据区域"并表底颜色标红
                     return 0;
                 }
