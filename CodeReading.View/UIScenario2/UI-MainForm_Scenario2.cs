@@ -615,7 +615,7 @@ namespace CodeReading.View
                         int RowCurindexshow = dgv_CurrentData.Rows.Add(Rowshow);
                         dgv_CurrentData.Rows[RowCurindexshow].Cells["ScanDate"].Value = "查询到此表单数据！";
                         dgv_CurrentData.Rows[RowCurindexshow].Cells["TagCode"].Value = "此表单数据在数据库已存在，请不要重复输入！";
-                        dgv_CurrentData.Rows[RowCurindexshow].DefaultCellStyle.ForeColor = Color.Yellow;  // 行
+                        dgv_CurrentData.Rows[RowCurindexshow].DefaultCellStyle.ForeColor = Color.YellowGreen;  // 行
                         // 已扫描文件个数
                         ImgNumber = ImgNumber + 1;  //已扫描文件：0个
                         tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
@@ -656,7 +656,7 @@ namespace CodeReading.View
                 // 最后一行
                 if(CheckResult == 0)
                 {
-                    string hisyOtherIDstr = dgv_CumulativeData.Rows[RowsCounts].Cells["hisyOtherID"].Value.ToString();
+                    string hisyOtherIDstr = dgv_CumulativeData.Rows[RowsCounts-1].Cells["hisyOtherID"].Value.ToString();
                     if (hisyOtherIDstr == usedInfodataOtherID)
                     {
                         // 存在，但是上张扫描的一个；停止后续处理
