@@ -97,7 +97,7 @@ public partial class HDevelopExport
     ho_ImageOut.Dispose();
     ho_ImageOut = ExpTmpOutVar_0;
     }
-        HOperatorSet.DispObj(ho_ImageOut, rtaHalconWin);
+        // HOperatorSet.DispObj(ho_ImageOut, rtaHalconWin);
         HOperatorSet.DispObj(ho_ImageOut, hv_ExpDefaultWinHandle);
     //** RECOGNITION
     //* BARCODE

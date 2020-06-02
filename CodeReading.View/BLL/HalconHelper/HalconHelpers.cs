@@ -38,7 +38,7 @@ namespace CodeReading.View.BLL.HalconHelper
             #region 相机
             // 释放相机句柄
             HOperatorSet.CloseAllFramegrabbers();
-            HObject ho_Image = null;
+            HObject ho_Image = null, ho_ImageRaw = null;
             HOperatorSet.GenEmptyObj(out ho_Image);
             #endregion
             //***
@@ -67,6 +67,7 @@ namespace CodeReading.View.BLL.HalconHelper
                     {
                         HObject ExpTmpOutVar_0;
                         hDevelopExport.image_cali_map(ho_Image, out ExpTmpOutVar_0, new HTuple(), new HTuple());
+                        HOperatorSet.DispObj(ExpTmpOutVar_0, rtaHalconWin);
                         ho_Image.Dispose();
                         ho_Image = ExpTmpOutVar_0;
                     }
@@ -76,7 +77,9 @@ namespace CodeReading.View.BLL.HalconHelper
                     //** Class
                     hv_DecodedDataStrings.Dispose();
                     hDevelopExport.image_class_mia(ho_Image, hv_WindowHandle, out hv_DecodedDataStrings);
-                    System.Diagnostics.Debug.WriteLine(hv_DecodedDataStrings.ToString());
+                     System.Diagnostics.Debug.WriteLine(hv_DecodedDataStrings.ToString());
+
+
 
                     //UsedInfo usedInfo  = new    UsedInfo();
 

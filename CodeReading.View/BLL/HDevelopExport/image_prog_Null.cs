@@ -76,7 +76,7 @@ public partial class HDevelopExport
     HOperatorSet.SetBarCodeParam(hv_BarCodeHandle, "quiet_zone", "true");
     //* INIT LOC
         
-        HOperatorSet.DispObj(ho_ImageOut, rtaHalconWin);
+        // HOperatorSet.DispObj(ho_ImageOut, rtaHalconWin);
         HOperatorSet.DispObj(ho_ImageOut, hv_ExpDefaultWinHandle);
 
         //dump_window_image(ImageResult, WindowHandle);

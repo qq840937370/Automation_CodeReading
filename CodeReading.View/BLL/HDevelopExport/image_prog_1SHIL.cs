@@ -101,12 +101,13 @@ public partial class HDevelopExport
     HObject ExpTmpOutVar_0;
     HOperatorSet.RotateImage(ho_ImageOut, out ExpTmpOutVar_0, ((-hv_InfoAngle)).TupleDeg()
         , "constant");
-            //System.Diagnostics.Debug.WriteLine(((-hv_InfoAngle)).TupleDeg().ToString());
+            //  System.Diagnostics.Debug.WriteLine(((-hv_InfoAngle)).TupleDeg().ToString());
+            //-353.903324665633
             ho_ImageOut.Dispose();
     ho_ImageOut = ExpTmpOutVar_0;
     }
         
-        HOperatorSet.DispObj(ho_ImageOut, rtaHalconWin);
+        // HOperatorSet.DispObj(ho_ImageOut, rtaHalconWin);
         HOperatorSet.DispObj(ho_ImageOut, hv_ExpDefaultWinHandle);
     //** RECOGNITION
     //* BARCODE

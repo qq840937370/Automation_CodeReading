@@ -64,7 +64,7 @@ public partial class HDevelopExport
         //** PRE
         //find_shape_model (ImageOut, SignModel, rad(0), rad(360), 0.3, 1, 0.5, 'least_squares', [7,1], 0.6, InfoRow, InfoColumn, InfoAngle, InfoScore)
         //rotate_image (ImageOut, ImageOut, deg(-InfoAngle), 'constant')
-        HOperatorSet.DispObj(ho_ImageOut, rtaHalconWin);
+        // HOperatorSet.DispObj(ho_ImageOut, rtaHalconWin);
         HOperatorSet.DispObj(ho_ImageOut, hv_ExpDefaultWinHandle);
     //** RECOGNITION
     //* DataCode

@@ -75,12 +75,26 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_CurrentData = new System.Windows.Forms.DataGridView();
+            this.ScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.rad_MT = new System.Windows.Forms.RadioButton();
             this.rad_AT = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_CumulativeData = new System.Windows.Forms.DataGridView();
+            this.hisyScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyDbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyOtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyTagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisySign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl_radpnl = new System.Windows.Forms.Panel();
             this.rad_HNCL = new System.Windows.Forms.RadioButton();
             this.rad_CWDL = new System.Windows.Forms.RadioButton();
@@ -93,20 +107,6 @@
             this.grp1 = new System.Windows.Forms.GroupBox();
             this.hWinctl_RTA = new HalconDotNet.HWindowControl();
             this.bds_CumulativeData = new System.Windows.Forms.BindingSource(this.components);
-            this.hisyScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyDbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyOtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyTagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisySign = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sign = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -188,33 +188,33 @@
             // tsmi_OpenCamera1
             // 
             this.tsmi_OpenCamera1.Name = "tsmi_OpenCamera1";
-            this.tsmi_OpenCamera1.Size = new System.Drawing.Size(124, 22);
+            this.tsmi_OpenCamera1.Size = new System.Drawing.Size(180, 22);
             this.tsmi_OpenCamera1.Text = "打开相机";
             this.tsmi_OpenCamera1.Click += new System.EventHandler(this.tsmi_OpenCamera_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // tsmi_Auto
             // 
             this.tsmi_Auto.Checked = true;
             this.tsmi_Auto.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmi_Auto.Name = "tsmi_Auto";
-            this.tsmi_Auto.Size = new System.Drawing.Size(124, 22);
+            this.tsmi_Auto.Size = new System.Drawing.Size(180, 22);
             this.tsmi_Auto.Text = "自动捕捉";
             this.tsmi_Auto.Click += new System.EventHandler(this.tsmi_Auto_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
             // 
             // 清除异常ToolStripMenuItem
             // 
             this.清除异常ToolStripMenuItem.Name = "清除异常ToolStripMenuItem";
-            this.清除异常ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.清除异常ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.清除异常ToolStripMenuItem.Text = "清除异常";
             // 
             // 系统ToolStripMenuItem
@@ -231,7 +231,7 @@
             // tsmi_History
             // 
             this.tsmi_History.Name = "tsmi_History";
-            this.tsmi_History.Size = new System.Drawing.Size(124, 22);
+            this.tsmi_History.Size = new System.Drawing.Size(180, 22);
             this.tsmi_History.Text = "扫描记录";
             this.tsmi_History.Click += new System.EventHandler(this.tsmi_History_Click);
             // 
@@ -250,7 +250,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem1
             // 
@@ -260,7 +260,7 @@
             this.对焦ToolStripMenuItem,
             this.灰度ToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "相机设置";
             // 
             // 帧率ToolStripMenuItem
@@ -290,7 +290,7 @@
             // 通信设定ToolStripMenuItem
             // 
             this.通信设定ToolStripMenuItem.Name = "通信设定ToolStripMenuItem";
-            this.通信设定ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.通信设定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.通信设定ToolStripMenuItem.Text = "通信设置";
             // 
             // tsmi_Help
@@ -316,67 +316,67 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem3.Text = "产品帮助";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem4.Text = "产品教程";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem5.Text = "产品反馈";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // tsmi_About
             // 
             this.tsmi_About.Name = "tsmi_About";
-            this.tsmi_About.Size = new System.Drawing.Size(148, 22);
+            this.tsmi_About.Size = new System.Drawing.Size(180, 22);
             this.tsmi_About.Text = "系统信息";
             this.tsmi_About.Click += new System.EventHandler(this.tsmi_About_Click);
             // 
             // 更新ToolStripMenuItem
             // 
             this.更新ToolStripMenuItem.Name = "更新ToolStripMenuItem";
-            this.更新ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.更新ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.更新ToolStripMenuItem.Text = "软件更新";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem6.Text = "管理我的账户";
             // 
             // tsmi_Login
             // 
             this.tsmi_Login.Enabled = false;
             this.tsmi_Login.Name = "tsmi_Login";
-            this.tsmi_Login.Size = new System.Drawing.Size(148, 22);
+            this.tsmi_Login.Size = new System.Drawing.Size(180, 22);
             this.tsmi_Login.Text = "登陆";
             this.tsmi_Login.Click += new System.EventHandler(this.tsmi_Login_Click);
             // 
             // tsmi_Logout
             // 
             this.tsmi_Logout.Name = "tsmi_Logout";
-            this.tsmi_Logout.Size = new System.Drawing.Size(148, 22);
+            this.tsmi_Logout.Size = new System.Drawing.Size(180, 22);
             this.tsmi_Logout.Text = "注销";
             this.tsmi_Logout.Click += new System.EventHandler(this.tsmi_Logout_Click);
             // 
@@ -492,6 +492,52 @@
             this.dgv_CurrentData.Size = new System.Drawing.Size(1883, 135);
             this.dgv_CurrentData.TabIndex = 18;
             // 
+            // ScanDate
+            // 
+            this.ScanDate.HeaderText = "扫描日期";
+            this.ScanDate.Name = "ScanDate";
+            this.ScanDate.ReadOnly = true;
+            this.ScanDate.Width = 150;
+            // 
+            // DbId
+            // 
+            this.DbId.HeaderText = "录取表单类别";
+            this.DbId.Name = "DbId";
+            this.DbId.ReadOnly = true;
+            this.DbId.Width = 150;
+            // 
+            // OtherID
+            // 
+            this.OtherID.HeaderText = "住院号（模拟主键）";
+            this.OtherID.Name = "OtherID";
+            this.OtherID.ReadOnly = true;
+            this.OtherID.Width = 185;
+            // 
+            // TagCode
+            // 
+            this.TagCode.HeaderText = "条形码";
+            this.TagCode.Name = "TagCode";
+            this.TagCode.Width = 900;
+            // 
+            // Sign
+            // 
+            this.Sign.HeaderText = "签字";
+            this.Sign.Name = "Sign";
+            this.Sign.ReadOnly = true;
+            // 
+            // Pass
+            // 
+            this.Pass.HeaderText = "是否通过";
+            this.Pass.Name = "Pass";
+            // 
+            // FileName
+            // 
+            this.FileName.FillWeight = 150F;
+            this.FileName.HeaderText = "图片名";
+            this.FileName.Name = "FileName";
+            this.FileName.ReadOnly = true;
+            this.FileName.Width = 295;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -565,6 +611,51 @@
             this.dgv_CumulativeData.RowTemplate.Height = 23;
             this.dgv_CumulativeData.Size = new System.Drawing.Size(600, 810);
             this.dgv_CumulativeData.TabIndex = 17;
+            // 
+            // hisyScanDate
+            // 
+            this.hisyScanDate.HeaderText = "扫描日期";
+            this.hisyScanDate.Name = "hisyScanDate";
+            this.hisyScanDate.ReadOnly = true;
+            this.hisyScanDate.Width = 150;
+            // 
+            // hisyDbId
+            // 
+            this.hisyDbId.HeaderText = "录取表单类别";
+            this.hisyDbId.Name = "hisyDbId";
+            this.hisyDbId.ReadOnly = true;
+            // 
+            // hisyOtherID
+            // 
+            this.hisyOtherID.HeaderText = "住院号（模拟主键）";
+            this.hisyOtherID.Name = "hisyOtherID";
+            this.hisyOtherID.ReadOnly = true;
+            // 
+            // hisyTagCode
+            // 
+            this.hisyTagCode.HeaderText = "条形码";
+            this.hisyTagCode.Name = "hisyTagCode";
+            this.hisyTagCode.ReadOnly = true;
+            // 
+            // hisySign
+            // 
+            this.hisySign.HeaderText = "签字";
+            this.hisySign.Name = "hisySign";
+            this.hisySign.ReadOnly = true;
+            this.hisySign.Width = 30;
+            // 
+            // hisyPass
+            // 
+            this.hisyPass.HeaderText = "是否通过";
+            this.hisyPass.Name = "hisyPass";
+            this.hisyPass.ReadOnly = true;
+            this.hisyPass.Width = 60;
+            // 
+            // hisyFileName
+            // 
+            this.hisyFileName.HeaderText = "图片名";
+            this.hisyFileName.Name = "hisyFileName";
+            this.hisyFileName.ReadOnly = true;
             // 
             // pnl_radpnl
             // 
@@ -692,97 +783,6 @@
             this.hWinctl_RTA.Size = new System.Drawing.Size(620, 810);
             this.hWinctl_RTA.TabIndex = 0;
             this.hWinctl_RTA.WindowSize = new System.Drawing.Size(620, 810);
-            // 
-            // hisyScanDate
-            // 
-            this.hisyScanDate.HeaderText = "扫描日期";
-            this.hisyScanDate.Name = "hisyScanDate";
-            this.hisyScanDate.ReadOnly = true;
-            this.hisyScanDate.Width = 150;
-            // 
-            // hisyDbId
-            // 
-            this.hisyDbId.HeaderText = "录取表单类别";
-            this.hisyDbId.Name = "hisyDbId";
-            this.hisyDbId.ReadOnly = true;
-            // 
-            // hisyOtherID
-            // 
-            this.hisyOtherID.HeaderText = "住院号（模拟主键）";
-            this.hisyOtherID.Name = "hisyOtherID";
-            this.hisyOtherID.ReadOnly = true;
-            // 
-            // hisyTagCode
-            // 
-            this.hisyTagCode.HeaderText = "条形码";
-            this.hisyTagCode.Name = "hisyTagCode";
-            this.hisyTagCode.ReadOnly = true;
-            // 
-            // hisySign
-            // 
-            this.hisySign.HeaderText = "签字";
-            this.hisySign.Name = "hisySign";
-            this.hisySign.ReadOnly = true;
-            this.hisySign.Width = 30;
-            // 
-            // hisyPass
-            // 
-            this.hisyPass.HeaderText = "是否通过";
-            this.hisyPass.Name = "hisyPass";
-            this.hisyPass.ReadOnly = true;
-            this.hisyPass.Width = 60;
-            // 
-            // hisyFileName
-            // 
-            this.hisyFileName.HeaderText = "图片名";
-            this.hisyFileName.Name = "hisyFileName";
-            this.hisyFileName.ReadOnly = true;
-            // 
-            // ScanDate
-            // 
-            this.ScanDate.HeaderText = "扫描日期";
-            this.ScanDate.Name = "ScanDate";
-            this.ScanDate.ReadOnly = true;
-            this.ScanDate.Width = 150;
-            // 
-            // DbId
-            // 
-            this.DbId.HeaderText = "录取表单类别";
-            this.DbId.Name = "DbId";
-            this.DbId.ReadOnly = true;
-            this.DbId.Width = 150;
-            // 
-            // OtherID
-            // 
-            this.OtherID.HeaderText = "住院号（模拟主键）";
-            this.OtherID.Name = "OtherID";
-            this.OtherID.ReadOnly = true;
-            this.OtherID.Width = 185;
-            // 
-            // TagCode
-            // 
-            this.TagCode.HeaderText = "条形码";
-            this.TagCode.Name = "TagCode";
-            this.TagCode.Width = 900;
-            // 
-            // Sign
-            // 
-            this.Sign.HeaderText = "签字";
-            this.Sign.Name = "Sign";
-            this.Sign.ReadOnly = true;
-            // 
-            // Pass
-            // 
-            this.Pass.HeaderText = "是否通过";
-            this.Pass.Name = "Pass";
-            // 
-            // FileName
-            // 
-            this.FileName.FillWeight = 150F;
-            this.FileName.HeaderText = "图片名";
-            this.FileName.Name = "FileName";
-            this.FileName.ReadOnly = true;
-            this.FileName.Width = 295;
             // 
             // UI_MainForm_Scenario2
             // 
