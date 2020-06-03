@@ -200,7 +200,14 @@ namespace CodeReading.View
         /// </summary>
         private void tsmi_OpenCamera_Click(object sender, EventArgs e)
         {
+            // 使其他线程可以访问窗体控件
             Control.CheckForIllegalCrossThreadCalls = false;
+
+            // 当相机运行时，不可以再次运行
+            if( CameraStatus.state==CameraRunStatus.CameraRunning)
+            {
+                return;
+            }
             // 相机线程
             openThread = new Thread( new ThreadStart(OpenThread));
             openThread.Start();
@@ -218,7 +225,8 @@ namespace CodeReading.View
                 // 识图
                 if (AutoT.state == AutoTState.AT)
                 {
-
+                    // 记录相机状态
+                    CameraStatus.state = CameraRunStatus.CameraRunning;
                     tssl_CameraStatus.Text = "相机已连接";
                     // 自动识图方法-返回
                     halconHelpers.AutomaticMapRecognitionMethod(rtaHalconWin, icsHalconWin,out UsedInfo usedInfo);

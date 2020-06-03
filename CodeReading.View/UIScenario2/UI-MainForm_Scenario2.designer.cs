@@ -87,6 +87,14 @@
             this.rad_MT = new System.Windows.Forms.RadioButton();
             this.rad_AT = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgv_CumulativeData = new System.Windows.Forms.DataGridView();
+            this.hisyScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyDbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyOtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyTagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisySign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl_radpnl = new System.Windows.Forms.Panel();
             this.rad_HNCL = new System.Windows.Forms.RadioButton();
             this.rad_CWDL = new System.Windows.Forms.RadioButton();
@@ -99,14 +107,6 @@
             this.grp1 = new System.Windows.Forms.GroupBox();
             this.hWinctl_RTA = new HalconDotNet.HWindowControl();
             this.bds_CumulativeData = new System.Windows.Forms.BindingSource(this.components);
-            this.hisyFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisySign = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyTagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyOtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyDbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_CumulativeData = new System.Windows.Forms.DataGridView();
             this.panelMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -116,12 +116,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_CumulativeData)).BeginInit();
             this.pnl_radpnl.SuspendLayout();
             this.grp2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.grp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bds_CumulativeData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_CumulativeData)).BeginInit();
             this.SuspendLayout();
             // 
             // openProjectFileDialog
@@ -430,14 +430,14 @@
             this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Navy;
             this.toolStripStatusLabel1.Margin = new System.Windows.Forms.Padding(40, 3, 0, 2);
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(92, 17);
-            this.toolStripStatusLabel1.Text = "识别到是{ }文件";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(68, 17);
+            this.toolStripStatusLabel1.Text = "请放上文件";
             // 
             // tsErrMessage
             // 
             this.tsErrMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
             this.tsErrMessage.Name = "tsErrMessage";
-            this.tsErrMessage.Size = new System.Drawing.Size(1382, 17);
+            this.tsErrMessage.Size = new System.Drawing.Size(1375, 17);
             this.tsErrMessage.Spring = true;
             // 
             // tslbl_Time
@@ -591,6 +591,73 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "扫描数据统计";
             // 
+            // dgv_CumulativeData
+            // 
+            this.dgv_CumulativeData.AllowUserToAddRows = false;
+            this.dgv_CumulativeData.AllowUserToDeleteRows = false;
+            this.dgv_CumulativeData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_CumulativeData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.hisyScanDate,
+            this.hisyDbId,
+            this.hisyOtherID,
+            this.hisyTagCode,
+            this.hisySign,
+            this.hisyPass,
+            this.hisyFileName});
+            this.dgv_CumulativeData.Location = new System.Drawing.Point(7, 17);
+            this.dgv_CumulativeData.Name = "dgv_CumulativeData";
+            this.dgv_CumulativeData.ReadOnly = true;
+            this.dgv_CumulativeData.RowHeadersVisible = false;
+            this.dgv_CumulativeData.RowTemplate.Height = 23;
+            this.dgv_CumulativeData.Size = new System.Drawing.Size(583, 810);
+            this.dgv_CumulativeData.TabIndex = 17;
+            // 
+            // hisyScanDate
+            // 
+            this.hisyScanDate.HeaderText = "扫描日期";
+            this.hisyScanDate.Name = "hisyScanDate";
+            this.hisyScanDate.ReadOnly = true;
+            this.hisyScanDate.Width = 150;
+            // 
+            // hisyDbId
+            // 
+            this.hisyDbId.HeaderText = "录取表单类别";
+            this.hisyDbId.Name = "hisyDbId";
+            this.hisyDbId.ReadOnly = true;
+            this.hisyDbId.Width = 105;
+            // 
+            // hisyOtherID
+            // 
+            this.hisyOtherID.HeaderText = "住院号（模拟主键）";
+            this.hisyOtherID.Name = "hisyOtherID";
+            this.hisyOtherID.ReadOnly = true;
+            // 
+            // hisyTagCode
+            // 
+            this.hisyTagCode.HeaderText = "条形码";
+            this.hisyTagCode.Name = "hisyTagCode";
+            this.hisyTagCode.ReadOnly = true;
+            // 
+            // hisySign
+            // 
+            this.hisySign.HeaderText = "签字";
+            this.hisySign.Name = "hisySign";
+            this.hisySign.ReadOnly = true;
+            this.hisySign.Width = 60;
+            // 
+            // hisyPass
+            // 
+            this.hisyPass.HeaderText = "是否通过";
+            this.hisyPass.Name = "hisyPass";
+            this.hisyPass.ReadOnly = true;
+            this.hisyPass.Width = 60;
+            // 
+            // hisyFileName
+            // 
+            this.hisyFileName.HeaderText = "图片名";
+            this.hisyFileName.Name = "hisyFileName";
+            this.hisyFileName.ReadOnly = true;
+            // 
             // pnl_radpnl
             // 
             this.pnl_radpnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -718,73 +785,6 @@
             this.hWinctl_RTA.TabIndex = 0;
             this.hWinctl_RTA.WindowSize = new System.Drawing.Size(620, 810);
             // 
-            // hisyFileName
-            // 
-            this.hisyFileName.HeaderText = "图片名";
-            this.hisyFileName.Name = "hisyFileName";
-            this.hisyFileName.ReadOnly = true;
-            // 
-            // hisyPass
-            // 
-            this.hisyPass.HeaderText = "是否通过";
-            this.hisyPass.Name = "hisyPass";
-            this.hisyPass.ReadOnly = true;
-            this.hisyPass.Width = 60;
-            // 
-            // hisySign
-            // 
-            this.hisySign.HeaderText = "签字";
-            this.hisySign.Name = "hisySign";
-            this.hisySign.ReadOnly = true;
-            this.hisySign.Width = 60;
-            // 
-            // hisyTagCode
-            // 
-            this.hisyTagCode.HeaderText = "条形码";
-            this.hisyTagCode.Name = "hisyTagCode";
-            this.hisyTagCode.ReadOnly = true;
-            // 
-            // hisyOtherID
-            // 
-            this.hisyOtherID.HeaderText = "住院号（模拟主键）";
-            this.hisyOtherID.Name = "hisyOtherID";
-            this.hisyOtherID.ReadOnly = true;
-            // 
-            // hisyDbId
-            // 
-            this.hisyDbId.HeaderText = "录取表单类别";
-            this.hisyDbId.Name = "hisyDbId";
-            this.hisyDbId.ReadOnly = true;
-            this.hisyDbId.Width = 105;
-            // 
-            // hisyScanDate
-            // 
-            this.hisyScanDate.HeaderText = "扫描日期";
-            this.hisyScanDate.Name = "hisyScanDate";
-            this.hisyScanDate.ReadOnly = true;
-            this.hisyScanDate.Width = 150;
-            // 
-            // dgv_CumulativeData
-            // 
-            this.dgv_CumulativeData.AllowUserToAddRows = false;
-            this.dgv_CumulativeData.AllowUserToDeleteRows = false;
-            this.dgv_CumulativeData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_CumulativeData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.hisyScanDate,
-            this.hisyDbId,
-            this.hisyOtherID,
-            this.hisyTagCode,
-            this.hisySign,
-            this.hisyPass,
-            this.hisyFileName});
-            this.dgv_CumulativeData.Location = new System.Drawing.Point(7, 17);
-            this.dgv_CumulativeData.Name = "dgv_CumulativeData";
-            this.dgv_CumulativeData.ReadOnly = true;
-            this.dgv_CumulativeData.RowHeadersVisible = false;
-            this.dgv_CumulativeData.RowTemplate.Height = 23;
-            this.dgv_CumulativeData.Size = new System.Drawing.Size(583, 810);
-            this.dgv_CumulativeData.TabIndex = 17;
-            // 
             // UI_MainForm_Scenario2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -814,6 +814,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_CumulativeData)).EndInit();
             this.pnl_radpnl.ResumeLayout(false);
             this.pnl_radpnl.PerformLayout();
             this.grp2.ResumeLayout(false);
@@ -821,7 +822,6 @@
             this.menuStrip2.PerformLayout();
             this.grp1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bds_CumulativeData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_CumulativeData)).EndInit();
             this.ResumeLayout(false);
 
         }

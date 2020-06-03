@@ -16,6 +16,27 @@ using System.Runtime.Serialization;
 
 namespace CodeReading.Entity
 {
+    #region 相机运行状态分类
+    [DataContract]
+    public enum CameraRunStatus
+    {
+        [DataMember]
+        CameraRunning,
+        [DataMember]
+        CameraNotRunning
+    }
+    /// <summary>
+    /// 相机运行状态
+    /// </summary>
+    /// CameraRunning-相机运行
+    /// CameraNotRunning-相机未运行
+    [DataContract]
+    public class CameraStatus
+    {
+        [DataMember]
+        public static CameraRunStatus state = CameraRunStatus.CameraNotRunning;
+    }
+    #endregion
     #region 是否需要"保存数据"
     [DataContract]
     public enum SaveDataState
