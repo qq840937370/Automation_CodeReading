@@ -6,11 +6,12 @@
         <xs:element msdata:Locale="zh-Hans" name="SearchList">
           <xs:complexType>
             <xs:sequence>
-              <xs:element minOccurs="0" name="ScanDate" type="xs:string" />
-              <xs:element minOccurs="0" name="HospitalNo" type="xs:string" />
+              <xs:element minOccurs="0" name="DbId" type="xs:string" />
+              <xs:element minOccurs="0" name="OtherID" type="xs:string" />
               <xs:element minOccurs="0" name="TagCode" type="xs:string" />
-              <xs:element minOccurs="0" name="Signed" type="xs:double" />
-              <xs:element minOccurs="0" name="Pass" type="xs:double" />
+              <xs:element minOccurs="0" name="Signed" type="xs:string" />
+              <xs:element minOccurs="0" name="Pass" type="xs:string" />
+              <xs:element minOccurs="0" name="ScanDate" type="xs:string" />
               <xs:element minOccurs="0" name="FileName" type="xs:string" />
             </xs:sequence>
           </xs:complexType>

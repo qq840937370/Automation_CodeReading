@@ -77,11 +77,7 @@ namespace CodeReading.View.BLL.HalconHelper
                     //** Class
                     hv_DecodedDataStrings.Dispose();
                     hDevelopExport.image_class_mia(ho_Image, hv_WindowHandle, out hv_DecodedDataStrings);
-                     System.Diagnostics.Debug.WriteLine(hv_DecodedDataStrings.ToString());
-
-
-
-                    //UsedInfo usedInfo  = new    UsedInfo();
+                    // System.Diagnostics.Debug.WriteLine(hv_DecodedDataStrings.ToString());  //查看hv_DecodedDataStrings值
 
                     //*** Progress
                     //** 1SHIL

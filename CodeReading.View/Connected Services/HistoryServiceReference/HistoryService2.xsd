@@ -10,10 +10,14 @@
   <xs:element name="InitializeResult" nillable="true" type="tns:InitializeResult" />
   <xs:complexType name="SearchConditions">
     <xs:sequence>
-      <xs:element minOccurs="0" name="DtpFrom" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DtpTo" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="HospitalizationNumber" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="KojoCd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HsDbId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HsDtpFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HsDtpTo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HsOther1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HsOther2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HsOtherID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HsPass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HsSigned" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SearchConditions" nillable="true" type="tns:SearchConditions" />

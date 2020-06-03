@@ -284,15 +284,17 @@ namespace CodeReading.Entity {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class SearchListDataTable : global::System.Data.TypedTableBase<SearchListRow> {
             
-            private global::System.Data.DataColumn columnScanDate;
+            private global::System.Data.DataColumn columnDbId;
             
-            private global::System.Data.DataColumn columnHospitalNo;
+            private global::System.Data.DataColumn columnOtherID;
             
             private global::System.Data.DataColumn columnTagCode;
             
             private global::System.Data.DataColumn columnSigned;
             
             private global::System.Data.DataColumn columnPass;
+            
+            private global::System.Data.DataColumn columnScanDate;
             
             private global::System.Data.DataColumn columnFileName;
             
@@ -331,17 +333,17 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ScanDateColumn {
+            public global::System.Data.DataColumn DbIdColumn {
                 get {
-                    return this.columnScanDate;
+                    return this.columnDbId;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn HospitalNoColumn {
+            public global::System.Data.DataColumn OtherIDColumn {
                 get {
-                    return this.columnHospitalNo;
+                    return this.columnOtherID;
                 }
             }
             
@@ -366,6 +368,14 @@ namespace CodeReading.Entity {
             public global::System.Data.DataColumn PassColumn {
                 get {
                     return this.columnPass;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ScanDateColumn {
+                get {
+                    return this.columnScanDate;
                 }
             }
             
@@ -414,14 +424,15 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SearchListRow AddSearchListRow(string ScanDate, string HospitalNo, string TagCode, double Signed, double Pass, string FileName) {
+            public SearchListRow AddSearchListRow(string DbId, string OtherID, string TagCode, string Signed, string Pass, string ScanDate, string FileName) {
                 SearchListRow rowSearchListRow = ((SearchListRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ScanDate,
-                        HospitalNo,
+                        DbId,
+                        OtherID,
                         TagCode,
                         Signed,
                         Pass,
+                        ScanDate,
                         FileName};
                 rowSearchListRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSearchListRow);
@@ -445,27 +456,30 @@ namespace CodeReading.Entity {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnScanDate = base.Columns["ScanDate"];
-                this.columnHospitalNo = base.Columns["HospitalNo"];
+                this.columnDbId = base.Columns["DbId"];
+                this.columnOtherID = base.Columns["OtherID"];
                 this.columnTagCode = base.Columns["TagCode"];
                 this.columnSigned = base.Columns["Signed"];
                 this.columnPass = base.Columns["Pass"];
+                this.columnScanDate = base.Columns["ScanDate"];
                 this.columnFileName = base.Columns["FileName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnScanDate = new global::System.Data.DataColumn("ScanDate", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnScanDate);
-                this.columnHospitalNo = new global::System.Data.DataColumn("HospitalNo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHospitalNo);
+                this.columnDbId = new global::System.Data.DataColumn("DbId", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDbId);
+                this.columnOtherID = new global::System.Data.DataColumn("OtherID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOtherID);
                 this.columnTagCode = new global::System.Data.DataColumn("TagCode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTagCode);
-                this.columnSigned = new global::System.Data.DataColumn("Signed", typeof(double), null, global::System.Data.MappingType.Element);
+                this.columnSigned = new global::System.Data.DataColumn("Signed", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSigned);
-                this.columnPass = new global::System.Data.DataColumn("Pass", typeof(double), null, global::System.Data.MappingType.Element);
+                this.columnPass = new global::System.Data.DataColumn("Pass", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPass);
+                this.columnScanDate = new global::System.Data.DataColumn("ScanDate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnScanDate);
                 this.columnFileName = new global::System.Data.DataColumn("FileName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFileName);
                 this.Locale = new global::System.Globalization.CultureInfo("zh-Hans");
@@ -611,33 +625,33 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string ScanDate {
+            public string DbId {
                 get {
                     try {
-                        return ((string)(this[this.tableSearchList.ScanDateColumn]));
+                        return ((string)(this[this.tableSearchList.DbIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“SearchList”中列“ScanDate”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“SearchList”中列“DbId”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableSearchList.ScanDateColumn] = value;
+                    this[this.tableSearchList.DbIdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string HospitalNo {
+            public string OtherID {
                 get {
                     try {
-                        return ((string)(this[this.tableSearchList.HospitalNoColumn]));
+                        return ((string)(this[this.tableSearchList.OtherIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“SearchList”中列“HospitalNo”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“SearchList”中列“OtherID”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableSearchList.HospitalNoColumn] = value;
+                    this[this.tableSearchList.OtherIDColumn] = value;
                 }
             }
             
@@ -659,10 +673,10 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double Signed {
+            public string Signed {
                 get {
                     try {
-                        return ((double)(this[this.tableSearchList.SignedColumn]));
+                        return ((string)(this[this.tableSearchList.SignedColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“SearchList”中列“Signed”的值为 DBNull。", e);
@@ -675,10 +689,10 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double Pass {
+            public string Pass {
                 get {
                     try {
-                        return ((double)(this[this.tableSearchList.PassColumn]));
+                        return ((string)(this[this.tableSearchList.PassColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“SearchList”中列“Pass”的值为 DBNull。", e);
@@ -686,6 +700,22 @@ namespace CodeReading.Entity {
                 }
                 set {
                     this[this.tableSearchList.PassColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ScanDate {
+                get {
+                    try {
+                        return ((string)(this[this.tableSearchList.ScanDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“SearchList”中列“ScanDate”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableSearchList.ScanDateColumn] = value;
                 }
             }
             
@@ -707,26 +737,26 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsScanDateNull() {
-                return this.IsNull(this.tableSearchList.ScanDateColumn);
+            public bool IsDbIdNull() {
+                return this.IsNull(this.tableSearchList.DbIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetScanDateNull() {
-                this[this.tableSearchList.ScanDateColumn] = global::System.Convert.DBNull;
+            public void SetDbIdNull() {
+                this[this.tableSearchList.DbIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsHospitalNoNull() {
-                return this.IsNull(this.tableSearchList.HospitalNoColumn);
+            public bool IsOtherIDNull() {
+                return this.IsNull(this.tableSearchList.OtherIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetHospitalNoNull() {
-                this[this.tableSearchList.HospitalNoColumn] = global::System.Convert.DBNull;
+            public void SetOtherIDNull() {
+                this[this.tableSearchList.OtherIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -763,6 +793,18 @@ namespace CodeReading.Entity {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetPassNull() {
                 this[this.tableSearchList.PassColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsScanDateNull() {
+                return this.IsNull(this.tableSearchList.ScanDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetScanDateNull() {
+                this[this.tableSearchList.ScanDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

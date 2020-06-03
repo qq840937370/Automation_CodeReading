@@ -2,6 +2,7 @@
 using CodeReading.Entity.History;
 using CodeReading.View.DAL;
 using CodeReading.View.HistoryServiceReference;
+using HalconDotNet;
 using System;
 using System.Windows.Forms;
 
@@ -13,7 +14,11 @@ namespace CodeReading.View
         /// <summary>
         /// 检索结果
         /// </summary>
-        public const string SearchResultsCount = "检索结果：{0}件";
+        public const string SearchResultsCount = "查询结果：{0}件";
+        /// <summary>
+        /// 全局图像类型变量
+        /// </summary>
+        HObject ho_Image;
         #endregion
 
         #region 成员变量
@@ -69,14 +74,16 @@ namespace CodeReading.View
             var client = new HistoryServiceClient();
             LoginInfo loginInfo=new LoginInfo();
             var result = client.Initialize(loginInfo);
-            // 
+            // 系统时间
             systime = result.SysDate;
             // 获取检索结果最大行数
             maxLowCount = result.MaxRowsCount;
 
-            // 测试
-            label6.Text = "当前时间Test"+systime.ToLongTimeString();
-            label7.Text = "最大结果数Test" + maxLowCount.ToString();
+            dtpDtp_From.Value = systime;
+            dtpDtp_To.Value = systime;
+            cmb_DbId.SelectedItem = cmb_DbId.Items[0];  // “表单类别”默认选中全部
+            cmb_Sign.SelectedItem = cmb_Sign.Items[0];  // “有无签字”默认选中全部
+            cmb_Pass.SelectedItem = cmb_Pass.Items[0];  // “是否通过”默认选中全部
         }
 
         /// <summary>
@@ -127,22 +134,21 @@ namespace CodeReading.View
                     return;
                 }
 
-                // 检索结果表示
+                // 检索结果赋给本类数据列表显示用 数据表
                 dtDetail = result.SearchData;
 
                 // 清空数据显示列表
                 ClearGrid();
-
                 // 绑定新数据
                 detailBindingSource.DataSource = dtDetail;
-                dgv_Historys.DataSource = detailBindingSource;
+                dgv_HistoryTable.DataSource= detailBindingSource.DataSource;
+                detailBindingSource.ResetBindings(true);
+
                 // 检索结果数目显示
                 lbl_ResultsCount.Text = String.Format(SearchResultsCount, dtDetail.Count);
 
-                // 设定dgv_Historys的ReadOnly
-
                 // 焦点转移到数据表的第一行
-                dgv_Historys.Focus();
+                dgv_HistoryTable.Focus();
             }
             finally
             {
@@ -157,7 +163,7 @@ namespace CodeReading.View
         private void ClearGrid()
         {
             detailBindingSource.DataSource = new HistoryDataSet.SearchListDataTable();
-            dgv_Historys.DataSource=detailBindingSource;
+            dgv_HistoryTable.DataSource=detailBindingSource;
             detailBindingSource.ResetBindings(true);
         }
 
@@ -166,10 +172,54 @@ namespace CodeReading.View
         /// </summary>
         private void SetSerarchConditions()
         {
-            searchConditions.KojoCd ="医院编号1";                                           // 工厂
-            searchConditions.HospitalizationNumber =txt_HospitalNo.Text.ToString();         // 住院号
-            searchConditions.DtpFrom = dtpDtp_From.Value.ToString("yyyyMMddHHmmssfff");     // 扫描开始时刻
-            searchConditions.DtpTo = dtpDtp_To.Value.ToString("yyyyMMddHHmmssfff");         // 扫描结束时刻
+            searchConditions.HsDtpFrom =dtpDtp_From.Value.ToString("yyyyMMddHHmmssfff");     // 扫描开始时刻
+            searchConditions.HsDtpTo = dtpDtp_To.Value.ToString("yyyyMMddHHmmssfff");        // 扫描结束时刻
+
+            //searchConditions.HsDbId = cmb_DbId.SelectedItem.ToString();                      // 表单类型
+            switch (cmb_DbId.SelectedItem.ToString())
+            {
+                case "全部":
+                    searchConditions.HsDbId = "";                      // 表单类型
+                    break;
+                case "跟台人体植入物使用清单":
+                    searchConditions.HsDbId = "1SHIL";                 // 表单类型
+                    break;
+                case "高净值耗材使用清单":
+                    searchConditions.HsDbId = "2HNCL";                 // 表单类型
+                    break;
+                case "耗材仓库配送出库单":
+                    searchConditions.HsDbId = "3CWDL";                 // 表单类型
+                    break;
+            }
+            searchConditions.HsOtherID = txt_HospitalizationNum.Text.ToString();             // 模拟主键
+            // 签名确认
+            switch (cmb_Sign.SelectedItem.ToString())
+            {
+                case "全部":
+                    searchConditions.HsSigned = "";                // 全部
+                    break;
+                case "已签字":
+                    searchConditions.HsSigned = "1";               // 已签字
+                    break;
+                case "未签字":
+                    searchConditions.HsSigned = "0";               // 未签字
+                    break;
+            }
+            // 是否通过
+            switch (cmb_Pass.SelectedItem.ToString())
+            {
+                case "全部":
+                    searchConditions.HsPass = "";                // 全部
+                    break;
+                case "通过":
+                    searchConditions.HsPass = "1";               // 通过
+                    break;
+                case "未通过":
+                    searchConditions.HsPass = "0";               // 未通过
+                    break;
+            }
+            searchConditions.HsOther1 = txt_Other1.Text.ToString();                         // 模拟查询条件1
+            searchConditions.HsOther2 = txt_Other2.Text.ToString();                         // 模拟查询条件2
         }
 
         /// <summary>
@@ -206,6 +256,37 @@ namespace CodeReading.View
         {
             // 焦点在"检索"按钮
             btn_Search.Focus();
+        }
+        /// <summary>
+        /// 单击单元格任意位置时，显示图片
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgv_HistoryTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 选中列头时，RowIndex是-1
+            if (e.RowIndex > -1)
+            {
+                string SelectedCells = dgv_HistoryTable.Rows[e.RowIndex].Cells["FileName"].Value.ToString();
+                //txt_Other1.Text = SelectedCells;    // 显示下 SelectedCells值
+                //try
+                //{
+
+                //}
+                //catch
+                //{
+
+                //}
+                #region 初始化图像变量
+                HOperatorSet.GenEmptyObj(out ho_Image);              // 初始化 图像类型变量
+                ho_Image.Dispose();                                  // 图像类型变量资源清空
+                HOperatorSet.ReadImage(out ho_Image, "C:/Users/Public/" + SelectedCells);    // 读入图像文件  readimage目录 C:\Users\Public\Documents\MVTec\HALCON - 18.11 - Steady\examples\images
+                #endregion
+
+                // 显示图像
+                hWinctl_HistoryBMP.HalconWindow.DispObj(ho_Image);
+                ho_Image.Dispose();
+            }
         }
     }
 }

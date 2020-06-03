@@ -87,14 +87,6 @@
             this.rad_MT = new System.Windows.Forms.RadioButton();
             this.rad_AT = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgv_CumulativeData = new System.Windows.Forms.DataGridView();
-            this.hisyScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyDbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyOtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyTagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisySign = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hisyFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl_radpnl = new System.Windows.Forms.Panel();
             this.rad_HNCL = new System.Windows.Forms.RadioButton();
             this.rad_CWDL = new System.Windows.Forms.RadioButton();
@@ -107,6 +99,14 @@
             this.grp1 = new System.Windows.Forms.GroupBox();
             this.hWinctl_RTA = new HalconDotNet.HWindowControl();
             this.bds_CumulativeData = new System.Windows.Forms.BindingSource(this.components);
+            this.hisyFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisySign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyTagCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyOtherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyDbId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hisyScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_CumulativeData = new System.Windows.Forms.DataGridView();
             this.panelMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -116,12 +116,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_CumulativeData)).BeginInit();
             this.pnl_radpnl.SuspendLayout();
             this.grp2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.grp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bds_CumulativeData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_CumulativeData)).BeginInit();
             this.SuspendLayout();
             // 
             // openProjectFileDialog
@@ -151,7 +151,7 @@
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1920, 1080);
+            this.panelMain.Size = new System.Drawing.Size(1900, 1037);
             this.panelMain.TabIndex = 9;
             // 
             // menuStrip1
@@ -166,7 +166,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Margin = new System.Windows.Forms.Padding(20, 0, 0, 20);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1920, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1900, 25);
             this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -188,33 +188,33 @@
             // tsmi_OpenCamera1
             // 
             this.tsmi_OpenCamera1.Name = "tsmi_OpenCamera1";
-            this.tsmi_OpenCamera1.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_OpenCamera1.Size = new System.Drawing.Size(124, 22);
             this.tsmi_OpenCamera1.Text = "打开相机";
             this.tsmi_OpenCamera1.Click += new System.EventHandler(this.tsmi_OpenCamera_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(121, 6);
             // 
             // tsmi_Auto
             // 
             this.tsmi_Auto.Checked = true;
             this.tsmi_Auto.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmi_Auto.Name = "tsmi_Auto";
-            this.tsmi_Auto.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_Auto.Size = new System.Drawing.Size(124, 22);
             this.tsmi_Auto.Text = "自动捕捉";
             this.tsmi_Auto.Click += new System.EventHandler(this.tsmi_Auto_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(121, 6);
             // 
             // 清除异常ToolStripMenuItem
             // 
             this.清除异常ToolStripMenuItem.Name = "清除异常ToolStripMenuItem";
-            this.清除异常ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.清除异常ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.清除异常ToolStripMenuItem.Text = "清除异常";
             // 
             // 系统ToolStripMenuItem
@@ -231,7 +231,7 @@
             // tsmi_History
             // 
             this.tsmi_History.Name = "tsmi_History";
-            this.tsmi_History.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_History.Size = new System.Drawing.Size(124, 22);
             this.tsmi_History.Text = "扫描记录";
             this.tsmi_History.Click += new System.EventHandler(this.tsmi_History_Click);
             // 
@@ -250,7 +250,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(121, 6);
             // 
             // toolStripMenuItem1
             // 
@@ -260,7 +260,7 @@
             this.对焦ToolStripMenuItem,
             this.灰度ToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
             this.toolStripMenuItem1.Text = "相机设置";
             // 
             // 帧率ToolStripMenuItem
@@ -290,7 +290,7 @@
             // 通信设定ToolStripMenuItem
             // 
             this.通信设定ToolStripMenuItem.Name = "通信设定ToolStripMenuItem";
-            this.通信设定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.通信设定ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.通信设定ToolStripMenuItem.Text = "通信设置";
             // 
             // tsmi_Help
@@ -316,67 +316,67 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(145, 6);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(148, 22);
             this.toolStripMenuItem3.Text = "产品帮助";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(148, 22);
             this.toolStripMenuItem4.Text = "产品教程";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(148, 22);
             this.toolStripMenuItem5.Text = "产品反馈";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(145, 6);
             // 
             // tsmi_About
             // 
             this.tsmi_About.Name = "tsmi_About";
-            this.tsmi_About.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_About.Size = new System.Drawing.Size(148, 22);
             this.tsmi_About.Text = "系统信息";
             this.tsmi_About.Click += new System.EventHandler(this.tsmi_About_Click);
             // 
             // 更新ToolStripMenuItem
             // 
             this.更新ToolStripMenuItem.Name = "更新ToolStripMenuItem";
-            this.更新ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.更新ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.更新ToolStripMenuItem.Text = "软件更新";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(145, 6);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(148, 22);
             this.toolStripMenuItem6.Text = "管理我的账户";
             // 
             // tsmi_Login
             // 
             this.tsmi_Login.Enabled = false;
             this.tsmi_Login.Name = "tsmi_Login";
-            this.tsmi_Login.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_Login.Size = new System.Drawing.Size(148, 22);
             this.tsmi_Login.Text = "登陆";
             this.tsmi_Login.Click += new System.EventHandler(this.tsmi_Login_Click);
             // 
             // tsmi_Logout
             // 
             this.tsmi_Logout.Name = "tsmi_Logout";
-            this.tsmi_Logout.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_Logout.Size = new System.Drawing.Size(148, 22);
             this.tsmi_Logout.Text = "注销";
             this.tsmi_Logout.Click += new System.EventHandler(this.tsmi_Logout_Click);
             // 
@@ -391,9 +391,9 @@
             this.toolStripStatusLabel1,
             this.tsErrMessage,
             this.tslbl_Time});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 1058);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1015);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1920, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1900, 22);
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -437,7 +437,7 @@
             // 
             this.tsErrMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
             this.tsErrMessage.Name = "tsErrMessage";
-            this.tsErrMessage.Size = new System.Drawing.Size(1402, 17);
+            this.tsErrMessage.Size = new System.Drawing.Size(1382, 17);
             this.tsErrMessage.Spring = true;
             // 
             // tslbl_Time
@@ -468,7 +468,7 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(12, 873);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1896, 161);
+            this.groupBox2.Size = new System.Drawing.Size(1876, 114);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "当前扫描数据";
@@ -489,7 +489,7 @@
             this.dgv_CurrentData.Name = "dgv_CurrentData";
             this.dgv_CurrentData.RowHeadersVisible = false;
             this.dgv_CurrentData.RowTemplate.Height = 23;
-            this.dgv_CurrentData.Size = new System.Drawing.Size(1883, 135);
+            this.dgv_CurrentData.Size = new System.Drawing.Size(1863, 94);
             this.dgv_CurrentData.TabIndex = 18;
             // 
             // ScanDate
@@ -536,7 +536,7 @@
             this.FileName.HeaderText = "图片名";
             this.FileName.Name = "FileName";
             this.FileName.ReadOnly = true;
-            this.FileName.Width = 295;
+            this.FileName.Width = 275;
             // 
             // dataGridView1
             // 
@@ -586,76 +586,10 @@
             this.groupBox1.Controls.Add(this.dgv_CumulativeData);
             this.groupBox1.Location = new System.Drawing.Point(1292, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(616, 836);
+            this.groupBox1.Size = new System.Drawing.Size(596, 836);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "扫描数据统计";
-            // 
-            // dgv_CumulativeData
-            // 
-            this.dgv_CumulativeData.AllowUserToAddRows = false;
-            this.dgv_CumulativeData.AllowUserToDeleteRows = false;
-            this.dgv_CumulativeData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_CumulativeData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.hisyScanDate,
-            this.hisyDbId,
-            this.hisyOtherID,
-            this.hisyTagCode,
-            this.hisySign,
-            this.hisyPass,
-            this.hisyFileName});
-            this.dgv_CumulativeData.Location = new System.Drawing.Point(7, 17);
-            this.dgv_CumulativeData.Name = "dgv_CumulativeData";
-            this.dgv_CumulativeData.ReadOnly = true;
-            this.dgv_CumulativeData.RowHeadersVisible = false;
-            this.dgv_CumulativeData.RowTemplate.Height = 23;
-            this.dgv_CumulativeData.Size = new System.Drawing.Size(600, 810);
-            this.dgv_CumulativeData.TabIndex = 17;
-            // 
-            // hisyScanDate
-            // 
-            this.hisyScanDate.HeaderText = "扫描日期";
-            this.hisyScanDate.Name = "hisyScanDate";
-            this.hisyScanDate.ReadOnly = true;
-            this.hisyScanDate.Width = 150;
-            // 
-            // hisyDbId
-            // 
-            this.hisyDbId.HeaderText = "录取表单类别";
-            this.hisyDbId.Name = "hisyDbId";
-            this.hisyDbId.ReadOnly = true;
-            // 
-            // hisyOtherID
-            // 
-            this.hisyOtherID.HeaderText = "住院号（模拟主键）";
-            this.hisyOtherID.Name = "hisyOtherID";
-            this.hisyOtherID.ReadOnly = true;
-            // 
-            // hisyTagCode
-            // 
-            this.hisyTagCode.HeaderText = "条形码";
-            this.hisyTagCode.Name = "hisyTagCode";
-            this.hisyTagCode.ReadOnly = true;
-            // 
-            // hisySign
-            // 
-            this.hisySign.HeaderText = "签字";
-            this.hisySign.Name = "hisySign";
-            this.hisySign.ReadOnly = true;
-            this.hisySign.Width = 30;
-            // 
-            // hisyPass
-            // 
-            this.hisyPass.HeaderText = "是否通过";
-            this.hisyPass.Name = "hisyPass";
-            this.hisyPass.ReadOnly = true;
-            this.hisyPass.Width = 60;
-            // 
-            // hisyFileName
-            // 
-            this.hisyFileName.HeaderText = "图片名";
-            this.hisyFileName.Name = "hisyFileName";
-            this.hisyFileName.ReadOnly = true;
             // 
             // pnl_radpnl
             // 
@@ -784,11 +718,78 @@
             this.hWinctl_RTA.TabIndex = 0;
             this.hWinctl_RTA.WindowSize = new System.Drawing.Size(620, 810);
             // 
+            // hisyFileName
+            // 
+            this.hisyFileName.HeaderText = "图片名";
+            this.hisyFileName.Name = "hisyFileName";
+            this.hisyFileName.ReadOnly = true;
+            // 
+            // hisyPass
+            // 
+            this.hisyPass.HeaderText = "是否通过";
+            this.hisyPass.Name = "hisyPass";
+            this.hisyPass.ReadOnly = true;
+            this.hisyPass.Width = 60;
+            // 
+            // hisySign
+            // 
+            this.hisySign.HeaderText = "签字";
+            this.hisySign.Name = "hisySign";
+            this.hisySign.ReadOnly = true;
+            this.hisySign.Width = 60;
+            // 
+            // hisyTagCode
+            // 
+            this.hisyTagCode.HeaderText = "条形码";
+            this.hisyTagCode.Name = "hisyTagCode";
+            this.hisyTagCode.ReadOnly = true;
+            // 
+            // hisyOtherID
+            // 
+            this.hisyOtherID.HeaderText = "住院号（模拟主键）";
+            this.hisyOtherID.Name = "hisyOtherID";
+            this.hisyOtherID.ReadOnly = true;
+            // 
+            // hisyDbId
+            // 
+            this.hisyDbId.HeaderText = "录取表单类别";
+            this.hisyDbId.Name = "hisyDbId";
+            this.hisyDbId.ReadOnly = true;
+            this.hisyDbId.Width = 105;
+            // 
+            // hisyScanDate
+            // 
+            this.hisyScanDate.HeaderText = "扫描日期";
+            this.hisyScanDate.Name = "hisyScanDate";
+            this.hisyScanDate.ReadOnly = true;
+            this.hisyScanDate.Width = 150;
+            // 
+            // dgv_CumulativeData
+            // 
+            this.dgv_CumulativeData.AllowUserToAddRows = false;
+            this.dgv_CumulativeData.AllowUserToDeleteRows = false;
+            this.dgv_CumulativeData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_CumulativeData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.hisyScanDate,
+            this.hisyDbId,
+            this.hisyOtherID,
+            this.hisyTagCode,
+            this.hisySign,
+            this.hisyPass,
+            this.hisyFileName});
+            this.dgv_CumulativeData.Location = new System.Drawing.Point(7, 17);
+            this.dgv_CumulativeData.Name = "dgv_CumulativeData";
+            this.dgv_CumulativeData.ReadOnly = true;
+            this.dgv_CumulativeData.RowHeadersVisible = false;
+            this.dgv_CumulativeData.RowTemplate.Height = 23;
+            this.dgv_CumulativeData.Size = new System.Drawing.Size(583, 810);
+            this.dgv_CumulativeData.TabIndex = 17;
+            // 
             // UI_MainForm_Scenario2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1900, 1037);
             this.Controls.Add(this.panelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.HelpButton = true;
@@ -813,7 +814,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_CumulativeData)).EndInit();
             this.pnl_radpnl.ResumeLayout(false);
             this.pnl_radpnl.PerformLayout();
             this.grp2.ResumeLayout(false);
@@ -821,6 +821,7 @@
             this.menuStrip2.PerformLayout();
             this.grp1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bds_CumulativeData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_CumulativeData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -882,7 +883,6 @@
         private System.Windows.Forms.RadioButton rad_CWDL;
         private System.Windows.Forms.RadioButton rad_SHIL;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgv_CumulativeData;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RadioButton rad_AT;
@@ -891,13 +891,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource bds_CumulativeData;
         public System.Windows.Forms.DataGridView dgv_CurrentData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisyScanDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisyDbId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisyOtherID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisyTagCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisySign;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisyPass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hisyFileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScanDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DbId;
         private System.Windows.Forms.DataGridViewTextBoxColumn OtherID;
@@ -905,5 +898,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Sign;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
+        private System.Windows.Forms.DataGridView dgv_CumulativeData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyScanDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyDbId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyOtherID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyTagCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisySign;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyPass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hisyFileName;
     }
 }

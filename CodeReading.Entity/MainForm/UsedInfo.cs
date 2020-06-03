@@ -65,7 +65,7 @@ namespace CodeReading.Entity.MainForm
         public string BedNo { get; set; }
 
         /// <summary>
-        /// 签名确认1
+        /// 签名确认
         /// </summary>
         [DataMember]
         public string Sign { get; set; }

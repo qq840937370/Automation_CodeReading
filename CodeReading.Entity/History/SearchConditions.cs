@@ -32,29 +32,54 @@ namespace CodeReading.Entity.History
         #endregion
 
         #region 属性
-        /// <summary>
-        /// 工厂cd
-        /// </summary>
-        [DataMember]
-        public string KojoCd { get; set; }
-
-        /// <summary>
-        /// 住院号
-        /// </summary>
-        [DataMember]
-        public string HospitalizationNumber { get; set; }
 
         /// <summary>
         /// 捕捉时间From
         /// </summary>
         [DataMember]
-        public string DtpFrom { get; set; }
+        public string HsDtpFrom { get; set; }
 
         /// <summary>
         /// 捕捉时间To
         /// </summary>
         [DataMember]
-        public string DtpTo { get; set; }
+        public string HsDtpTo { get; set; }
+
+        /// <summary>
+        /// 表单类型
+        /// </summary>
+        [DataMember]
+        public string HsDbId { get; set; }
+
+        /// <summary>
+        /// 模拟主键
+        /// </summary>
+        [DataMember]
+        public string HsOtherID { get; set; }
+
+        /// <summary>
+        /// 签名确认
+        /// </summary>
+        [DataMember]
+        public string HsSigned { get; set; }
+
+        /// <summary>
+        /// 是否通过
+        /// </summary>
+        [DataMember]
+        public string HsPass { get; set; }
+
+        /// <summary>
+        /// 模拟查询条件1
+        /// </summary>
+        [DataMember]
+        public string HsOther1 { get; set; }
+
+        /// <summary>
+        /// 模拟查询条件2
+        /// </summary>
+        [DataMember]
+        public string HsOther2 { get; set; }
         #endregion
         #region public方法
         #endregion

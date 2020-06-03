@@ -98,7 +98,7 @@ namespace CodeReading.View
             this.FormClosing += new FormClosingEventHandler(MainForm_Closing);
         }
         /// <summary>
-        /// 添加窗体关闭事件
+        /// 窗体关闭事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -110,6 +110,7 @@ namespace CodeReading.View
             //openThread.Abort();
             // 释放相机句柄
             HOperatorSet.CloseAllFramegrabbers();
+
             Application.Exit();                   // 退出应用
             // 有时终止进程会异常
             try { 
@@ -217,6 +218,8 @@ namespace CodeReading.View
                 // 识图
                 if (AutoT.state == AutoTState.AT)
                 {
+
+                    tssl_CameraStatus.Text = "相机已连接";
                     // 自动识图方法-返回
                     halconHelpers.AutomaticMapRecognitionMethod(rtaHalconWin, icsHalconWin,out UsedInfo usedInfo);
                 }
@@ -273,7 +276,7 @@ namespace CodeReading.View
                                 dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
                                 dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
                                 dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = Convert.ToInt32(usedInfodata.Sign) == 1 ? "已签字" : "未签字";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                 dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
@@ -312,7 +315,7 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = Convert.ToInt32(usedInfodata.Sign) == 1 ? "已签字" : "未签字";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "通过";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                     dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.GreenYellow;       // 整行绿
@@ -324,7 +327,7 @@ namespace CodeReading.View
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyDbId"].Value = usedInfodata.DbId;
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyOtherID"].Value = usedInfodata.OtherID;
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyTagCode"].Value = usedInfodata.TagCode;
-                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = usedInfodata.Sign;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = Convert.ToInt32(usedInfodata.Sign) == 1 ? "已签字" : "未签字";
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyPass"].Value = "通过";
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyFileName"].Value = usedInfodata.FileName;
                                     #endregion
@@ -349,7 +352,7 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = Convert.ToInt32(usedInfodata.Sign) == 1 ? "已签字" : "未签字";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                     // 条形码不正确时标红
@@ -387,7 +390,7 @@ namespace CodeReading.View
                                 dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
                                 dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
                                 dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = Convert.ToInt32(usedInfodata.Sign) == 1 ? "已签字" : "未签字";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                 dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
@@ -421,7 +424,7 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = Convert.ToInt32(usedInfodata.Sign) == 1 ? "已签字" : "未签字";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "通过";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                     dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.GreenYellow;       // 整行绿
@@ -434,7 +437,7 @@ namespace CodeReading.View
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyDbId"].Value = usedInfodata.DbId;
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyOtherID"].Value = usedInfodata.OtherID;
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyTagCode"].Value = usedInfodata.TagCode;
-                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = usedInfodata.Sign;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = Convert.ToInt32(usedInfodata.Sign) == 1 ? "已签字" : "未签字";
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyPass"].Value = "通过";
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyFileName"].Value = usedInfodata.FileName;
                                     #endregion
@@ -458,7 +461,7 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = Convert.ToInt32(usedInfodata.Sign) == 1 ? "已签字" : "未签字";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                     // 条形码不正确时标红
@@ -496,7 +499,7 @@ namespace CodeReading.View
                                 dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
                                 dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
                                 dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = Convert.ToInt32(usedInfodata.Sign) == 1 ? "已签字" : "未签字";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                 dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
@@ -530,7 +533,7 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = Convert.ToInt32(usedInfodata.Sign) == 1 ? "已签字" : "未签字";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "通过";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                     dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.GreenYellow;       // 整行绿
@@ -543,7 +546,7 @@ namespace CodeReading.View
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyDbId"].Value = usedInfodata.DbId;
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyOtherID"].Value = usedInfodata.OtherID;
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyTagCode"].Value = usedInfodata.TagCode;
-                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = usedInfodata.Sign;
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = Convert.ToInt32(usedInfodata.Sign) == 1 ? "已签字" : "未签字";
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyPass"].Value = "通过";
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyFileName"].Value = usedInfodata.FileName;
                                     #endregion
@@ -567,7 +570,7 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = Convert.ToInt32(usedInfodata.Sign) == 1 ? "已签字" : "未签字";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                     // 条形码不正确时标红
@@ -607,7 +610,7 @@ namespace CodeReading.View
                         dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
                         dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
                         dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                        dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign;
+                        dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = Convert.ToInt32(usedInfodata.Sign) == 1 ? "已签字" : "未签字";
                         dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
                         dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                         dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
