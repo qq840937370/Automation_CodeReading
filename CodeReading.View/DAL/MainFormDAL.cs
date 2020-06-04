@@ -242,11 +242,15 @@ namespace CodeReading.View.DAL
                 // SQL参数生成
                 string DataRepeatChecksql = "SELECT * FROM dbo.Used Where OtherID = @OtherID";
                 SqlParameter[] ps = {
-                                new SqlParameter("@OtherID",usedInfodataOtherID),
+                                new SqlParameter("@OtherID","dwada"),                //usedInfodataOtherID
                                 };
                 // 查询结果大于等于1
-                if(SqlHelper.ExecuteNonQuery(DataRepeatChecksql, ps)>=1)
+                int issss= SqlHelper.ExecuteNonQuery(DataRepeatChecksql, ps);
+                //System.Diagnostics.Debug.WriteLine("wwwww:   "+usedInfodataOtherID);
+                //System.Diagnostics.Debug.WriteLine(issss);
+                if (issss >= 1)
                 {
+
                     // 登录过时，判断结果=1
                     DataRepeatCheckResult = 1;
                 }

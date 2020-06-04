@@ -217,15 +217,16 @@ public partial class HDevelopExport
             // 模拟主键
             result.OtherID = hv_DecodedDataStrings;
             // 签字
-            //System.Diagnostics.Debug.WriteLine(hv_sign.ToString());  //查看hv_DecodedDataStrings值
-            if (hv_sign[0] * hv_sign[1] * hv_sign[2] * hv_sign[3] == 1)
-            {
-                result.Sign = "1";
-            }
-            else
-            {
-                result.Sign = "0";
-            }
+            //System.Diagnostics.Debug.WriteLine(hv_sign.ToString());  // 查看hv_DecodedDataStrings值
+            //if (hv_sign[0] * hv_sign[1] * hv_sign[2] * hv_sign[3] == 1)
+            //{
+            //    result.Sign = "1";
+            //}
+            //else
+            //{
+            //    result.Sign = "0";
+            //}
+            result.Sign = hv_sign.ToString();
             // 条形码
             int TagCodeNum = 0;
             //result.TagCode = "";
