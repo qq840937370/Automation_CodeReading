@@ -32,7 +32,7 @@ namespace CodeReading.View.DAL
             SqlParameter[] ps = {
                                 new SqlParameter("@dbId",usedInfo.DbId),
                                 new SqlParameter("@otherID",usedInfo.OtherID),
-                                new SqlParameter("@signed",usedInfo.Sign),
+                                new SqlParameter("@signed",usedInfo.Sign=="[1, 1, 1, 1]" ? "1" : "0"),
                                 new SqlParameter("@tagcode",usedInfo.TagCode),
                                 new SqlParameter("@scandate",usedInfo.ScanDate),
                                 new SqlParameter("@pass",usedInfo.Pass),
@@ -242,15 +242,13 @@ namespace CodeReading.View.DAL
                 // SQL参数生成
                 string DataRepeatChecksql = "SELECT * FROM dbo.Used Where OtherID = @OtherID";
                 SqlParameter[] ps = {
-                                new SqlParameter("@OtherID","dwada"),                //usedInfodataOtherID
+                                new SqlParameter("@OtherID",usedInfodataOtherID),                
                                 };
-                // 查询结果大于等于1
-                int issss= SqlHelper.ExecuteNonQuery(DataRepeatChecksql, ps);
-                //System.Diagnostics.Debug.WriteLine("wwwww:   "+usedInfodataOtherID);
-                //System.Diagnostics.Debug.WriteLine(issss);
-                if (issss >= 1)
+                // 查询结果是否有值
+                bool DataResult = SqlHelper.ExecuteReader(DataRepeatChecksql, ps).HasRows;
+                //System.Diagnostics.Debug.WriteLine(DataResult.ToString());   // 查看这处值
+                if (DataResult== true)
                 {
-
                     // 登录过时，判断结果=1
                     DataRepeatCheckResult = 1;
                 }
