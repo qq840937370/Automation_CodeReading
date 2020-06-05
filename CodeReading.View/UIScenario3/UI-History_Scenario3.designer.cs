@@ -1,6 +1,6 @@
 ﻿namespace CodeReading.View
 {
-    partial class UI_History_Scenario2
+    partial class UI_History_Scenario3
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UI_History_Scenario2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UI_History_Scenario3));
             this.lbl__From = new System.Windows.Forms.Label();
             this.lbl__To = new System.Windows.Forms.Label();
             this.lbl_Rod = new System.Windows.Forms.Label();
@@ -409,14 +409,13 @@
             this.lbl_ShowimgIS.AutoSize = true;
             this.lbl_ShowimgIS.BackColor = System.Drawing.Color.Black;
             this.lbl_ShowimgIS.ForeColor = System.Drawing.Color.Red;
-            this.lbl_ShowimgIS.Location = new System.Drawing.Point(1506, 589);
+            this.lbl_ShowimgIS.Location = new System.Drawing.Point(1508, 553);
             this.lbl_ShowimgIS.Name = "lbl_ShowimgIS";
             this.lbl_ShowimgIS.Size = new System.Drawing.Size(89, 12);
             this.lbl_ShowimgIS.TabIndex = 38;
             this.lbl_ShowimgIS.Text = "图片丢失！！！";
-            this.lbl_ShowimgIS.Visible = false;
             // 
-            // UI_History_Scenario2
+            // UI_History_Scenario3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -447,11 +446,11 @@
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "UI_History_Scenario2";
+            this.Name = "UI_History_Scenario3";
             this.Text = "华时数字工业相机读码_扫描记录";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Activated += new System.EventHandler(this.UI_History_Scenario2_Activated);
-            this.Load += new System.EventHandler(this.UI_History_Scenario2_Load);
+            this.Activated += new System.EventHandler(this.UI_History_Scenario3_Activated);
+            this.Load += new System.EventHandler(this.UI_History_Scenario3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.detailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_HistoryTable)).EndInit();
             this.ResumeLayout(false);

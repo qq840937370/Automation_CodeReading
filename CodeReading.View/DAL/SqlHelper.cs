@@ -10,12 +10,11 @@ namespace CodeReading.View.DAL
         //连接字符串
         private static readonly string str = ConfigurationManager.ConnectionStrings["conStr"].ConnectionString;
 
-
         /* 返回的是受影响的行数
-                 * ExecuteNonQuery()通常情况下为数据库事务处理的首选，当需要执行插入，删除，修改等操作时，首选ExecuteNonQuery(),不适用于Selete语句，返回永远是-1
-                 * ExecuteNonQuery()执行成功返回的是一受影响的行数，对于"Create Table"和"Drop Table"语句，返回值是0，
-                 * 而对于其他类型的语句，返回值是-1，ExecuteNonQuery()操作数据时，可以不使用DataSet直接更改数据库中的数据。
-                 */
+         * ExecuteNonQuery()通常情况下为数据库事务处理的首选，当需要执行插入，删除，修改等操作时，首选ExecuteNonQuery(),不适用于Selete语句，返回永远是-1
+         * ExecuteNonQuery()执行成功返回的是一受影响的行数，对于"Create Table"和"Drop Table"语句，返回值是0，
+         * 而对于其他类型的语句，返回值是-1，ExecuteNonQuery()操作数据时，可以不使用DataSet直接更改数据库中的数据。
+         */
         public static int ExecuteNonQuery(string sql, params SqlParameter[] ps)
         {
             using (SqlConnection con = new SqlConnection(str))

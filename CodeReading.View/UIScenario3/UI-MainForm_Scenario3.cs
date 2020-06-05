@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CodeReading.View
 {
-    public partial class UI_MainForm_Scenario2 : Form
+    public partial class UI_MainForm_Scenario3 : Form
     {
         #region 全局变量
 
@@ -71,7 +71,7 @@ namespace CodeReading.View
         /// <summary>
         /// Win加载起点
         /// </summary>
-        public UI_MainForm_Scenario2()
+        public UI_MainForm_Scenario3()
         {
             InitializeComponent();
             rtaHalconWin = hWinctl_RTA.HalconWindow;
@@ -82,7 +82,7 @@ namespace CodeReading.View
         /// Win加载起点
         /// </summary>
         /// <param name="uname"></param>
-        public UI_MainForm_Scenario2(string uname)
+        public UI_MainForm_Scenario3(string uname)
         {
             InitializeComponent();
             rtaHalconWin = hWinctl_RTA.HalconWindow;
@@ -93,13 +93,11 @@ namespace CodeReading.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UI_MainForm_Scenario2_Load(object sender, EventArgs e)
+        private void UI_MainForm_Scenario3_Load(object sender, EventArgs e)
         {
             // 右下角时间显示
             timer_Now.Start();
 
-            ImgAuto.state = ImgAutoState.imgAutoTrue;
-            AutoT.state = AutoTState.AT;
             // 注册窗体关闭事件
             this.FormClosing += new FormClosingEventHandler(MainForm_Closing);
         }
@@ -139,6 +137,16 @@ namespace CodeReading.View
         #endregion
         #region TSMI按钮
         /// <summary>
+        /// 系统信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmi_About_Click(object sender, EventArgs e)
+        {
+            UI_About_Scenario2 aboutForm = new UI_About_Scenario2();
+            aboutForm.ShowDialog();
+        }
+        /// <summary>
         /// 扫描历史
         /// </summary>
         /// <param name="sender"></param>
@@ -148,7 +156,46 @@ namespace CodeReading.View
             UI_History_Scenario2 historyForm = new UI_History_Scenario2();
             historyForm.ShowDialog();
         }
-
+        /// <summary>
+        /// 自动捕捉按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmi_Auto_Click(object sender, EventArgs e)
+        {
+            bool imgAutoCheck = tsmi_Auto.Checked;
+            if (mainFormBLL.ImgAutobll(imgAutoCheck) == true)
+            {
+                tsmi_Auto.Checked = true;
+            }
+            else if (mainFormBLL.ImgAutobll(imgAutoCheck) == false)
+            {
+                tsmi_Auto.Checked = false;
+            }
+        }
+        /// <summary>
+        /// 登陆按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmi_Login_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UI_Login_Scenario2 ui_Login_Scenario2 = new UI_Login_Scenario2();
+            ui_Login_Scenario2.Show();
+        }
+        /// <summary>
+        /// 离开按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsmi_Logout_Click(object sender, EventArgs e)
+        {
+            LoginInfo.state = LoginState.未登录;
+            this.Hide();
+            UI_Login_Scenario2 ui_Login_Scenario2 = new UI_Login_Scenario2();
+            ui_Login_Scenario2.Show();
+        }
         #endregion
 
         #region 打开相机处理
@@ -1045,6 +1092,79 @@ namespace CodeReading.View
             else
             {
                 return 2;
+            }
+        }
+        #endregion
+
+        #region 自动识别与手动识别切换
+        /// <summary>
+        /// 自动识别
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rad_AT_CheckedChanged(object sender, EventArgs e)
+        {
+            // 手动可选框隐藏
+            pnl_radpnl.Visible = false;
+            // 自动识别表示变为自动
+            AutoT.state = AutoTState.AT;
+        }
+
+        /// <summary>
+        /// 手动识别
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rad_MT_CheckedChanged(object sender, EventArgs e)
+        {
+            // 手动可选框显示
+            pnl_radpnl.Visible = true;
+            // 自动识别表示变为手动
+            AutoT.state = AutoTState.MT;
+        }
+        #endregion
+
+        #region 手动选择pnl_radpnl区域
+
+        /// <summary>
+        /// 植入物使用清单选中
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rad_SHIL_CheckedChanged(object sender, EventArgs e)
+        {
+            // 手动识图&&植入物使用清单选中
+            if (AutoT.state == AutoTState.MT && rad_HNCL.Checked == true)
+            {
+                KindOfPicture = "1SHIL";
+            }
+        }
+
+        /// <summary>
+        /// 高净值耗材使用清单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rad_HNCL_CheckedChanged(object sender, EventArgs e)
+        {
+            // 手动识图&&高净值耗材使用清单
+            if (AutoT.state == AutoTState.MT && rad_HNCL.Checked == true)
+            {
+                KindOfPicture = "2HNCL";
+            }
+        }
+
+        /// <summary>
+        /// 耗材仓库配送出库单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rad_CWDL_CheckedChanged(object sender, EventArgs e)
+        {
+            // 手动识图&&耗材仓库配送出库单
+            if (AutoT.state == AutoTState.MT && rad_CWDL.Checked == true)
+            {
+                KindOfPicture = "3CWDL";
             }
         }
         #endregion

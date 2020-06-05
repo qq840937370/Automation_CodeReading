@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace CodeReading.View
 {
-    public partial class UI_History_Scenario2 : Form
+    public partial class UI_History_Scenario3 : Form
     {
         #region 常量
         /// <summary>
@@ -44,7 +44,7 @@ namespace CodeReading.View
         #endregion
 
         # region 默认构造器
-        public UI_History_Scenario2()
+        public UI_History_Scenario3()
         {
             InitializeComponent();
         }
@@ -56,7 +56,7 @@ namespace CodeReading.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UI_History_Scenario2_Load(object sender, EventArgs e)
+        private void UI_History_Scenario3_Load(object sender, EventArgs e)
         {
             // 検索条件初始化
             InitData();
@@ -252,7 +252,7 @@ namespace CodeReading.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UI_History_Scenario2_Activated(object sender, EventArgs e)
+        private void UI_History_Scenario3_Activated(object sender, EventArgs e)
         {
             // 焦点在"检索"按钮
             btn_Search.Focus();

@@ -126,6 +126,7 @@ namespace CodeReading.View.BLL.HalconHelper
                 catch (HalconException HDevExpDefaultException1)
                 {
                     HDevExpDefaultException1.ToHTuple(out hv_Exception);
+                    System.Diagnostics.Debug.WriteLine("111111"+HDevExpDefaultException1.Message.ToString());
                 }
 
             }

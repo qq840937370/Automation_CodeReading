@@ -26,8 +26,9 @@ public partial class HDevelopExport
 
     // Local control variables 
 
-    HTuple hv_CodeTypes = new HTuple(), hv_Width = new HTuple();
-    HTuple hv_Height = new HTuple();
+    HTuple hv_CodeTypes = new HTuple();
+    HTuple   hv_BarCodeHandle_COPY_INP_TMP = new HTuple(hv_BarCodeHandle);
+
     // Initialize local and output iconic variables 
     HOperatorSet.GenEmptyObj(out ho_SymbolRegions);
     hv_DecodedDataStrings = new HTuple();
@@ -41,24 +42,28 @@ public partial class HDevelopExport
     hv_CodeTypes = "Code 128";
     hv_CodeTypes.Dispose();
     hv_CodeTypes = "auto";
+
+    hv_BarCodeHandle_COPY_INP_TMP.Dispose();
+    HOperatorSet.ReadBarCodeModel("C:/Users/zhang-sh/source/repos/qq840937370/Automation_CodeReading/file/BarCodeHandle.bcm", 
+        out hv_BarCodeHandle_COPY_INP_TMP);
+
     //
     //Set display defaults
-    hv_Width.Dispose();hv_Height.Dispose();
-    HOperatorSet.GetImageSize(ho_Image, out hv_Width, out hv_Height);
+    //get_image_size (Image, Width, Height)
 
 
     //
     //Find and decode bar codes. Measure the time needed.
     ho_SymbolRegions.Dispose();hv_DecodedDataStrings.Dispose();
-    HOperatorSet.FindBarCode(ho_Image, out ho_SymbolRegions, hv_BarCodeHandle, hv_CodeTypes, 
-        out hv_DecodedDataStrings);
+    HOperatorSet.FindBarCode(ho_Image, out ho_SymbolRegions, hv_BarCodeHandle_COPY_INP_TMP, 
+        hv_CodeTypes, out hv_DecodedDataStrings);
     //get_bar_code_result (BarCodeHandle, 'all', 'someitem', someitem)
 
+    hv_BarCodeHandle_COPY_INP_TMP.Dispose();
     hv_CodeTypes.Dispose();
-    hv_Width.Dispose();
-    hv_Height.Dispose();
 
     return;
   }
+
 
 }
