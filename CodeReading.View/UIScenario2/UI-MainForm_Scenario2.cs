@@ -391,7 +391,7 @@ namespace CodeReading.View
                                         dgv_CurrentData.Rows[RowCurindexshow].Cells["Sign"].Value = SignResultStr;
                                         dgv_CurrentData.Rows[RowCurindexshow].DefaultCellStyle.ForeColor = Color.Red;   // 红字
                                     }
-                                    dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Style.ForeColor = Color.Red;
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Style.ForeColor = Color.Red;        // 不通过
                                     // 清理usedInfodata数据 
                                     ClearData_usedInfodata();
 
@@ -419,7 +419,7 @@ namespace CodeReading.View
                                 dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
                                 dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
                                 dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign == "1" ? "已签字" : "未签字";
+                                dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = "该表单不需要验证签字";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                 dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
@@ -490,22 +490,54 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign == "1" ? "已签字" : "未签字";
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = "该表单不需要验证签字";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
+
+                                    // 错误提示行
+                                    DataGridViewRow Rowshow = new DataGridViewRow();
+                                    int RowCurindexshow = dgv_CurrentData.Rows.Add(Rowshow);
                                     // 条形码不正确时标红
-                                    //if (usedInfodata.TagCode != CurrentDataSHIL.Rows[0]["TagCode"].ToString())
-                                    //{
-                                    //    dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Style.BackColor = Color.Red;    // 条形码的单元格标红
-                                    //}
-                                    // 未签字时标红
-                                    if (usedInfodata.Sign == "0")
+                                    if (BadCodes.Length > 0 || MissingCodes.Length > 0)
                                     {
-                                        dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Style.BackColor = Color.Red;    // 签字的单元格标红
+                                        dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Style.BackColor = Color.Red;  // 条形码的单元格标红          
+
+
+                                        dgv_CurrentData.Rows[RowCurindexshow].Cells["ScanDate"].Value = "表单数据信息有误！";
+                                        string TagCodeshowstr = "";
+                                        // 表单“多的条形码”赋值
+                                        if (BadCodes.Length > 0)
+                                        {
+                                            TagCodeshowstr = TagCodeshowstr + "表单多了条形码：" + BadCodes + "原数据不存在此条形码";
+                                        }
+                                        // 添加“；”
+                                        if (BadCodes.Length > 0 && MissingCodes.Length > 0)
+                                        {
+                                            TagCodeshowstr = TagCodeshowstr + "；";
+                                        }
+                                        // 表单“少了条形码”赋值
+                                        if (MissingCodes.Length > 0)
+                                        {
+                                            TagCodeshowstr = TagCodeshowstr + "表单少了条形码：" + MissingCodes + "请查看表单是否污损";
+                                        }
+                                        TagCodeshowstr = TagCodeshowstr + "！";
+                                        dgv_CurrentData.Rows[RowCurindexshow].Cells["TagCode"].Value = TagCodeshowstr;  // 第二行提示“多的条形码”和“少的条形码”
+                                        dgv_CurrentData.Rows[RowCurindexshow].DefaultCellStyle.ForeColor = Color.Red;   // 行
+
+                                        // 重置“多的条形码”和“少的条形码”
+                                        BadCodes = "";
+                                        MissingCodes = "";
+                                        // 重置""
                                     }
+
+                                    // 不通过
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Style.ForeColor = Color.Red; 
+                                    
+                                    // 清理usedInfodata数据 
+                                    ClearData_usedInfodata();
+
                                     // 已扫描文件个数
                                     ImgNumber = ImgNumber + 1;  //已扫描文件：ImgNumber个
-
                                     tssl_ImgNumber.Text = "已扫描文件：" + ImgNumber + "个";
                                     // 休眠
                                     //dataProcessingThread.Suspend();
@@ -630,7 +662,7 @@ namespace CodeReading.View
                                         }
                                         SignResultStr = SignResultStr + "未签名";
                                         // 签字单元格的提示信息
-                                        dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Style.BackColor = Color.Red;     // 签字的单元格标红
+                                        dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Style.BackColor = Color.Red;    // 签字的单元格标红
                                         dgv_CurrentData.Rows[RowCurindexshow].Cells["Sign"].Value = SignResultStr;
                                         dgv_CurrentData.Rows[RowCurindexshow].DefaultCellStyle.ForeColor = Color.Red;   // 红字
                                     }
@@ -774,7 +806,7 @@ namespace CodeReading.View
                 // 検索結果件数判定
                 if (result.DataTable.Rows.Count == 0)
                 {
-                    // 把扫描到的数据绘制到"当前扫描数据区域"并表底颜色标红
+                    // 把扫描到的数据绘制到"当前扫描数据区域"并提示错误信息
                     return 0;
                 }
                 else
@@ -794,7 +826,7 @@ namespace CodeReading.View
                 // 検索結果件数判定
                 if (result.DataTable.Rows.Count == 0)
                 {
-                    // 把扫描到的数据绘制到"当前扫描数据区域"并表底颜色标红
+                    // 把扫描到的数据绘制到"当前扫描数据区域"并提示错误信息
                     return 0;
                 }
                 else
@@ -812,7 +844,7 @@ namespace CodeReading.View
                 // 検索結果件数判定
                 if (result.DataTable.Rows.Count == 0)
                 {
-                    // 把扫描到的数据绘制到"当前扫描数据区域"并表底颜色标红
+                    // 把扫描到的数据绘制到"当前扫描数据区域"并提示错误信息
                     return 0;
                 }
                 else
@@ -853,10 +885,6 @@ namespace CodeReading.View
                 #region 条形码处理
                 string[] CurrentDataSHILArray = TagCodestr.Split(',');        // 数据库里
                 string[] ScannedSHILArray = usedInfodata.TagCode.Split(',');  // 扫描到的表单
-
-                //System.Diagnostics.Debug.Print(CurrentDataSHILArray.Length +" "+ CurrentDataSHILArray[9]);
-                //System.Diagnostics.Debug.Print(ScannedSHILArray.Length + " " + ScannedSHILArray[9]);
-
 
                 // 是否添加到“多的条形码”，0-不添加；1-添加
                 int BadCodescheck = 0;
@@ -947,8 +975,6 @@ namespace CodeReading.View
                 #region 条形码处理
                 string[] CurrentDataSHILArray = TagCodestr.Split(',');        // 数据库里
                 string[] ScannedSHILArray = usedInfodata.TagCode.Split(',');  // 扫描到的表单
-                //System.Diagnostics.Debug.Print(CurrentDataSHILArray.Length +" "+ CurrentDataSHILArray[9]);
-                //System.Diagnostics.Debug.Print(ScannedSHILArray.Length + " " + ScannedSHILArray[9]);
 
                 // 是否添加到“多的条形码”，0-不添加；1-添加
                 int BadCodescheck = 0;
@@ -1013,9 +1039,7 @@ namespace CodeReading.View
                 }
                 #endregion
                 if (usedInfodata.OtherID == HospitalizationNumberstr &&
-                    BadCodes.Length <= 0 && MissingCodes.Length <= 0 &&
-                    usedInfodata.Sign == "1"
-                    )
+                    BadCodes.Length <= 0 && MissingCodes.Length <= 0)
                 {
                     return 1;
                 }
