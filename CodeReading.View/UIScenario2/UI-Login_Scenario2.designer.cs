@@ -141,11 +141,11 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("新宋体", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(205, 41);
+            this.label3.Location = new System.Drawing.Point(139, 42);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(594, 56);
+            this.label3.Size = new System.Drawing.Size(708, 56);
             this.label3.TabIndex = 11;
-            this.label3.Text = "医院财务表单读取系统";
+            this.label3.Text = "医院财务纸质表单读取系统";
             // 
             // UI_Login_Scenario2
             // 

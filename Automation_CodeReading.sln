@@ -36,6 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{F71F15F9-D
 		Docs\ScanRaw.jpg = Docs\ScanRaw.jpg
 		Docs\信息自动化解决方案.pptx = Docs\信息自动化解决方案.pptx
 		Docs\工业相机读码方案.pptx = Docs\工业相机读码方案.pptx
+		Docs\详细设计书_医院财务纸质表单读取系统.xlsx = Docs\详细设计书_医院财务纸质表单读取系统.xlsx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{14C294F7-68F3-4114-A6BE-2F46AC77DAD7}"
