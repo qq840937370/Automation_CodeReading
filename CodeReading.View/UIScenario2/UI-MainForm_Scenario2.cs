@@ -498,7 +498,7 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["DbId"].Value = usedInfodata.DbId;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["OtherID"].Value = usedInfodata.OtherID;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
-                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign=="1" ? "已签字" : "未签字";
+                                    dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = "该表单不需要验证签字"; ;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "通过";
                                     lbl_PassIS.ForeColor = Color.Green;
                                     lbl_PassIS.Text = "通过";
@@ -513,7 +513,7 @@ namespace CodeReading.View
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyDbId"].Value = usedInfodata.DbId;
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyOtherID"].Value = usedInfodata.OtherID;
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyTagCode"].Value = usedInfodata.TagCode;
-                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = usedInfodata.Sign == "1" ? "已签字" : "未签字";
+                                    dgv_CumulativeData.Rows[RowCumindex].Cells["hisySign"].Value = "该表单不需要验证签字"; ;
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyPass"].Value = "通过";
                                     dgv_CumulativeData.Rows[RowCumindex].Cells["hisyFileName"].Value = usedInfodata.FileName;
                                     #endregion

@@ -92,8 +92,8 @@ public partial class HDevelopExport
         {
             hv_InfoRow.Dispose(); hv_InfoColumn.Dispose(); hv_InfoAngle.Dispose(); hv_InfoScore.Dispose();
             HOperatorSet.FindShapeModel(ho_ImageOut, hv_InfoModel, (new HTuple(0)).TupleRad()
-                , (new HTuple(360)).TupleRad(), 0.3, 1, 0.5, "least_squares", (new HTuple(7)).TupleConcat(
-                1), 0.6, out hv_InfoRow, out hv_InfoColumn, out hv_InfoAngle, out hv_InfoScore);
+                , (new HTuple(360)).TupleRad(), 0.2, 1, 0.5, "least_squares", (new HTuple(7)).TupleConcat(
+                1), 0.6, out hv_InfoRow, out hv_InfoColumn, out hv_InfoAngle, out hv_InfoScore);  //0.3score默认改0.2
         }
         //System.Diagnostics.Debug.WriteLine("1shil hv_InfoAngle" + hv_InfoAngle.ToString()); // 输出 hv_InfoAngle值
         if (hv_InfoAngle.ToString().Length > 2)
