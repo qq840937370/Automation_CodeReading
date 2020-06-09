@@ -60,7 +60,8 @@ namespace CodeReading.View.BLL.HalconHelper
             {
                 ho_Image.Dispose();
 
-                HOperatorSet.GrabImage(out ho_Image, hv_AcqHandle);
+                //HOperatorSet.GrabImage(out ho_Image, hv_AcqHandle);
+                HOperatorSet.GrabImageAsync(out ho_Image, hv_AcqHandle,500);
 
                 cameraFPS += 1;
 

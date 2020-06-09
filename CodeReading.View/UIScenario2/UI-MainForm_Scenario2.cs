@@ -269,6 +269,7 @@ namespace CodeReading.View
                         // 如果是1SHIL
                         if (DbIdstr == "1SHIL")
                         {
+                            tssl_showDBID.Text = "识别到《跟台人体植入物使用清单》表单";
                             // 数据查询结果为0
                             if (SelectData() == 0) // 未检索到数据
                             {
@@ -283,6 +284,8 @@ namespace CodeReading.View
                                 dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign == "[1, 1, 1, 1]" ? "已签字" : "未签字";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
+                                lbl_PassIS.ForeColor = Color.Red;
+                                lbl_PassIS.Text = "不通过";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                 dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
                                 DataGridViewRow Rowshow = new DataGridViewRow();
@@ -322,6 +325,8 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign == "[1, 1, 1, 1]" ? "已签字" : "未签字";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "通过";
+                                    lbl_PassIS.ForeColor =Color.Green;
+                                    lbl_PassIS.Text = "通过";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                     dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.GreenYellow;       // 整行绿
                                                                                                                             // 添加到记录栏-绿色
@@ -360,6 +365,8 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign == "[1, 1, 1, 1]" ? "已签字" : "未签字";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
+                                    lbl_PassIS.ForeColor = Color.Red;
+                                    lbl_PassIS.Text = "不通过";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
 
                                     // 错误提示行
@@ -441,6 +448,7 @@ namespace CodeReading.View
                         // 如果是2HNCL
                         else if (DbIdstr == "2HNCL")
                         {
+                            tssl_showDBID.Text = "识别到《高净值耗材使用清单》表单";
                             // 数据查询结果为0
                             if (SelectData() == 0) // 未检索到数据
                             {
@@ -455,6 +463,8 @@ namespace CodeReading.View
                                 dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = "该表单不需要验证签字";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
+                                lbl_PassIS.ForeColor = Color.Red;
+                                lbl_PassIS.Text = "不通过";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                 dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
                                 DataGridViewRow Rowshow = new DataGridViewRow();
@@ -489,6 +499,8 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign=="1" ? "已签字" : "未签字";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "通过";
+                                    lbl_PassIS.ForeColor = Color.Green;
+                                    lbl_PassIS.Text = "通过";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                     dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.GreenYellow;       // 整行绿
 
@@ -526,6 +538,8 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = "该表单不需要验证签字";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
+                                    lbl_PassIS.ForeColor = Color.Red;
+                                    lbl_PassIS.Text = "不通过";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
 
                                     // 错误提示行
@@ -582,6 +596,7 @@ namespace CodeReading.View
                         // 如果是3CWDL
                         else if (DbIdstr == "3CWDL")
                         {
+                            tssl_showDBID.Text = "识别到《耗材仓库配送出库单》表单";
                             // 数据查询结果为0
                             if (SelectData() == 0) // 未检索到数据
                             {
@@ -596,6 +611,8 @@ namespace CodeReading.View
                                 dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign== "[1, 1, 1, 1]" ? "已签字" : "未签字";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
+                                lbl_PassIS.ForeColor = Color.Red;
+                                lbl_PassIS.Text = "不通过";
                                 dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                 dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
                                 DataGridViewRow Rowshow = new DataGridViewRow();
@@ -630,6 +647,8 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = "此表单不需要条形码只要验证签字！";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign == "[1, 1, 1, 1]" ? "已签字" : "未签字";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "通过";
+                                    lbl_PassIS.ForeColor = Color.Green;
+                                    lbl_PassIS.Text = "通过";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                                     dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.GreenYellow;       // 整行绿
 
@@ -667,6 +686,8 @@ namespace CodeReading.View
                                     dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = "此表单不需要验证条形码,只需要验证签字！";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign == "[1, 1, 1, 1]" ? "已签字" : "未签字";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
+                                    lbl_PassIS.ForeColor = Color.Red;
+                                    lbl_PassIS.Text = "不通过";
                                     dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
 
                                     // 错误提示行
@@ -714,6 +735,7 @@ namespace CodeReading.View
                         }
                         else
                         {
+                            tssl_showDBID.Text = "未识别到表单";
                             //清除表单
                             dgv_CurrentData.Rows.Clear();
                         }
@@ -732,6 +754,8 @@ namespace CodeReading.View
                         dgv_CurrentData.Rows[RowCurindex].Cells["TagCode"].Value = usedInfodata.TagCode;
                         dgv_CurrentData.Rows[RowCurindex].Cells["Sign"].Value = usedInfodata.Sign == "1" ? "已签字" : "未签字";
                         dgv_CurrentData.Rows[RowCurindex].Cells["Pass"].Value = "不通过";
+                        lbl_PassIS.ForeColor = Color.Red;
+                        lbl_PassIS.Text = "不通过";
                         dgv_CurrentData.Rows[RowCurindex].Cells["FileName"].Value = usedInfodata.FileName;
                         dgv_CurrentData.Rows[RowCurindex].DefaultCellStyle.BackColor = Color.Red;  // 行
                         DataGridViewRow Rowshow = new DataGridViewRow();

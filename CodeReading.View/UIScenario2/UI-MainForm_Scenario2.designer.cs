@@ -40,7 +40,7 @@
             this.btn_History = new System.Windows.Forms.Button();
             this.btn_OpenCamera = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_PassIS = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_CurrentData = new System.Windows.Forms.DataGridView();
             this.ScanDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +69,7 @@
             this.tssl_ImgNumber = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_CameraStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_CameraFps = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_showDBID = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsErrMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslbl_Time = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelMain = new System.Windows.Forms.Panel();
@@ -157,7 +157,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.lbl_PassIS);
             this.groupBox3.Location = new System.Drawing.Point(1577, 671);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(311, 168);
@@ -165,16 +165,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "扫描结果";
             // 
-            // label1
+            // lbl_PassIS
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(19, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "未通过";
+            this.lbl_PassIS.AutoSize = true;
+            this.lbl_PassIS.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_PassIS.ForeColor = System.Drawing.Color.Red;
+            this.lbl_PassIS.Location = new System.Drawing.Point(19, 29);
+            this.lbl_PassIS.Name = "lbl_PassIS";
+            this.lbl_PassIS.Size = new System.Drawing.Size(59, 16);
+            this.lbl_PassIS.TabIndex = 0;
+            this.lbl_PassIS.Text = "未通过";
             // 
             // groupBox2
             // 
@@ -424,13 +424,13 @@
             this.tssl_CameraFps.Text = "相机帧率：";
             this.tssl_CameraFps.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // toolStripStatusLabel1
+            // tssl_showDBID
             // 
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Navy;
-            this.toolStripStatusLabel1.Margin = new System.Windows.Forms.Padding(40, 3, 0, 2);
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(68, 17);
-            this.toolStripStatusLabel1.Text = "请放上文件";
+            this.tssl_showDBID.ForeColor = System.Drawing.Color.Navy;
+            this.tssl_showDBID.Margin = new System.Windows.Forms.Padding(40, 3, 0, 2);
+            this.tssl_showDBID.Name = "tssl_showDBID";
+            this.tssl_showDBID.Size = new System.Drawing.Size(68, 17);
+            this.tssl_showDBID.Text = "请放上文件";
             // 
             // tsErrMessage
             // 
@@ -476,7 +476,7 @@
             this.tssl_ImgNumber,
             this.tssl_CameraStatus,
             this.tssl_CameraFps,
-            this.toolStripStatusLabel1,
+            this.tssl_showDBID,
             this.tsErrMessage,
             this.tslbl_Time});
             this.statusStrip1.Location = new System.Drawing.Point(0, 1015);
@@ -533,7 +533,7 @@
         private System.Windows.Forms.Button btn_History;
         private System.Windows.Forms.Button btn_OpenCamera;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_PassIS;
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.DataGridView dgv_CurrentData;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScanDate;
@@ -562,7 +562,7 @@
         private System.Windows.Forms.ToolStripStatusLabel tssl_ImgNumber;
         private System.Windows.Forms.ToolStripStatusLabel tssl_CameraStatus;
         private System.Windows.Forms.ToolStripStatusLabel tssl_CameraFps;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel tssl_showDBID;
         private System.Windows.Forms.ToolStripStatusLabel tsErrMessage;
         private System.Windows.Forms.ToolStripStatusLabel tslbl_Time;
         private System.Windows.Forms.Panel panelMain;
