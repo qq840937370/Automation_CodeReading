@@ -448,6 +448,7 @@ namespace CodeReading.View
                         // 如果是2HNCL
                         else if (DbIdstr == "2HNCL")
                         {
+
                             tssl_showDBID.Text = "识别到《高净值耗材使用清单》表单";
                             // 数据查询结果为0
                             if (SelectData() == 0) // 未检索到数据
