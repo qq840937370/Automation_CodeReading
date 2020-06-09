@@ -143,7 +143,7 @@ namespace CodeReading.View
             {
                 // FPS小数部分赋值
                 randomdouble = randomNumber + random.NextDouble();
-                // 显示假FPS
+                // 显示假FPS -format
                 tssl_CameraFps.Text = "相机帧率：" + randomdouble;
             }
         }
@@ -207,6 +207,8 @@ namespace CodeReading.View
             }
             catch (HalconException halExp)
             {
+                // 记录相机状态
+                CameraStatus.state = CameraRunStatus.CameraNotRunning;
                 //MessageBox.Show("图像处理信息获取失败！" + halExp.GetErrorCode() +halExp.GetErrorMessage());
                 MessageBox.Show("相机未连接或已打开！错误代码：" + halExp.GetErrorCode());
                 tssl_CameraStatus.Text = "扫描信息异常";

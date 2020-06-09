@@ -416,11 +416,13 @@
             // 
             // tssl_CameraFps
             // 
+            this.tssl_CameraFps.AutoSize = false;
             this.tssl_CameraFps.ForeColor = System.Drawing.Color.Black;
             this.tssl_CameraFps.Margin = new System.Windows.Forms.Padding(40, 3, 0, 2);
             this.tssl_CameraFps.Name = "tssl_CameraFps";
-            this.tssl_CameraFps.Size = new System.Drawing.Size(68, 17);
+            this.tssl_CameraFps.Size = new System.Drawing.Size(94, 17);
             this.tssl_CameraFps.Text = "相机帧率：";
+            this.tssl_CameraFps.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // toolStripStatusLabel1
             // 
@@ -434,7 +436,7 @@
             // 
             this.tsErrMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
             this.tsErrMessage.Name = "tsErrMessage";
-            this.tsErrMessage.Size = new System.Drawing.Size(1375, 17);
+            this.tsErrMessage.Size = new System.Drawing.Size(1349, 17);
             this.tsErrMessage.Spring = true;
             // 
             // tslbl_Time
