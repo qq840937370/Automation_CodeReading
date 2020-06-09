@@ -93,6 +93,7 @@
             this.txtUPwd.Location = new System.Drawing.Point(391, 340);
             this.txtUPwd.Margin = new System.Windows.Forms.Padding(4);
             this.txtUPwd.Name = "txtUPwd";
+            this.txtUPwd.PasswordChar = '*';
             this.txtUPwd.Size = new System.Drawing.Size(240, 26);
             this.txtUPwd.TabIndex = 5;
             // 

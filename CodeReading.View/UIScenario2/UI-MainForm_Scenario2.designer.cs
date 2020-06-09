@@ -68,7 +68,7 @@
             this.tsCuurrentProject = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_ImgNumber = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_CameraStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssl_CameraFps = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsErrMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslbl_Time = new System.Windows.Forms.ToolStripStatusLabel();
@@ -414,13 +414,13 @@
             this.tssl_CameraStatus.Size = new System.Drawing.Size(92, 17);
             this.tssl_CameraStatus.Text = "扫描相机未连接";
             // 
-            // toolStripStatusLabel2
+            // tssl_CameraFps
             // 
-            this.toolStripStatusLabel2.ForeColor = System.Drawing.Color.Black;
-            this.toolStripStatusLabel2.Margin = new System.Windows.Forms.Padding(40, 3, 0, 2);
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(68, 17);
-            this.toolStripStatusLabel2.Text = "相机帧率：";
+            this.tssl_CameraFps.ForeColor = System.Drawing.Color.Black;
+            this.tssl_CameraFps.Margin = new System.Windows.Forms.Padding(40, 3, 0, 2);
+            this.tssl_CameraFps.Name = "tssl_CameraFps";
+            this.tssl_CameraFps.Size = new System.Drawing.Size(68, 17);
+            this.tssl_CameraFps.Text = "相机帧率：";
             // 
             // toolStripStatusLabel1
             // 
@@ -434,7 +434,7 @@
             // 
             this.tsErrMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
             this.tsErrMessage.Name = "tsErrMessage";
-            this.tsErrMessage.Size = new System.Drawing.Size(1406, 17);
+            this.tsErrMessage.Size = new System.Drawing.Size(1375, 17);
             this.tsErrMessage.Spring = true;
             // 
             // tslbl_Time
@@ -473,7 +473,7 @@
             this.tsCuurrentProject,
             this.tssl_ImgNumber,
             this.tssl_CameraStatus,
-            this.toolStripStatusLabel2,
+            this.tssl_CameraFps,
             this.toolStripStatusLabel1,
             this.tsErrMessage,
             this.tslbl_Time});
@@ -559,7 +559,7 @@
         private System.Windows.Forms.ToolStripStatusLabel tsCuurrentProject;
         private System.Windows.Forms.ToolStripStatusLabel tssl_ImgNumber;
         private System.Windows.Forms.ToolStripStatusLabel tssl_CameraStatus;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel tssl_CameraFps;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel tsErrMessage;
         private System.Windows.Forms.ToolStripStatusLabel tslbl_Time;

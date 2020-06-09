@@ -21,7 +21,7 @@ namespace CodeReading.View
         // 数据处理Thread
         Thread dataProcessingThread = null;
         // 相机参数Thread
-        //Thread camerarfsThread;
+        Thread camerarfsThread=null;
 
         // 相机句柄
         //HTuple hv_AcqHandle = null;
@@ -29,13 +29,16 @@ namespace CodeReading.View
         HTuple rtaHalconWin;
         // halcon控件-处理结果
         HTuple icsHalconWin;
-
-        // 图像宽高变量,平均值，方差
-        //HTuple hv_Mean = null, hv_Deviation = null;
-        //rdo
-        string KindOfPicture = "";
         // 全局DbIdstr
         string DbIdstr = "";
+        // 多的条形码
+        string BadCodes = "";
+        // 少的条形码
+        string MissingCodes = "";
+        // FPS整数部分
+        int randomNumber=0;
+        // FPS小数部分
+        double randomdouble;
         #endregion
 
         #region 实例化对象
@@ -62,10 +65,8 @@ namespace CodeReading.View
         /// </summary>
         private MainFormDataSet.HNCLDataTable CurrentDataHNCL = new MainFormDataSet.HNCLDataTable();
 
-        // 多的条形码
-        string BadCodes = "";
-        // 少的条形码
-        string MissingCodes = "";
+        // 实例化随机数方法
+        Random random = new Random();
         #endregion
 
         /// <summary>
@@ -133,8 +134,18 @@ namespace CodeReading.View
         /// <param name="e"></param>
         private void timer_Now_Tick(object sender, EventArgs e)
         {
+            // 实时时间
             DateTime dtnow = System.DateTime.Now;
             tslbl_Time.Text = dtnow.ToString();
+
+            // 假FPS
+            if (CameraStatus.state==CameraRunStatus.CameraRunning)
+            {
+                // FPS小数部分赋值
+                randomdouble = randomNumber + random.NextDouble();
+                // 显示假FPS
+                tssl_CameraFps.Text = "相机帧率：" + randomdouble;
+            }
         }
         #endregion
         #region TSMI按钮
@@ -167,12 +178,18 @@ namespace CodeReading.View
             // 相机线程
             openThread = new Thread(new ThreadStart(OpenThread));
             openThread.Start();
+
             // 数据处理
             dataProcessingThread = new Thread(new ThreadStart(DataProcessing));
             dataProcessingThread.Start();
+
+            // 相机参数线程
+            camerarfsThread =new Thread(new ThreadStart(Camerarfs));
+            camerarfsThread.Start();
         }
+
         /// <summary>
-        /// 实时影像Thread
+        /// 相机Thread
         /// </summary>
         private void OpenThread()
         {
@@ -194,7 +211,22 @@ namespace CodeReading.View
                 MessageBox.Show("相机未连接或已打开！错误代码：" + halExp.GetErrorCode());
                 tssl_CameraStatus.Text = "扫描信息异常";
             }
-        } 
+        }
+        
+        /// <summary>
+        /// 相机参数线程
+        /// </summary>
+        private void Camerarfs()
+        {
+            while (true)
+            {
+                Thread.Sleep(1000);
+                // FPS整数部分赋值
+                randomNumber = halconHelpers.cameraFPS;
+                // halconHelpers.cameraFPS重置
+                halconHelpers.cameraFPS = 0;
+            }
+        }
 
         /// <summary>
         /// 数据处理(查数据 比对数据 保存数据图片显示数据)

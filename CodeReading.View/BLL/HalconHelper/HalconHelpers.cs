@@ -18,6 +18,7 @@ namespace CodeReading.View.BLL.HalconHelper
         public string usedInfoTagCode = "";
         public HObject usedInfoHImg = null;
         public string usedInfoTagCodeNum = "";
+        public int cameraFPS = 0;
         #endregion
         // 相机句柄
         HTuple hv_AcqHandle = null;
@@ -60,6 +61,8 @@ namespace CodeReading.View.BLL.HalconHelper
                 ho_Image.Dispose();
 
                 HOperatorSet.GrabImage(out ho_Image, hv_AcqHandle);
+
+                cameraFPS += 1;
 
                 //read_image (Image, 'C:/Users/zhang-sh/source/repos/qq840937370/Automation_CodeReading/file/1SHIL.bmp')
                 try
