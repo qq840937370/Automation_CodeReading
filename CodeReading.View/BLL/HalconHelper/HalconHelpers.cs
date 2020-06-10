@@ -71,6 +71,8 @@ namespace CodeReading.View.BLL.HalconHelper
                     {
                         HObject ExpTmpOutVar_0;
                         hDevelopExport.image_cali_map(ho_Image, out ExpTmpOutVar_0, new HTuple(), new HTuple());
+                        //HOperatorSet.RotateImage(ho_Image, out ExpTmpOutVar_0, 90, "constant");
+
                         HOperatorSet.DispObj(ExpTmpOutVar_0, rtaHalconWin);
                         ho_Image.Dispose();
                         ho_Image = ExpTmpOutVar_0;
