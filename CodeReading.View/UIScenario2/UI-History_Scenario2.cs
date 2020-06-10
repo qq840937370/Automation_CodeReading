@@ -67,18 +67,24 @@ namespace CodeReading.View
         /// </summary>
         private void InitData()
         {
-            // 検索条件初始化
-            searchConditions = new SearchConditions();
+            #region 调用API
+            //// 検索条件初始化
+            //searchConditions = new SearchConditions();
 
-            // 数据取得
-            var client = new HistoryServiceClient();
-            LoginInfo loginInfo=new LoginInfo();
-            var result = client.Initialize(loginInfo);
+            //// 数据取得
+            //var client = new HistoryServiceClient();
+            //LoginInfo loginInfo=new LoginInfo();
+            //var result = client.Initialize(loginInfo);
+            //// 系统时间
+            //systime = result.SysDate;
+            //// 获取检索结果最大行数
+            //maxLowCount = result.MaxRowsCount;
+            #endregion
+
             // 系统时间
-            systime = result.SysDate;
+            systime = DateTime.Now;
             // 获取检索结果最大行数
-            maxLowCount = result.MaxRowsCount;
-
+            maxLowCount = 1000;
             dtpDtp_From.Value = systime;
             dtpDtp_To.Value = systime;
             cmb_DbId.SelectedItem = cmb_DbId.Items[0];  // “表单类别”默认选中全部

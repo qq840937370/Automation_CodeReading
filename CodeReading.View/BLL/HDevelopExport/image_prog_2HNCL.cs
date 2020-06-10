@@ -28,6 +28,7 @@ public partial class HDevelopExport
     HTuple hv_BarWidth = new HTuple(), hv_BarHeight = new HTuple();
     HTuple hv_DataCodeHandle = new HTuple(), hv_BarCodeHandle = new HTuple();
     HTuple hv_ResultHandles = new HTuple(), hv_DecodedDataStrings = new HTuple();
+    HTuple  hv_DecodedDataStrings2D = new HTuple();
     HTuple hv_someitem = new HTuple(), hv_Area = new HTuple();
     HTuple hv_BarIndex = new HTuple(), hv_Row = new HTuple();
     HTuple hv_Column = new HTuple();
@@ -68,11 +69,13 @@ public partial class HDevelopExport
         HOperatorSet.DispObj(ho_ImageOut, hv_ExpDefaultWinHandle);
     //** RECOGNITION
     //* DataCode
-    ho_SymbolXLDs.Dispose();hv_ResultHandles.Dispose();hv_DecodedDataStrings.Dispose();
+    ho_SymbolXLDs.Dispose();hv_ResultHandles.Dispose();hv_DecodedDataStrings.Dispose();hv_DecodedDataStrings2D.Dispose();
     HOperatorSet.FindDataCode2d(ho_ImageOut, out ho_SymbolXLDs, hv_DataCodeHandle, 
-        "stop_after_result_num", 3, out hv_ResultHandles, out hv_DecodedDataStrings);
-    image_display_datacode(ho_SymbolXLDs, hv_ResultHandles, hv_ExpDefaultWinHandle, hv_DecodedDataStrings, 
+        "stop_after_result_num", 3, out hv_ResultHandles, out hv_DecodedDataStrings2D);
+    image_display_datacode(ho_SymbolXLDs, hv_ResultHandles, hv_ExpDefaultWinHandle, hv_DecodedDataStrings2D, 
         hv_DataCodeHandle);
+        
+
     //* BARCODE
     ho_SymbolRegions.Dispose();hv_DecodedDataStrings.Dispose();hv_someitem.Dispose();
     image_get_bar(ho_ImageOut, out ho_SymbolRegions, hv_BarCodeHandle, out hv_DecodedDataStrings, 
@@ -150,7 +153,9 @@ public partial class HDevelopExport
             result.DbId = "2HNCL";
             ////result.OtherID = "6527815";//
             // Ä£ÄâÖ÷¼ü
-            result.OtherID = "888888";
+            result.OtherID = hv_DecodedDataStrings2D.TupleSubstr(0,6);
+            //System.Diagnostics.Debug.WriteLine("result£º " + hv_DecodedDataStrings2D.TupleSubstr(0, 6));
+            //System.Diagnostics.Debug.WriteLine("result£º " + result.OtherID);
             //result.OtherID = hv_Ocr_Split;
             // Ç©×Ö
             result.Sign = "1";

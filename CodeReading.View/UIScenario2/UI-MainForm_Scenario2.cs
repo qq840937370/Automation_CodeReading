@@ -21,7 +21,7 @@ namespace CodeReading.View
         // 数据处理Thread
         Thread dataProcessingThread = null;
         // 相机参数Thread
-        Thread camerarfsThread=null;
+        Thread camerarfsThread = null;
 
         // 相机句柄
         //HTuple hv_AcqHandle = null;
@@ -42,6 +42,12 @@ namespace CodeReading.View
         #endregion
 
         #region 实例化对象
+        // 实例化实时影像Thread
+
+        // 实例化数据处理Thread
+
+        // 实例化相机参数Thread
+
         // 实例化MainFormBLL对象
         MainFormBLL mainFormBLL = new MainFormBLL();
         // 实例化MainFormDAL对象
@@ -111,19 +117,32 @@ namespace CodeReading.View
         /// <param name="e"></param>
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
+            // System.Diagnostics.Debug.WriteLine(openThread.IsAlive.ToString())
             // 终止数据处理Thread
-            //dataProcessingThread.Abort();
+            if (dataProcessingThread !=null)
+            {
+                dataProcessingThread.Abort();
+            }
             // 终止实时影像Thread
-            //openThread.Abort();
+            if (openThread != null)
+            {
+                openThread.Abort();
+            }
+            // 终止相机参数Thread
+            if (camerarfsThread != null)
+            {
+                camerarfsThread.Abort();
+            }
             // 释放相机句柄
             HOperatorSet.CloseAllFramegrabbers();
 
             Application.Exit();                   // 退出应用
+                        
             // 有时终止进程会异常
-            try {
-                System.Environment.Exit(1);           // 终止此应用进程
-            }
-            catch { }
+            //try {
+            //    System.Environment.Exit(1);           // 终止此应用进程
+            //}
+            //catch { }
         }
 
         #region 实时显示内容
@@ -137,15 +156,6 @@ namespace CodeReading.View
             // 实时时间
             DateTime dtnow = System.DateTime.Now;
             tslbl_Time.Text = dtnow.ToString();
-
-            // 假FPS
-            if (CameraStatus.state==CameraRunStatus.CameraRunning)
-            {
-                // FPS小数部分赋值
-                randomdouble = randomNumber + random.NextDouble();
-                // 显示假FPS -format
-                tssl_CameraFps.Text = "相机帧率：" + randomdouble;
-            }
         }
         #endregion
         #region TSMI按钮
@@ -227,6 +237,14 @@ namespace CodeReading.View
                 randomNumber = halconHelpers.cameraFPS;
                 // halconHelpers.cameraFPS重置
                 halconHelpers.cameraFPS = 0;
+                // 假FPS
+                if (CameraStatus.state == CameraRunStatus.CameraRunning)
+                {
+                    // FPS小数部分赋值
+                    randomdouble = randomNumber + random.NextDouble();
+                    // 显示假FPS -format
+                    tssl_CameraFps.Text = "相机帧率：" + randomdouble;
+                }
             }
         }
 
