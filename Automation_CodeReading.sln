@@ -38,6 +38,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{F71F15F9-D
 		Docs\SHILV3.1.docx = Docs\SHILV3.1.docx
 		Docs\信息自动化解决方案.pptx = Docs\信息自动化解决方案.pptx
 		Docs\工业相机读码方案.pptx = Docs\工业相机读码方案.pptx
+		Docs\扫描模板.zip = Docs\扫描模板.zip
+		Docs\结算组单据电子审核重点.pptx = Docs\结算组单据电子审核重点.pptx
 		Docs\详细设计书_医院财务纸质表单读取系统.xlsx = Docs\详细设计书_医院财务纸质表单读取系统.xlsx
 		Docs\高净值耗材使用清单V3.1.docx = Docs\高净值耗材使用清单V3.1.docx
 	EndProjectSection
@@ -46,6 +48,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{14C294F7-68F3-
 	ProjectSection(SolutionItems) = preProject
 		DB\DB设计.xlsx = DB\DB设计.xlsx
 		DB\sql_sqlserver.sql = DB\sql_sqlserver.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "维护前文档", "维护前文档", "{C627BF1F-D7E0-4245-86D1-E5F6D8F35815}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\维护前文档\Device.html = Docs\维护前文档\Device.html
+		Docs\维护前文档\Device.jpeg = Docs\维护前文档\Device.jpeg
+		Docs\维护前文档\Device.md = Docs\维护前文档\Device.md
+		Docs\维护前文档\Device.pdf = Docs\维护前文档\Device.pdf
+		Docs\维护前文档\Device.png = Docs\维护前文档\Device.png
+		Docs\维护前文档\Device_tmp.html = Docs\维护前文档\Device_tmp.html
+		Docs\维护前文档\GUI1.png = Docs\维护前文档\GUI1.png
+		Docs\维护前文档\Plan.docx = Docs\维护前文档\Plan.docx
+		Docs\维护前文档\Plan.html = Docs\维护前文档\Plan.html
+		Docs\维护前文档\Plan.jpeg = Docs\维护前文档\Plan.jpeg
+		Docs\维护前文档\Plan.md = Docs\维护前文档\Plan.md
+		Docs\维护前文档\Plan.pdf = Docs\维护前文档\Plan.pdf
+		Docs\维护前文档\Plan.png = Docs\维护前文档\Plan.png
+		Docs\维护前文档\PlanA.mmap = Docs\维护前文档\PlanA.mmap
+		Docs\维护前文档\PlanA.png = Docs\维护前文档\PlanA.png
+		Docs\维护前文档\PlanB.mmap = Docs\维护前文档\PlanB.mmap
+		Docs\维护前文档\PlanB.png = Docs\维护前文档\PlanB.png
+		Docs\维护前文档\Prog.md = Docs\维护前文档\Prog.md
+		Docs\维护前文档\Prog.mmap = Docs\维护前文档\Prog.mmap
+		Docs\维护前文档\ScanRaw.jpg = Docs\维护前文档\ScanRaw.jpg
+		Docs\维护前文档\工业相机读码方案.pptx = Docs\维护前文档\工业相机读码方案.pptx
 	EndProjectSection
 EndProject
 Global
@@ -126,8 +153,11 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C627BF1F-D7E0-4245-86D1-E5F6D8F35815} = {F71F15F9-DBC8-4F60-81DB-45CADFD544C1}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		VisualSVNWorkingCopyRoot = .
 		SolutionGuid = {E8DCFD6B-D0DE-4DBD-B032-D23CB70F6CFC}
+		VisualSVNWorkingCopyRoot = .
 	EndGlobalSection
 EndGlobal

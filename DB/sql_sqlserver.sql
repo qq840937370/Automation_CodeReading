@@ -58,7 +58,7 @@ create table [dbo].[FormDatatwo] (
   , PatientName varchar(50)
   , PatientAge varchar(20)
   , PatientSex bit
-  , ORName varchar(100)
+  , OName varchar(100)
   , PatientDepartment varchar(100)
   , TagCode varchar(max)
   , Remarks varchar(200)
@@ -85,7 +85,7 @@ create table [dbo].[FormDatathree] (
   , CommodityName varchar(100)
   , SpecificationType varchar(50)
   , Manufacturer varchar(100)
-  , Company varchar(100)
+  , Unit varchar(100)
   , BatchNumber varchar(100)
   , PeriodOfValidity varchar(50)
   , UnitPrice Money
