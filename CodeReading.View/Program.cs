@@ -16,7 +16,7 @@ namespace CodeReading.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UI_MainForm_Scenario2());
+            Application.Run(new UI_MainForm_Scenario4());
             //Application.Run(new UI_Login_Scenario2());
             //Application.Run(new UI_MainForm_Scenario3());
         }
