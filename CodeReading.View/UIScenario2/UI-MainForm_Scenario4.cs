@@ -95,6 +95,7 @@ namespace CodeReading.View
             rtaHalconWin = hWinctl_RTA.HalconWindow;
             icsHalconWin = hWinctl_ICS.HalconWindow;
         }
+        
         /// <summary>
         /// 窗口登陆事件
         /// </summary>
@@ -110,6 +111,7 @@ namespace CodeReading.View
             // 注册窗体关闭事件
             this.FormClosing += new FormClosingEventHandler(MainForm_Closing);
         }
+        
         /// <summary>
         /// 窗体关闭事件
         /// </summary>

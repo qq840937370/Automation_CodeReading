@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CodeReading.View.UIScenario2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace CodeReading.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UI_MainForm_Scenario4());
+            Application.Run(new JsonMode());
             //Application.Run(new UI_Login_Scenario2());
             //Application.Run(new UI_MainForm_Scenario3());
         }

@@ -37,6 +37,7 @@
     <Reference Include="hdevenginedotnet">
       <HintPath>..\..\..\..\..\..\..\Program Files\MVTec\HALCON-18.11-Steady\bin\dotnet35\hdevenginedotnet.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -60,11 +61,23 @@
     <Compile Include="HistoryDataSet.Dataset.Designer.cs" />
     <Compile Include="History\InitializeResult.cs" />
     <Compile Include="LoginInfo.cs" />
+    <Compile Include="MainForm\MainNew\SSFI.cs" />
+    <Compile Include="MainForm\MainNew\CWPRF.cs" />
+    <Compile Include="MainForm\MainNew\ULOHI.cs" />
+    <Compile Include="MainForm\MainNew\DLIST.cs" />
+    <Compile Include="MainForm\MainNew\ASLIST.cs" />
+    <Compile Include="MainForm\MainNew\BREGI.cs" />
+    <Compile Include="MainForm\MainNew\CWDL.cs" />
+    <Compile Include="MainForm\MainNew\CWSL.cs" />
+    <Compile Include="MainForm\MainNew\ULOHVC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="History\SearchConditions.cs" />
     <Compile Include="History\SearchResult.cs" />
     <Compile Include="States.cs" />
     <Compile Include="MainForm\UsedInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MainForm\MainNew_Json\CWSL.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
