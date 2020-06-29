@@ -40,6 +40,10 @@ namespace CodeReading.Entity.MainForm.MainNew
         public string SerialNumber { get; set; }
 
         /// <summary>
+        /// 页码
+        /// </summary>
+        public string NumberOfPages { get; set; }
+        /// <summary>
         /// 本页合计
         /// </summary>
         public string AmountOnThisPage { get; set; }

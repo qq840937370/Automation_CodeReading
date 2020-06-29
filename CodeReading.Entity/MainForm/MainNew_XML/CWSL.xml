@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--起始标记-->
+<XMLDATA>
+  <!--请求数据头部-->
+  <MAIN>
+    <!--入库单号-->
+    <INSOUTNO></INSOUTNO>
+    <!--流水号-->
+    <SERIALNO></SERIALNO>
+    <!--入库日期-->
+    <INSOUTDATE></INSOUTDATE>
+    <!--供应商名称-->
+    <SUPNAME></SUPNAME>
+    <!--入库单总金额-->
+    <TAXAMT></TAXAMT>
+    <!--明细行数-->
+    <TOTAL_RECORDS></TOTAL_RECORDS>
+  </MAIN>
+  <!--请求数据明细-->
+  <DETAIL>
+    <!--单据页序号-->
+    <PAGENO></PAGENO>
+    <!--单据页总金额-->
+    <PAGETAXAMT></PAGETAXAMT>
+    <!--关联图片文件ID-->
+    <PICFILEID></PICFILEID> 
+  </DETAIL>
+</XMLDATA>
+  

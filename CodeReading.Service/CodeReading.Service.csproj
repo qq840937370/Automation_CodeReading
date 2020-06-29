@@ -63,6 +63,7 @@
   <ItemGroup>
     <Content Include="History\HistoryService.svc" />
     <Content Include="MainForm\MainFormService.svc" />
+    <Content Include="SendRecv1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +76,7 @@
       <DependentUpon>HistoryService.svc</DependentUpon>
     </Compile>
     <Compile Include="History\IHistoryService.cs" />
+    <Compile Include="ISendRecv1.cs" />
     <Compile Include="MainForm\IMainFormService.cs" />
     <Compile Include="MainForm\MainFormDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -90,6 +92,9 @@
       <DependentUpon>MainFormService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SendRecv1.svc.cs">
+      <DependentUpon>SendRecv1.svc</DependentUpon>
+    </Compile>
     <Compile Include="SqlHelper.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using CodeReading.Entity.MainForm.MainNew;
 using CodeReading.View.BLL.MainFormNew;
+using CodeReading.View.BLL.MainFormWanXu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,10 @@ namespace CodeReading.View.UIScenario2
 {
     public partial class JsonMode : Form
     {
-        CWSLList cWSLList = new CWSLList();
+        // 新-有逻辑
+        MainFormBLLNew mainFormBLLNew = new MainFormBLLNew();
+        // 万旭有返回值
+        MainFormBLLWanXu mainFormBLLWanXu = new MainFormBLLWanXu();
         public JsonMode()
         {
             InitializeComponent();
@@ -26,84 +30,38 @@ namespace CodeReading.View.UIScenario2
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            #region 扫描到的信息-假
-            // 扫描到的信息
-            //供应商
-            //入库日期
-            //入库单号
-            //本页合计金额
-            //表单总金额
-            //验收人
-            //供应商
-            //仓库员
-            // 扫描到的值-cWSL_ComparisonInformation
-            CWSL cWSL_ComparisonInformation = new CWSL();
-            cWSL_ComparisonInformation.SupplierName = "济南鹏程医疗设备有限公司";
-            cWSL_ComparisonInformation.InboundDate = "2020-06-10";
-            cWSL_ComparisonInformation.ReceiptNo = "80462720";
+            string DBid = "CWSL";
 
-            cWSL_ComparisonInformation.NumberOfPages = "1/1";
-            cWSL_ComparisonInformation.TotalAmount = "977.5";
-
-            cWSL_ComparisonInformation.AcceptanceOfThePeople = "许欣伟";
-            cWSL_ComparisonInformation.Supplier = "张楠林";
-            cWSL_ComparisonInformation.WarehouseOperator = "刘月";
-            #endregion
-
-            #region 向服务器请求数据-假
-            // 请求条件-略
-            // 请求到的值-cWSL_ComparisonInformationSource
-            CWSL cWSL_ComparisonInformationSource = new CWSL();
-            cWSL_ComparisonInformationSource=cWSLList.Readjson();
-            //System.Diagnostics.Debug.WriteLine(cWSL_ComparisonInformationSource.SupplierName.ToString());
-            #endregion
-
-            #region 对比
-            // 表单总金额=JSON文件：表单总金额
+            switch (DBid)
             {
-                if (cWSL_ComparisonInformation.TotalAmount == cWSL_ComparisonInformationSource.TotalAmount &&
-                    cWSL_ComparisonInformation.AcceptanceOfThePeople.Length > 0 &&
-                    cWSL_ComparisonInformation.Supplier.Length > 0 &&
-                    cWSL_ComparisonInformation.WarehouseOperator.Length > 0)
-                {
-                    lbl_JinQian.Text = "金钱数一致";
-                    lbl_QianZi.Text = "已签字";
-                    lbl_Pass.Text = "已通过";
-                }
-                else
-                {
-                    if (cWSL_ComparisonInformation.TotalAmount != cWSL_ComparisonInformationSource.TotalAmount)
-                    {
-                        lbl_JinQian.Text = "金钱数不一致";
-                    }
-                    // 验收人
-                    string QianZistr = "";
-                    // 验收人
-                    if (cWSL_ComparisonInformation.AcceptanceOfThePeople.Length <= 0)
-                    {
-                        QianZistr += "'验收人' ";
-                    }
-                    // 供应商
-                    if (cWSL_ComparisonInformation.Supplier.Length <= 0)
-                    {
-                        QianZistr += "'供应商' ";
-                    }
-                    // 仓库员
-                    if (cWSL_ComparisonInformation.WarehouseOperator.Length <= 0)
-                    {
-                        QianZistr += "'仓库员' ";
-                    }
-                    if (QianZistr.Length > 0)
-                    {
-                        QianZistr += "未签字";
-                        lbl_QianZi.Text = QianZistr;
-                    }
-                    lbl_Pass.Text = "未通过";
-                }
+                // 耗材仓库耗材入库单
+                case "CWSL":
+                    //mainFormBLLNew.CWSLList(out string CWSL_id, out string CWSL_TotalAmount, out string CWSL_Sign, out string CWSL_Pass);
+                    mainFormBLLWanXu.CWSLList(out string CWSL_id, out string CWSL_TotalAmount, out string CWSL_Sign, out string CWSL_Pass);
+                    lbl_Page.Text = CWSL_id;
+                    lbl_JinQian.Text = CWSL_TotalAmount;
+                    lbl_QianZi.Text = CWSL_Sign;
+                    lbl_Seal.Visible = false;
+                    lbl_Pass.Text = CWSL_Pass;
+                    break;
+                // 耗材仓库配送出库单
+                case "CWDL":
+                    //mainFormBLLNew.CWDLList(out string CWDL_id, out string CWDL_TotalAmount, out string CWDL_Sign, out string CWDL_Seal, out string CWDL_Pass);
+                    mainFormBLLWanXu.CWDLList(out string CWDL_id, out string CWDL_TotalAmount, out string CWDL_Sign, out string CWDL_Seal, out string CWDL_Pass);
+                    lbl_Page.Text = CWDL_id;
+                    lbl_JinQian.Text = CWDL_TotalAmount;
+                    lbl_QianZi.Text = CWDL_Sign;
+                    lbl_Seal.Visible = true;
+                    lbl_Seal.Text = CWDL_Seal;
+                    lbl_Pass.Text = CWDL_Pass;
+                    break;
+                // 
+
+
+                // 其他
+                case "":
+                    break;
             }
-            #endregion
-
-
         }
     }
 }
