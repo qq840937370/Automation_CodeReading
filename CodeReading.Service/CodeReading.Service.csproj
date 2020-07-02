@@ -91,6 +91,11 @@
     <Compile Include="MainForm\MainFormService.svc.cs">
       <DependentUpon>MainFormService.svc</DependentUpon>
     </Compile>
+    <Compile Include="MainForm\MainFormWanXuDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainFormWanXuDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SendRecv1.svc.cs">
       <DependentUpon>SendRecv1.svc</DependentUpon>
@@ -122,6 +127,17 @@
     </None>
     <Content Include="MainForm\MainFormDataSet.xss">
       <DependentUpon>MainFormDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="MainForm\MainFormWanXuDataSet.xsc">
+      <DependentUpon>MainFormWanXuDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="MainForm\MainFormWanXuDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MainFormWanXuDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="MainForm\MainFormWanXuDataSet.xss">
+      <DependentUpon>MainFormWanXuDataSet.xsd</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

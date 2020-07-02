@@ -41,7 +41,7 @@ namespace CodeReading.View.BLL.MainFormNew
         int numberOfPageold=0;
 
         /// <summary>
-        /// 入库表页码扫描顺序
+        /// 页码扫描顺序
         /// </summary>
         /// <param name="i">是否读取过</param>
         /// <param name="numberOfPage">当前页数</param>

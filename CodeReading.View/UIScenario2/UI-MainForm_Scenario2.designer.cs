@@ -436,7 +436,7 @@
             // 
             this.tsErrMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
             this.tsErrMessage.Name = "tsErrMessage";
-            this.tsErrMessage.Size = new System.Drawing.Size(1349, 17);
+            this.tsErrMessage.Size = new System.Drawing.Size(1380, 17);
             this.tsErrMessage.Spring = true;
             // 
             // tslbl_Time

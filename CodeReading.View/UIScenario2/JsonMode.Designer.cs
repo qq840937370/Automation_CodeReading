@@ -49,7 +49,7 @@
             // lbl_Pass
             // 
             this.lbl_Pass.AutoSize = true;
-            this.lbl_Pass.Location = new System.Drawing.Point(24, 215);
+            this.lbl_Pass.Location = new System.Drawing.Point(24, 222);
             this.lbl_Pass.Name = "lbl_Pass";
             this.lbl_Pass.Size = new System.Drawing.Size(53, 12);
             this.lbl_Pass.TabIndex = 1;
@@ -58,7 +58,7 @@
             // lbl_JinQian
             // 
             this.lbl_JinQian.AutoSize = true;
-            this.lbl_JinQian.Location = new System.Drawing.Point(24, 105);
+            this.lbl_JinQian.Location = new System.Drawing.Point(24, 112);
             this.lbl_JinQian.Name = "lbl_JinQian";
             this.lbl_JinQian.Size = new System.Drawing.Size(65, 12);
             this.lbl_JinQian.TabIndex = 2;
@@ -67,7 +67,7 @@
             // lbl_QianZi
             // 
             this.lbl_QianZi.AutoSize = true;
-            this.lbl_QianZi.Location = new System.Drawing.Point(24, 143);
+            this.lbl_QianZi.Location = new System.Drawing.Point(24, 150);
             this.lbl_QianZi.Name = "lbl_QianZi";
             this.lbl_QianZi.Size = new System.Drawing.Size(53, 12);
             this.lbl_QianZi.TabIndex = 3;
@@ -76,7 +76,7 @@
             // lbl_Page
             // 
             this.lbl_Page.AutoSize = true;
-            this.lbl_Page.Location = new System.Drawing.Point(24, 72);
+            this.lbl_Page.Location = new System.Drawing.Point(24, 79);
             this.lbl_Page.Name = "lbl_Page";
             this.lbl_Page.Size = new System.Drawing.Size(71, 12);
             this.lbl_Page.TabIndex = 4;
@@ -85,7 +85,7 @@
             // lbl_Seal
             // 
             this.lbl_Seal.AutoSize = true;
-            this.lbl_Seal.Location = new System.Drawing.Point(24, 181);
+            this.lbl_Seal.Location = new System.Drawing.Point(24, 188);
             this.lbl_Seal.Name = "lbl_Seal";
             this.lbl_Seal.Size = new System.Drawing.Size(53, 12);
             this.lbl_Seal.TabIndex = 5;
