@@ -27,12 +27,12 @@ namespace CodeReading.View.BLL.MainFormWanXu
         /// <param name="cWSL_Pass"></param>
         internal void CWSLList(out string id, out string TotalAmount, out string Sign, out string Pass)
         {
+            CWSL cWSL_ComparisonInformation = new CWSL();
             #region 数据获取和取可靠值检验
-            for (int DATAPass; DATAPass= 0;)   // 校验不通过-循环"获取数据+校验"
+            for (int DATAPass=0; DATAPass > 0;)   // 校验不通过-循环"获取数据+校验"
             {
                 #region 扫描到的信息-假
                 // 扫描到的信息
-                CWSL cWSL_ComparisonInformation = new CWSL();
                 #region 一维值
                 // 扫描到的值-ComparisonInformation
                 //cWSL_ComparisonInformation.SupplierName = "济南鹏程医疗设备有限公司";  // 供应商
@@ -109,7 +109,8 @@ namespace CodeReading.View.BLL.MainFormWanXu
                     break;
                 case 1:
                     // 1-读取
-                    break;
+                    break;           
+
                 case 2:
                     // 2-请放入第" + numberOfPageshow + "页
                     break;
