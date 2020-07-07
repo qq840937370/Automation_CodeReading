@@ -37,12 +37,13 @@ namespace CodeReading.View.UIScenario2
                 // 耗材仓库耗材入库单
                 case "CWSL":
                     //mainFormBLLNew.CWSLList(out string CWSL_id, out string CWSL_TotalAmount, out string CWSL_Sign, out string CWSL_Pass);
-                    mainFormBLLWanXu.CWSLList(out string CWSL_id, out string CWSL_TotalAmount, out string CWSL_Sign, out string CWSL_Pass);
+                    mainFormBLLWanXu.CWSLList(out string CWSL_id, out string CWSL_TotalAmount, out string CWSL_Sign, out string CWSL_Pass,out string Information);
                     lbl_Page.Text = CWSL_id;
                     lbl_JinQian.Text = CWSL_TotalAmount;
                     lbl_QianZi.Text = CWSL_Sign;
                     lbl_Seal.Visible = false;
                     lbl_Pass.Text = CWSL_Pass;
+                    lbl_Infomation.Text = Information;
                     break;
                 // 耗材仓库配送出库单
                 case "CWDL":

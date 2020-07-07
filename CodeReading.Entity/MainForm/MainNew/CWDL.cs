@@ -67,7 +67,7 @@ namespace CodeReading.Entity.MainForm.MainNew
         /// <summary>
         /// 科室盖章
         /// </summary>
-        public bool DepartmentSeal { get; set; }
+        public string DepartmentSeal { get; set; }
 
     }
 }

@@ -28,7 +28,13 @@ namespace CodeReading.Entity {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class MainFormWanXuDataSet : global::System.Data.DataSet {
         
-        private SHILwxDataTable tableSHILwx;
+        private CWSLwxDataTable tableCWSLwx;
+        
+        private CWSLhistoryDataTable tableCWSLhistory;
+        
+        private CWDLwxDataTable tableCWDLwx;
+        
+        private CWDLhistoryDataTable tableCWDLhistory;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -58,8 +64,17 @@ namespace CodeReading.Entity {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["SHILwx"] != null)) {
-                    base.Tables.Add(new SHILwxDataTable(ds.Tables["SHILwx"]));
+                if ((ds.Tables["CWSLwx"] != null)) {
+                    base.Tables.Add(new CWSLwxDataTable(ds.Tables["CWSLwx"]));
+                }
+                if ((ds.Tables["CWSLhistory"] != null)) {
+                    base.Tables.Add(new CWSLhistoryDataTable(ds.Tables["CWSLhistory"]));
+                }
+                if ((ds.Tables["CWDLwx"] != null)) {
+                    base.Tables.Add(new CWDLwxDataTable(ds.Tables["CWDLwx"]));
+                }
+                if ((ds.Tables["CWDLhistory"] != null)) {
+                    base.Tables.Add(new CWDLhistoryDataTable(ds.Tables["CWDLhistory"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -83,9 +98,39 @@ namespace CodeReading.Entity {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SHILwxDataTable SHILwx {
+        public CWSLwxDataTable CWSLwx {
             get {
-                return this.tableSHILwx;
+                return this.tableCWSLwx;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public CWSLhistoryDataTable CWSLhistory {
+            get {
+                return this.tableCWSLhistory;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public CWDLwxDataTable CWDLwx {
+            get {
+                return this.tableCWDLwx;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public CWDLhistoryDataTable CWDLhistory {
+            get {
+                return this.tableCWDLhistory;
             }
         }
         
@@ -156,8 +201,17 @@ namespace CodeReading.Entity {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["SHILwx"] != null)) {
-                    base.Tables.Add(new SHILwxDataTable(ds.Tables["SHILwx"]));
+                if ((ds.Tables["CWSLwx"] != null)) {
+                    base.Tables.Add(new CWSLwxDataTable(ds.Tables["CWSLwx"]));
+                }
+                if ((ds.Tables["CWSLhistory"] != null)) {
+                    base.Tables.Add(new CWSLhistoryDataTable(ds.Tables["CWSLhistory"]));
+                }
+                if ((ds.Tables["CWDLwx"] != null)) {
+                    base.Tables.Add(new CWDLwxDataTable(ds.Tables["CWDLwx"]));
+                }
+                if ((ds.Tables["CWDLhistory"] != null)) {
+                    base.Tables.Add(new CWDLhistoryDataTable(ds.Tables["CWDLhistory"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -192,10 +246,28 @@ namespace CodeReading.Entity {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableSHILwx = ((SHILwxDataTable)(base.Tables["SHILwx"]));
+            this.tableCWSLwx = ((CWSLwxDataTable)(base.Tables["CWSLwx"]));
             if ((initTable == true)) {
-                if ((this.tableSHILwx != null)) {
-                    this.tableSHILwx.InitVars();
+                if ((this.tableCWSLwx != null)) {
+                    this.tableCWSLwx.InitVars();
+                }
+            }
+            this.tableCWSLhistory = ((CWSLhistoryDataTable)(base.Tables["CWSLhistory"]));
+            if ((initTable == true)) {
+                if ((this.tableCWSLhistory != null)) {
+                    this.tableCWSLhistory.InitVars();
+                }
+            }
+            this.tableCWDLwx = ((CWDLwxDataTable)(base.Tables["CWDLwx"]));
+            if ((initTable == true)) {
+                if ((this.tableCWDLwx != null)) {
+                    this.tableCWDLwx.InitVars();
+                }
+            }
+            this.tableCWDLhistory = ((CWDLhistoryDataTable)(base.Tables["CWDLhistory"]));
+            if ((initTable == true)) {
+                if ((this.tableCWDLhistory != null)) {
+                    this.tableCWDLhistory.InitVars();
                 }
             }
         }
@@ -208,13 +280,37 @@ namespace CodeReading.Entity {
             this.Namespace = "http://tempuri.org/MainFormWanXuDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableSHILwx = new SHILwxDataTable();
-            base.Tables.Add(this.tableSHILwx);
+            this.tableCWSLwx = new CWSLwxDataTable();
+            base.Tables.Add(this.tableCWSLwx);
+            this.tableCWSLhistory = new CWSLhistoryDataTable();
+            base.Tables.Add(this.tableCWSLhistory);
+            this.tableCWDLwx = new CWDLwxDataTable();
+            base.Tables.Add(this.tableCWDLwx);
+            this.tableCWDLhistory = new CWDLhistoryDataTable();
+            base.Tables.Add(this.tableCWDLhistory);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeSHILwx() {
+        private bool ShouldSerializeCWSLwx() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeCWSLhistory() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeCWDLwx() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeCWDLhistory() {
             return false;
         }
         
@@ -274,14 +370,25 @@ namespace CodeReading.Entity {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void SHILwxRowChangeEventHandler(object sender, SHILwxRowChangeEvent e);
+        public delegate void CWSLwxRowChangeEventHandler(object sender, CWSLwxRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void CWSLhistoryRowChangeEventHandler(object sender, CWSLhistoryRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void CWDLwxRowChangeEventHandler(object sender, CWDLwxRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void CWDLhistoryRowChangeEventHandler(object sender, CWDLhistoryRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SHILwxDataTable : global::System.Data.TypedTableBase<SHILwxRow> {
+        public partial class CWSLwxDataTable : global::System.Data.TypedTableBase<CWSLwxRow> {
+            
+            private global::System.Data.DataColumn columnFormsTitle;
             
             private global::System.Data.DataColumn columnSupplierName;
             
@@ -301,8 +408,8 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SHILwxDataTable() {
-                this.TableName = "SHILwx";
+            public CWSLwxDataTable() {
+                this.TableName = "CWSLwx";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -310,7 +417,7 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal SHILwxDataTable(global::System.Data.DataTable table) {
+            internal CWSLwxDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -327,9 +434,17 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected SHILwxDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected CWSLwxDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FormsTitleColumn {
+                get {
+                    return this.columnFormsTitle;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -407,35 +522,36 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SHILwxRow this[int index] {
+            public CWSLwxRow this[int index] {
                 get {
-                    return ((SHILwxRow)(this.Rows[index]));
+                    return ((CWSLwxRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event SHILwxRowChangeEventHandler SHILwxRowChanging;
+            public event CWSLwxRowChangeEventHandler CWSLwxRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event SHILwxRowChangeEventHandler SHILwxRowChanged;
+            public event CWSLwxRowChangeEventHandler CWSLwxRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event SHILwxRowChangeEventHandler SHILwxRowDeleting;
+            public event CWSLwxRowChangeEventHandler CWSLwxRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event SHILwxRowChangeEventHandler SHILwxRowDeleted;
+            public event CWSLwxRowChangeEventHandler CWSLwxRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddSHILwxRow(SHILwxRow row) {
+            public void AddCWSLwxRow(CWSLwxRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SHILwxRow AddSHILwxRow(string SupplierName, string ReceiptNo, string InboundDate, string NumberOfPages, string TotalAmount, string AcceptanceOfThePeople, string Supplier, string WarehouseOperator) {
-                SHILwxRow rowSHILwxRow = ((SHILwxRow)(this.NewRow()));
+            public CWSLwxRow AddCWSLwxRow(string FormsTitle, string SupplierName, string ReceiptNo, string InboundDate, string NumberOfPages, string TotalAmount, string AcceptanceOfThePeople, string Supplier, string WarehouseOperator) {
+                CWSLwxRow rowCWSLwxRow = ((CWSLwxRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        FormsTitle,
                         SupplierName,
                         ReceiptNo,
                         InboundDate,
@@ -444,15 +560,15 @@ namespace CodeReading.Entity {
                         AcceptanceOfThePeople,
                         Supplier,
                         WarehouseOperator};
-                rowSHILwxRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSHILwxRow);
-                return rowSHILwxRow;
+                rowCWSLwxRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCWSLwxRow);
+                return rowCWSLwxRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                SHILwxDataTable cln = ((SHILwxDataTable)(base.Clone()));
+                CWSLwxDataTable cln = ((CWSLwxDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -460,12 +576,13 @@ namespace CodeReading.Entity {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new SHILwxDataTable();
+                return new CWSLwxDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
+                this.columnFormsTitle = base.Columns["FormsTitle"];
                 this.columnSupplierName = base.Columns["SupplierName"];
                 this.columnReceiptNo = base.Columns["ReceiptNo"];
                 this.columnInboundDate = base.Columns["InboundDate"];
@@ -479,6 +596,8 @@ namespace CodeReading.Entity {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
+                this.columnFormsTitle = new global::System.Data.DataColumn("FormsTitle", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFormsTitle);
                 this.columnSupplierName = new global::System.Data.DataColumn("SupplierName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSupplierName);
                 this.columnReceiptNo = new global::System.Data.DataColumn("ReceiptNo", typeof(string), null, global::System.Data.MappingType.Element);
@@ -499,28 +618,28 @@ namespace CodeReading.Entity {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SHILwxRow NewSHILwxRow() {
-                return ((SHILwxRow)(this.NewRow()));
+            public CWSLwxRow NewCWSLwxRow() {
+                return ((CWSLwxRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SHILwxRow(builder);
+                return new CWSLwxRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(SHILwxRow);
+                return typeof(CWSLwxRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.SHILwxRowChanged != null)) {
-                    this.SHILwxRowChanged(this, new SHILwxRowChangeEvent(((SHILwxRow)(e.Row)), e.Action));
+                if ((this.CWSLwxRowChanged != null)) {
+                    this.CWSLwxRowChanged(this, new CWSLwxRowChangeEvent(((CWSLwxRow)(e.Row)), e.Action));
                 }
             }
             
@@ -528,8 +647,8 @@ namespace CodeReading.Entity {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.SHILwxRowChanging != null)) {
-                    this.SHILwxRowChanging(this, new SHILwxRowChangeEvent(((SHILwxRow)(e.Row)), e.Action));
+                if ((this.CWSLwxRowChanging != null)) {
+                    this.CWSLwxRowChanging(this, new CWSLwxRowChangeEvent(((CWSLwxRow)(e.Row)), e.Action));
                 }
             }
             
@@ -537,8 +656,8 @@ namespace CodeReading.Entity {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.SHILwxRowDeleted != null)) {
-                    this.SHILwxRowDeleted(this, new SHILwxRowChangeEvent(((SHILwxRow)(e.Row)), e.Action));
+                if ((this.CWSLwxRowDeleted != null)) {
+                    this.CWSLwxRowDeleted(this, new CWSLwxRowChangeEvent(((CWSLwxRow)(e.Row)), e.Action));
                 }
             }
             
@@ -546,14 +665,14 @@ namespace CodeReading.Entity {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.SHILwxRowDeleting != null)) {
-                    this.SHILwxRowDeleting(this, new SHILwxRowChangeEvent(((SHILwxRow)(e.Row)), e.Action));
+                if ((this.CWSLwxRowDeleting != null)) {
+                    this.CWSLwxRowDeleting(this, new CWSLwxRowChangeEvent(((CWSLwxRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveSHILwxRow(SHILwxRow row) {
+            public void RemoveCWSLwxRow(CWSLwxRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -580,7 +699,1030 @@ namespace CodeReading.Entity {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SHILwxDataTable";
+                attribute2.FixedValue = "CWSLwxDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class CWSLhistoryDataTable : global::System.Data.TypedTableBase<CWSLhistoryRow> {
+            
+            private global::System.Data.DataColumn columnFormsTitle;
+            
+            private global::System.Data.DataColumn columnSupplierName;
+            
+            private global::System.Data.DataColumn columnReceiptNo;
+            
+            private global::System.Data.DataColumn columnInboundDate;
+            
+            private global::System.Data.DataColumn columnNumberOfPages;
+            
+            private global::System.Data.DataColumn columnTotalAmount;
+            
+            private global::System.Data.DataColumn columnSign;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWSLhistoryDataTable() {
+                this.TableName = "CWSLhistory";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal CWSLhistoryDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected CWSLhistoryDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FormsTitleColumn {
+                get {
+                    return this.columnFormsTitle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn SupplierNameColumn {
+                get {
+                    return this.columnSupplierName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ReceiptNoColumn {
+                get {
+                    return this.columnReceiptNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InboundDateColumn {
+                get {
+                    return this.columnInboundDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NumberOfPagesColumn {
+                get {
+                    return this.columnNumberOfPages;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TotalAmountColumn {
+                get {
+                    return this.columnTotalAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn SignColumn {
+                get {
+                    return this.columnSign;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWSLhistoryRow this[int index] {
+                get {
+                    return ((CWSLhistoryRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event CWSLhistoryRowChangeEventHandler CWSLhistoryRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event CWSLhistoryRowChangeEventHandler CWSLhistoryRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event CWSLhistoryRowChangeEventHandler CWSLhistoryRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event CWSLhistoryRowChangeEventHandler CWSLhistoryRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddCWSLhistoryRow(CWSLhistoryRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWSLhistoryRow AddCWSLhistoryRow(string FormsTitle, string SupplierName, string ReceiptNo, string InboundDate, string NumberOfPages, string TotalAmount, string Sign) {
+                CWSLhistoryRow rowCWSLhistoryRow = ((CWSLhistoryRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        FormsTitle,
+                        SupplierName,
+                        ReceiptNo,
+                        InboundDate,
+                        NumberOfPages,
+                        TotalAmount,
+                        Sign};
+                rowCWSLhistoryRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCWSLhistoryRow);
+                return rowCWSLhistoryRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                CWSLhistoryDataTable cln = ((CWSLhistoryDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new CWSLhistoryDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnFormsTitle = base.Columns["FormsTitle"];
+                this.columnSupplierName = base.Columns["SupplierName"];
+                this.columnReceiptNo = base.Columns["ReceiptNo"];
+                this.columnInboundDate = base.Columns["InboundDate"];
+                this.columnNumberOfPages = base.Columns["NumberOfPages"];
+                this.columnTotalAmount = base.Columns["TotalAmount"];
+                this.columnSign = base.Columns["Sign"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnFormsTitle = new global::System.Data.DataColumn("FormsTitle", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFormsTitle);
+                this.columnSupplierName = new global::System.Data.DataColumn("SupplierName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSupplierName);
+                this.columnReceiptNo = new global::System.Data.DataColumn("ReceiptNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReceiptNo);
+                this.columnInboundDate = new global::System.Data.DataColumn("InboundDate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInboundDate);
+                this.columnNumberOfPages = new global::System.Data.DataColumn("NumberOfPages", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumberOfPages);
+                this.columnTotalAmount = new global::System.Data.DataColumn("TotalAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalAmount);
+                this.columnSign = new global::System.Data.DataColumn("Sign", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSign);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWSLhistoryRow NewCWSLhistoryRow() {
+                return ((CWSLhistoryRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new CWSLhistoryRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(CWSLhistoryRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.CWSLhistoryRowChanged != null)) {
+                    this.CWSLhistoryRowChanged(this, new CWSLhistoryRowChangeEvent(((CWSLhistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.CWSLhistoryRowChanging != null)) {
+                    this.CWSLhistoryRowChanging(this, new CWSLhistoryRowChangeEvent(((CWSLhistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.CWSLhistoryRowDeleted != null)) {
+                    this.CWSLhistoryRowDeleted(this, new CWSLhistoryRowChangeEvent(((CWSLhistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.CWSLhistoryRowDeleting != null)) {
+                    this.CWSLhistoryRowDeleting(this, new CWSLhistoryRowChangeEvent(((CWSLhistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveCWSLhistoryRow(CWSLhistoryRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MainFormWanXuDataSet ds = new MainFormWanXuDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "CWSLhistoryDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class CWDLwxDataTable : global::System.Data.TypedTableBase<CWDLwxRow> {
+            
+            private global::System.Data.DataColumn columnFormsTitle;
+            
+            private global::System.Data.DataColumn columnSupplierName;
+            
+            private global::System.Data.DataColumn columnInboundDate;
+            
+            private global::System.Data.DataColumn columnReceiptNo;
+            
+            private global::System.Data.DataColumn columnNumberOfPages;
+            
+            private global::System.Data.DataColumn columnTotalAmount;
+            
+            private global::System.Data.DataColumn columnAcceptanceOfThePeople;
+            
+            private global::System.Data.DataColumn columnSupplier;
+            
+            private global::System.Data.DataColumn columnWarehouseOperator;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWDLwxDataTable() {
+                this.TableName = "CWDLwx";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal CWDLwxDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected CWDLwxDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FormsTitleColumn {
+                get {
+                    return this.columnFormsTitle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn SupplierNameColumn {
+                get {
+                    return this.columnSupplierName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InboundDateColumn {
+                get {
+                    return this.columnInboundDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ReceiptNoColumn {
+                get {
+                    return this.columnReceiptNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NumberOfPagesColumn {
+                get {
+                    return this.columnNumberOfPages;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TotalAmountColumn {
+                get {
+                    return this.columnTotalAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn AcceptanceOfThePeopleColumn {
+                get {
+                    return this.columnAcceptanceOfThePeople;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn SupplierColumn {
+                get {
+                    return this.columnSupplier;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn WarehouseOperatorColumn {
+                get {
+                    return this.columnWarehouseOperator;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWDLwxRow this[int index] {
+                get {
+                    return ((CWDLwxRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event CWDLwxRowChangeEventHandler CWDLwxRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event CWDLwxRowChangeEventHandler CWDLwxRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event CWDLwxRowChangeEventHandler CWDLwxRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event CWDLwxRowChangeEventHandler CWDLwxRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddCWDLwxRow(CWDLwxRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWDLwxRow AddCWDLwxRow(string FormsTitle, string SupplierName, string InboundDate, string ReceiptNo, string NumberOfPages, string TotalAmount, string AcceptanceOfThePeople, string Supplier, string WarehouseOperator) {
+                CWDLwxRow rowCWDLwxRow = ((CWDLwxRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        FormsTitle,
+                        SupplierName,
+                        InboundDate,
+                        ReceiptNo,
+                        NumberOfPages,
+                        TotalAmount,
+                        AcceptanceOfThePeople,
+                        Supplier,
+                        WarehouseOperator};
+                rowCWDLwxRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCWDLwxRow);
+                return rowCWDLwxRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                CWDLwxDataTable cln = ((CWDLwxDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new CWDLwxDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnFormsTitle = base.Columns["FormsTitle"];
+                this.columnSupplierName = base.Columns["SupplierName"];
+                this.columnInboundDate = base.Columns["InboundDate"];
+                this.columnReceiptNo = base.Columns["ReceiptNo"];
+                this.columnNumberOfPages = base.Columns["NumberOfPages"];
+                this.columnTotalAmount = base.Columns["TotalAmount"];
+                this.columnAcceptanceOfThePeople = base.Columns["AcceptanceOfThePeople"];
+                this.columnSupplier = base.Columns["Supplier"];
+                this.columnWarehouseOperator = base.Columns["WarehouseOperator"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnFormsTitle = new global::System.Data.DataColumn("FormsTitle", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFormsTitle);
+                this.columnSupplierName = new global::System.Data.DataColumn("SupplierName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSupplierName);
+                this.columnInboundDate = new global::System.Data.DataColumn("InboundDate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInboundDate);
+                this.columnReceiptNo = new global::System.Data.DataColumn("ReceiptNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReceiptNo);
+                this.columnNumberOfPages = new global::System.Data.DataColumn("NumberOfPages", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumberOfPages);
+                this.columnTotalAmount = new global::System.Data.DataColumn("TotalAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalAmount);
+                this.columnAcceptanceOfThePeople = new global::System.Data.DataColumn("AcceptanceOfThePeople", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAcceptanceOfThePeople);
+                this.columnSupplier = new global::System.Data.DataColumn("Supplier", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSupplier);
+                this.columnWarehouseOperator = new global::System.Data.DataColumn("WarehouseOperator", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWarehouseOperator);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWDLwxRow NewCWDLwxRow() {
+                return ((CWDLwxRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new CWDLwxRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(CWDLwxRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.CWDLwxRowChanged != null)) {
+                    this.CWDLwxRowChanged(this, new CWDLwxRowChangeEvent(((CWDLwxRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.CWDLwxRowChanging != null)) {
+                    this.CWDLwxRowChanging(this, new CWDLwxRowChangeEvent(((CWDLwxRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.CWDLwxRowDeleted != null)) {
+                    this.CWDLwxRowDeleted(this, new CWDLwxRowChangeEvent(((CWDLwxRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.CWDLwxRowDeleting != null)) {
+                    this.CWDLwxRowDeleting(this, new CWDLwxRowChangeEvent(((CWDLwxRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveCWDLwxRow(CWDLwxRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MainFormWanXuDataSet ds = new MainFormWanXuDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "CWDLwxDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class CWDLhistoryDataTable : global::System.Data.TypedTableBase<CWDLhistoryRow> {
+            
+            private global::System.Data.DataColumn columnFormsTitle;
+            
+            private global::System.Data.DataColumn columnSupplierName;
+            
+            private global::System.Data.DataColumn columnInboundDate;
+            
+            private global::System.Data.DataColumn columnReceiptNo;
+            
+            private global::System.Data.DataColumn columnNumberOfPages;
+            
+            private global::System.Data.DataColumn columnTotalAmount;
+            
+            private global::System.Data.DataColumn columnSign;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWDLhistoryDataTable() {
+                this.TableName = "CWDLhistory";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal CWDLhistoryDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected CWDLhistoryDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FormsTitleColumn {
+                get {
+                    return this.columnFormsTitle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn SupplierNameColumn {
+                get {
+                    return this.columnSupplierName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InboundDateColumn {
+                get {
+                    return this.columnInboundDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ReceiptNoColumn {
+                get {
+                    return this.columnReceiptNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NumberOfPagesColumn {
+                get {
+                    return this.columnNumberOfPages;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TotalAmountColumn {
+                get {
+                    return this.columnTotalAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn SignColumn {
+                get {
+                    return this.columnSign;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWDLhistoryRow this[int index] {
+                get {
+                    return ((CWDLhistoryRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event CWDLhistoryRowChangeEventHandler CWDLhistoryRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event CWDLhistoryRowChangeEventHandler CWDLhistoryRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event CWDLhistoryRowChangeEventHandler CWDLhistoryRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event CWDLhistoryRowChangeEventHandler CWDLhistoryRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddCWDLhistoryRow(CWDLhistoryRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWDLhistoryRow AddCWDLhistoryRow(string FormsTitle, string SupplierName, string InboundDate, string ReceiptNo, string NumberOfPages, string TotalAmount, string Sign) {
+                CWDLhistoryRow rowCWDLhistoryRow = ((CWDLhistoryRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        FormsTitle,
+                        SupplierName,
+                        InboundDate,
+                        ReceiptNo,
+                        NumberOfPages,
+                        TotalAmount,
+                        Sign};
+                rowCWDLhistoryRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCWDLhistoryRow);
+                return rowCWDLhistoryRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                CWDLhistoryDataTable cln = ((CWDLhistoryDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new CWDLhistoryDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnFormsTitle = base.Columns["FormsTitle"];
+                this.columnSupplierName = base.Columns["SupplierName"];
+                this.columnInboundDate = base.Columns["InboundDate"];
+                this.columnReceiptNo = base.Columns["ReceiptNo"];
+                this.columnNumberOfPages = base.Columns["NumberOfPages"];
+                this.columnTotalAmount = base.Columns["TotalAmount"];
+                this.columnSign = base.Columns["Sign"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnFormsTitle = new global::System.Data.DataColumn("FormsTitle", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFormsTitle);
+                this.columnSupplierName = new global::System.Data.DataColumn("SupplierName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSupplierName);
+                this.columnInboundDate = new global::System.Data.DataColumn("InboundDate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInboundDate);
+                this.columnReceiptNo = new global::System.Data.DataColumn("ReceiptNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReceiptNo);
+                this.columnNumberOfPages = new global::System.Data.DataColumn("NumberOfPages", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumberOfPages);
+                this.columnTotalAmount = new global::System.Data.DataColumn("TotalAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalAmount);
+                this.columnSign = new global::System.Data.DataColumn("Sign", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSign);
+                this.columnTotalAmount.Caption = "AcceptanceOfThePeople";
+                this.columnSign.Caption = "Supplier";
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWDLhistoryRow NewCWDLhistoryRow() {
+                return ((CWDLhistoryRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new CWDLhistoryRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(CWDLhistoryRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.CWDLhistoryRowChanged != null)) {
+                    this.CWDLhistoryRowChanged(this, new CWDLhistoryRowChangeEvent(((CWDLhistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.CWDLhistoryRowChanging != null)) {
+                    this.CWDLhistoryRowChanging(this, new CWDLhistoryRowChangeEvent(((CWDLhistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.CWDLhistoryRowDeleted != null)) {
+                    this.CWDLhistoryRowDeleted(this, new CWDLhistoryRowChangeEvent(((CWDLhistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.CWDLhistoryRowDeleting != null)) {
+                    this.CWDLhistoryRowDeleting(this, new CWDLhistoryRowChangeEvent(((CWDLhistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveCWDLhistoryRow(CWDLhistoryRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MainFormWanXuDataSet ds = new MainFormWanXuDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "CWDLhistoryDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -624,15 +1766,31 @@ namespace CodeReading.Entity {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class SHILwxRow : global::System.Data.DataRow {
+        public partial class CWSLwxRow : global::System.Data.DataRow {
             
-            private SHILwxDataTable tableSHILwx;
+            private CWSLwxDataTable tableCWSLwx;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal SHILwxRow(global::System.Data.DataRowBuilder rb) : 
+            internal CWSLwxRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableSHILwx = ((SHILwxDataTable)(this.Table));
+                this.tableCWSLwx = ((CWSLwxDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string FormsTitle {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWSLwx.FormsTitleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWSLwx”中列“FormsTitle”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWSLwx.FormsTitleColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -640,14 +1798,14 @@ namespace CodeReading.Entity {
             public string SupplierName {
                 get {
                     try {
-                        return ((string)(this[this.tableSHILwx.SupplierNameColumn]));
+                        return ((string)(this[this.tableCWSLwx.SupplierNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“SHILwx”中列“SupplierName”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“CWSLwx”中列“SupplierName”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableSHILwx.SupplierNameColumn] = value;
+                    this[this.tableCWSLwx.SupplierNameColumn] = value;
                 }
             }
             
@@ -656,14 +1814,14 @@ namespace CodeReading.Entity {
             public string ReceiptNo {
                 get {
                     try {
-                        return ((string)(this[this.tableSHILwx.ReceiptNoColumn]));
+                        return ((string)(this[this.tableCWSLwx.ReceiptNoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“SHILwx”中列“ReceiptNo”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“CWSLwx”中列“ReceiptNo”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableSHILwx.ReceiptNoColumn] = value;
+                    this[this.tableCWSLwx.ReceiptNoColumn] = value;
                 }
             }
             
@@ -672,14 +1830,14 @@ namespace CodeReading.Entity {
             public string InboundDate {
                 get {
                     try {
-                        return ((string)(this[this.tableSHILwx.InboundDateColumn]));
+                        return ((string)(this[this.tableCWSLwx.InboundDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“SHILwx”中列“InboundDate”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“CWSLwx”中列“InboundDate”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableSHILwx.InboundDateColumn] = value;
+                    this[this.tableCWSLwx.InboundDateColumn] = value;
                 }
             }
             
@@ -688,14 +1846,14 @@ namespace CodeReading.Entity {
             public string NumberOfPages {
                 get {
                     try {
-                        return ((string)(this[this.tableSHILwx.NumberOfPagesColumn]));
+                        return ((string)(this[this.tableCWSLwx.NumberOfPagesColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“SHILwx”中列“NumberOfPages”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“CWSLwx”中列“NumberOfPages”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableSHILwx.NumberOfPagesColumn] = value;
+                    this[this.tableCWSLwx.NumberOfPagesColumn] = value;
                 }
             }
             
@@ -704,14 +1862,14 @@ namespace CodeReading.Entity {
             public string TotalAmount {
                 get {
                     try {
-                        return ((string)(this[this.tableSHILwx.TotalAmountColumn]));
+                        return ((string)(this[this.tableCWSLwx.TotalAmountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“SHILwx”中列“TotalAmount”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“CWSLwx”中列“TotalAmount”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableSHILwx.TotalAmountColumn] = value;
+                    this[this.tableCWSLwx.TotalAmountColumn] = value;
                 }
             }
             
@@ -720,14 +1878,14 @@ namespace CodeReading.Entity {
             public string AcceptanceOfThePeople {
                 get {
                     try {
-                        return ((string)(this[this.tableSHILwx.AcceptanceOfThePeopleColumn]));
+                        return ((string)(this[this.tableCWSLwx.AcceptanceOfThePeopleColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“SHILwx”中列“AcceptanceOfThePeople”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“CWSLwx”中列“AcceptanceOfThePeople”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableSHILwx.AcceptanceOfThePeopleColumn] = value;
+                    this[this.tableCWSLwx.AcceptanceOfThePeopleColumn] = value;
                 }
             }
             
@@ -736,14 +1894,14 @@ namespace CodeReading.Entity {
             public string Supplier {
                 get {
                     try {
-                        return ((string)(this[this.tableSHILwx.SupplierColumn]));
+                        return ((string)(this[this.tableCWSLwx.SupplierColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“SHILwx”中列“Supplier”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“CWSLwx”中列“Supplier”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableSHILwx.SupplierColumn] = value;
+                    this[this.tableCWSLwx.SupplierColumn] = value;
                 }
             }
             
@@ -752,111 +1910,812 @@ namespace CodeReading.Entity {
             public string WarehouseOperator {
                 get {
                     try {
-                        return ((string)(this[this.tableSHILwx.WarehouseOperatorColumn]));
+                        return ((string)(this[this.tableCWSLwx.WarehouseOperatorColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“SHILwx”中列“WarehouseOperator”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“CWSLwx”中列“WarehouseOperator”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableSHILwx.WarehouseOperatorColumn] = value;
+                    this[this.tableCWSLwx.WarehouseOperatorColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsFormsTitleNull() {
+                return this.IsNull(this.tableCWSLwx.FormsTitleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetFormsTitleNull() {
+                this[this.tableCWSLwx.FormsTitleColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsSupplierNameNull() {
-                return this.IsNull(this.tableSHILwx.SupplierNameColumn);
+                return this.IsNull(this.tableCWSLwx.SupplierNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetSupplierNameNull() {
-                this[this.tableSHILwx.SupplierNameColumn] = global::System.Convert.DBNull;
+                this[this.tableCWSLwx.SupplierNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsReceiptNoNull() {
-                return this.IsNull(this.tableSHILwx.ReceiptNoColumn);
+                return this.IsNull(this.tableCWSLwx.ReceiptNoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetReceiptNoNull() {
-                this[this.tableSHILwx.ReceiptNoColumn] = global::System.Convert.DBNull;
+                this[this.tableCWSLwx.ReceiptNoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsInboundDateNull() {
-                return this.IsNull(this.tableSHILwx.InboundDateColumn);
+                return this.IsNull(this.tableCWSLwx.InboundDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetInboundDateNull() {
-                this[this.tableSHILwx.InboundDateColumn] = global::System.Convert.DBNull;
+                this[this.tableCWSLwx.InboundDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsNumberOfPagesNull() {
-                return this.IsNull(this.tableSHILwx.NumberOfPagesColumn);
+                return this.IsNull(this.tableCWSLwx.NumberOfPagesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetNumberOfPagesNull() {
-                this[this.tableSHILwx.NumberOfPagesColumn] = global::System.Convert.DBNull;
+                this[this.tableCWSLwx.NumberOfPagesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsTotalAmountNull() {
-                return this.IsNull(this.tableSHILwx.TotalAmountColumn);
+                return this.IsNull(this.tableCWSLwx.TotalAmountColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetTotalAmountNull() {
-                this[this.tableSHILwx.TotalAmountColumn] = global::System.Convert.DBNull;
+                this[this.tableCWSLwx.TotalAmountColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsAcceptanceOfThePeopleNull() {
-                return this.IsNull(this.tableSHILwx.AcceptanceOfThePeopleColumn);
+                return this.IsNull(this.tableCWSLwx.AcceptanceOfThePeopleColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetAcceptanceOfThePeopleNull() {
-                this[this.tableSHILwx.AcceptanceOfThePeopleColumn] = global::System.Convert.DBNull;
+                this[this.tableCWSLwx.AcceptanceOfThePeopleColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsSupplierNull() {
-                return this.IsNull(this.tableSHILwx.SupplierColumn);
+                return this.IsNull(this.tableCWSLwx.SupplierColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetSupplierNull() {
-                this[this.tableSHILwx.SupplierColumn] = global::System.Convert.DBNull;
+                this[this.tableCWSLwx.SupplierColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsWarehouseOperatorNull() {
-                return this.IsNull(this.tableSHILwx.WarehouseOperatorColumn);
+                return this.IsNull(this.tableCWSLwx.WarehouseOperatorColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetWarehouseOperatorNull() {
-                this[this.tableSHILwx.WarehouseOperatorColumn] = global::System.Convert.DBNull;
+                this[this.tableCWSLwx.WarehouseOperatorColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class CWSLhistoryRow : global::System.Data.DataRow {
+            
+            private CWSLhistoryDataTable tableCWSLhistory;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal CWSLhistoryRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableCWSLhistory = ((CWSLhistoryDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string FormsTitle {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWSLhistory.FormsTitleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWSLhistory”中列“FormsTitle”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWSLhistory.FormsTitleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string SupplierName {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWSLhistory.SupplierNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWSLhistory”中列“SupplierName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWSLhistory.SupplierNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ReceiptNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWSLhistory.ReceiptNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWSLhistory”中列“ReceiptNo”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWSLhistory.ReceiptNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InboundDate {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWSLhistory.InboundDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWSLhistory”中列“InboundDate”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWSLhistory.InboundDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string NumberOfPages {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWSLhistory.NumberOfPagesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWSLhistory”中列“NumberOfPages”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWSLhistory.NumberOfPagesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string TotalAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWSLhistory.TotalAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWSLhistory”中列“TotalAmount”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWSLhistory.TotalAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Sign {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWSLhistory.SignColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWSLhistory”中列“Sign”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWSLhistory.SignColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsFormsTitleNull() {
+                return this.IsNull(this.tableCWSLhistory.FormsTitleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetFormsTitleNull() {
+                this[this.tableCWSLhistory.FormsTitleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsSupplierNameNull() {
+                return this.IsNull(this.tableCWSLhistory.SupplierNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetSupplierNameNull() {
+                this[this.tableCWSLhistory.SupplierNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsReceiptNoNull() {
+                return this.IsNull(this.tableCWSLhistory.ReceiptNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetReceiptNoNull() {
+                this[this.tableCWSLhistory.ReceiptNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInboundDateNull() {
+                return this.IsNull(this.tableCWSLhistory.InboundDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInboundDateNull() {
+                this[this.tableCWSLhistory.InboundDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsNumberOfPagesNull() {
+                return this.IsNull(this.tableCWSLhistory.NumberOfPagesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetNumberOfPagesNull() {
+                this[this.tableCWSLhistory.NumberOfPagesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTotalAmountNull() {
+                return this.IsNull(this.tableCWSLhistory.TotalAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTotalAmountNull() {
+                this[this.tableCWSLhistory.TotalAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsSignNull() {
+                return this.IsNull(this.tableCWSLhistory.SignColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetSignNull() {
+                this[this.tableCWSLhistory.SignColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class CWDLwxRow : global::System.Data.DataRow {
+            
+            private CWDLwxDataTable tableCWDLwx;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal CWDLwxRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableCWDLwx = ((CWDLwxDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string FormsTitle {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLwx.FormsTitleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLwx”中列“FormsTitle”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLwx.FormsTitleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string SupplierName {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLwx.SupplierNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLwx”中列“SupplierName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLwx.SupplierNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InboundDate {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLwx.InboundDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLwx”中列“InboundDate”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLwx.InboundDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ReceiptNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLwx.ReceiptNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLwx”中列“ReceiptNo”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLwx.ReceiptNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string NumberOfPages {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLwx.NumberOfPagesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLwx”中列“NumberOfPages”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLwx.NumberOfPagesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string TotalAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLwx.TotalAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLwx”中列“TotalAmount”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLwx.TotalAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string AcceptanceOfThePeople {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLwx.AcceptanceOfThePeopleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLwx”中列“AcceptanceOfThePeople”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLwx.AcceptanceOfThePeopleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Supplier {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLwx.SupplierColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLwx”中列“Supplier”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLwx.SupplierColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string WarehouseOperator {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLwx.WarehouseOperatorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLwx”中列“WarehouseOperator”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLwx.WarehouseOperatorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsFormsTitleNull() {
+                return this.IsNull(this.tableCWDLwx.FormsTitleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetFormsTitleNull() {
+                this[this.tableCWDLwx.FormsTitleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsSupplierNameNull() {
+                return this.IsNull(this.tableCWDLwx.SupplierNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetSupplierNameNull() {
+                this[this.tableCWDLwx.SupplierNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInboundDateNull() {
+                return this.IsNull(this.tableCWDLwx.InboundDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInboundDateNull() {
+                this[this.tableCWDLwx.InboundDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsReceiptNoNull() {
+                return this.IsNull(this.tableCWDLwx.ReceiptNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetReceiptNoNull() {
+                this[this.tableCWDLwx.ReceiptNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsNumberOfPagesNull() {
+                return this.IsNull(this.tableCWDLwx.NumberOfPagesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetNumberOfPagesNull() {
+                this[this.tableCWDLwx.NumberOfPagesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTotalAmountNull() {
+                return this.IsNull(this.tableCWDLwx.TotalAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTotalAmountNull() {
+                this[this.tableCWDLwx.TotalAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsAcceptanceOfThePeopleNull() {
+                return this.IsNull(this.tableCWDLwx.AcceptanceOfThePeopleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetAcceptanceOfThePeopleNull() {
+                this[this.tableCWDLwx.AcceptanceOfThePeopleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsSupplierNull() {
+                return this.IsNull(this.tableCWDLwx.SupplierColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetSupplierNull() {
+                this[this.tableCWDLwx.SupplierColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsWarehouseOperatorNull() {
+                return this.IsNull(this.tableCWDLwx.WarehouseOperatorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetWarehouseOperatorNull() {
+                this[this.tableCWDLwx.WarehouseOperatorColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class CWDLhistoryRow : global::System.Data.DataRow {
+            
+            private CWDLhistoryDataTable tableCWDLhistory;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal CWDLhistoryRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableCWDLhistory = ((CWDLhistoryDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string FormsTitle {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLhistory.FormsTitleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLhistory”中列“FormsTitle”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLhistory.FormsTitleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string SupplierName {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLhistory.SupplierNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLhistory”中列“SupplierName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLhistory.SupplierNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InboundDate {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLhistory.InboundDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLhistory”中列“InboundDate”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLhistory.InboundDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ReceiptNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLhistory.ReceiptNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLhistory”中列“ReceiptNo”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLhistory.ReceiptNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string NumberOfPages {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLhistory.NumberOfPagesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLhistory”中列“NumberOfPages”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLhistory.NumberOfPagesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string TotalAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLhistory.TotalAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLhistory”中列“TotalAmount”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLhistory.TotalAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Sign {
+                get {
+                    try {
+                        return ((string)(this[this.tableCWDLhistory.SignColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“CWDLhistory”中列“Sign”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCWDLhistory.SignColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsFormsTitleNull() {
+                return this.IsNull(this.tableCWDLhistory.FormsTitleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetFormsTitleNull() {
+                this[this.tableCWDLhistory.FormsTitleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsSupplierNameNull() {
+                return this.IsNull(this.tableCWDLhistory.SupplierNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetSupplierNameNull() {
+                this[this.tableCWDLhistory.SupplierNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInboundDateNull() {
+                return this.IsNull(this.tableCWDLhistory.InboundDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInboundDateNull() {
+                this[this.tableCWDLhistory.InboundDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsReceiptNoNull() {
+                return this.IsNull(this.tableCWDLhistory.ReceiptNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetReceiptNoNull() {
+                this[this.tableCWDLhistory.ReceiptNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsNumberOfPagesNull() {
+                return this.IsNull(this.tableCWDLhistory.NumberOfPagesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetNumberOfPagesNull() {
+                this[this.tableCWDLhistory.NumberOfPagesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTotalAmountNull() {
+                return this.IsNull(this.tableCWDLhistory.TotalAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTotalAmountNull() {
+                this[this.tableCWDLhistory.TotalAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsSignNull() {
+                return this.IsNull(this.tableCWDLhistory.SignColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetSignNull() {
+                this[this.tableCWDLhistory.SignColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -864,22 +2723,124 @@ namespace CodeReading.Entity {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class SHILwxRowChangeEvent : global::System.EventArgs {
+        public class CWSLwxRowChangeEvent : global::System.EventArgs {
             
-            private SHILwxRow eventRow;
+            private CWSLwxRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SHILwxRowChangeEvent(SHILwxRow row, global::System.Data.DataRowAction action) {
+            public CWSLwxRowChangeEvent(CWSLwxRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SHILwxRow Row {
+            public CWSLwxRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class CWSLhistoryRowChangeEvent : global::System.EventArgs {
+            
+            private CWSLhistoryRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWSLhistoryRowChangeEvent(CWSLhistoryRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWSLhistoryRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class CWDLwxRowChangeEvent : global::System.EventArgs {
+            
+            private CWDLwxRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWDLwxRowChangeEvent(CWDLwxRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWDLwxRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class CWDLhistoryRowChangeEvent : global::System.EventArgs {
+            
+            private CWDLhistoryRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWDLhistoryRowChangeEvent(CWDLhistoryRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CWDLhistoryRow Row {
                 get {
                     return this.eventRow;
                 }

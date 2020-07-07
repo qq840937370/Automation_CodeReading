@@ -50,11 +50,12 @@ namespace CodeReading.View.BLL.MainFormNew
         /// <returns>0-读取并初始一些数据变量，1-读取，2-请放入第" + numberOfPageshow + "页，3-请从第1/" + numberOfPages + "页开始读取</returns>
         public int PageOrder(int i, int numberOfPage, int numberOfPages,out int numberOfPageshow)
         {
-            // 表单（供应商，入库单号，入库日期）未读过 
+            // 表单未读过 
             if (i == 0)
             {
                 if (numberOfPage == 1)
                 {
+                    // 查询数据再库里存不存在
                     numberOfPageold = numberOfPage;
                     numberOfPageshow = 0;  // 无用
                     // 读取

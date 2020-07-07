@@ -96,6 +96,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MainFormWanXuDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="MainForm\MainFormWanXuDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainFormWanXuDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SendRecv1.svc.cs">
       <DependentUpon>SendRecv1.svc</DependentUpon>
@@ -134,7 +139,7 @@
     <None Include="MainForm\MainFormWanXuDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>MainFormWanXuDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>MainFormWanXuDataSet1.Designer.cs</LastGenOutput>
     </None>
     <Content Include="MainForm\MainFormWanXuDataSet.xss">
       <DependentUpon>MainFormWanXuDataSet.xsd</DependentUpon>
