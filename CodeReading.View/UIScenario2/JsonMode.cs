@@ -37,7 +37,7 @@ namespace CodeReading.View.UIScenario2
                 // 耗材仓库耗材入库单
                 case "CWSL":
                     //mainFormBLLNew.CWSLList(out string CWSL_id, out string CWSL_TotalAmount, out string CWSL_Sign, out string CWSL_Pass);
-                    mainFormBLLWanXu.CWSLList(out string CWSL_id, out string CWSL_TotalAmount, out string CWSL_Sign, out string CWSL_Pass,out string Information);
+                    mainFormBLLWanXu.CWSLList(out string CWSL_id, out string CWSL_TotalAmount, out string CWSL_Sign, out string CWSL_Pass, out string Information);
                     lbl_Page.Text = CWSL_id;
                     lbl_JinQian.Text = CWSL_TotalAmount;
                     lbl_QianZi.Text = CWSL_Sign;
@@ -48,21 +48,32 @@ namespace CodeReading.View.UIScenario2
                 // 耗材仓库配送出库单
                 case "CWDL":
                     //mainFormBLLNew.CWDLList(out string CWDL_id, out string CWDL_TotalAmount, out string CWDL_Sign, out string CWDL_Seal, out string CWDL_Pass);
-                    mainFormBLLWanXu.CWDLList(out string CWDL_id, out string CWDL_TotalAmount, out string CWDL_Sign, out string CWDL_Seal, out string CWDL_Pass);
+                    mainFormBLLWanXu.CWDLList(out string CWDL_id, out string CWDL_TotalAmount, out string CWDL_Sign, out string CWDL_Pass, out string CWDL_Seal, out string CWDL_Information);
                     lbl_Page.Text = CWDL_id;
                     lbl_JinQian.Text = CWDL_TotalAmount;
                     lbl_QianZi.Text = CWDL_Sign;
                     lbl_Seal.Visible = true;
                     lbl_Seal.Text = CWDL_Seal;
                     lbl_Pass.Text = CWDL_Pass;
+                    lbl_Infomation.Text = CWDL_Information;
                     break;
                 // 
-
-
                 // 其他
                 case "":
                     break;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CWSL cWSL = new CWSL();
+            cWSL.SupplierName = "济南鹏程医疗设备有限公司";  // 供应商名称
+            cWSL.InboundDate = "";                            // 流水号
+            cWSL.ReceiptNo = "80462720";                     // 入库单号
+            cWSL.InboundDate = "2020-06-10";                 // 入库日期
+            cWSL.TotalAmount = "977.5";                      // 表单总金额
+            
+        }
+
     }
 }

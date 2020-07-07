@@ -130,7 +130,7 @@ namespace CodeReading.View.BLL.MainFormNew
             cWDL_ComparisonInformation.Auditor = "魏洋洋";                           // 复核人
             cWDL_ComparisonInformation.Distributor = "张洋";                         // 配送人
             cWDL_ComparisonInformation.DepartmentConsignee = "王志东";               // 科室收货人
-            cWDL_ComparisonInformation.DepartmentSeal = true;                        // 科室盖章
+            cWDL_ComparisonInformation.DepartmentSeal = "已盖章";                        // 科室盖章
             #endregion
 
             #region 向服务器请求数据-假
@@ -149,7 +149,7 @@ namespace CodeReading.View.BLL.MainFormNew
                     cWDL_ComparisonInformation.Auditor.Length > 0 &&                                           // 签字
                     cWDL_ComparisonInformation.Distributor.Length > 0 &&                                       // 签字
                     cWDL_ComparisonInformation.DepartmentConsignee.Length > 0 &&                               // 签字
-                    cWDL_ComparisonInformation.DepartmentSeal==true)                                           // 盖章
+                    cWDL_ComparisonInformation.DepartmentSeal== "已盖章")                                           // 盖章
                 {
                     id= "耗材仓库配送出库单 " + cWDL_ComparisonInformation.NumberOfPages;
                     TotalAmount = "金钱数一致";
@@ -193,7 +193,7 @@ namespace CodeReading.View.BLL.MainFormNew
                     }
                     else { Sign = "已签字"; }
                     // 科室盖章
-                    if (cWDL_ComparisonInformation.DepartmentSeal == false)
+                    if (cWDL_ComparisonInformation.DepartmentSeal != "已盖章")
                     {
                         Seal = "未盖章";
                     }

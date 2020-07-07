@@ -70,6 +70,7 @@
     <Compile Include="BLL\HDevelopExport\Region_Judge_Sign.cs" />
     <Compile Include="BLL\HDevelopExport\Region_Ocr_Num_Svm.cs" />
     <Compile Include="BLL\HDevelopExport\Set_Display_Font.cs" />
+    <Compile Include="BLL\JSONTOOLs\JSONTool.cs" />
     <Compile Include="BLL\LoginInfoBLL.cs" />
     <Compile Include="BLL\MainFormBLL.cs" />
     <Compile Include="BLL\MainFormNew\DataReconciliation.cs" />
